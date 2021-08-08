@@ -46,6 +46,21 @@ const {
     line-height: 1.5;
   }
 
+  main {
+    display: grid;
+    grid-template-columns: 1fr min(65ch, calc(100% - 4rem)) 1fr;
+    column-gap: 2rem;
+  }
+
+  main > :global(*) {
+    grid-column: 2;
+  }
+
+  .full-bleed {
+    width: 100%;
+    grid-column: 1 / -1;
+  }
+
   a[href="#main"].sr-only.sr-only-focusable {
     top: var(--spacer-xs);
     left: var(--spacer-xs);
