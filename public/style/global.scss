@@ -1,0 +1,34 @@
+@use 'chisel.css/dist/chisel.css';
+@use 'chisel.css/dist/chisel-prism.css';
+@use '@fontsource/playfair-display/scss/mixins' as PlayfairDisplay;
+
+@include PlayfairDisplay.fontFace(
+  $weight: 700,
+  $display: fallback,
+  $fontDir: "/style/@fontsource/playfair-display/files"
+);
+
+:root {
+  --font-family-base: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  --font-family-display: "Playfair Display", Georgia, Times, serif;
+
+  /* Spacer Sizes */
+  --spacer-tiny: 0.25rem;
+  --spacer-xs: 0.5rem;
+  --spacer-sm: 1rem;
+  --spacer-md: 2.5rem;
+  --spacer-lg: 4rem;
+  --spacer-xl: 6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  font-family: var(--font-family-display);
+}

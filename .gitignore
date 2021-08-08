@@ -1,5 +1,7 @@
 # build output
 dist
+_cache
+public/styles/@fontsource
 
 # dependencies
 node_modules/

@@ -1,0 +1,57 @@
+---
+import site from '../data/site.json';
+import MainHead from '../components/MainHead.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	image: string;
+	pathname?: string;
+	canonicalURL: string;
+}
+
+const {
+	title,
+	description,
+	image,
+	pathname,
+	canonicalURL
+} = Astro.props as props;
+---
+
+<html lang="en">
+  <head>
+    <MainHead title={title} description={description} image={image} canonicalURL={canonicalURL} />
+  </head>
+
+  <body>
+    <a
+      id="skip-to-content"
+      href="#main"
+      class="sr-only sr-only-focusable"
+    >
+      Skip to content
+    </a>
+
+    <main id="main">
+      <slot />
+    </main>
+
+  </body>
+</html>
+
+<style lang="scss">
+  body {
+    font-family: var(--font-family-base);
+    line-height: 1.5;
+  }
+
+  a[href="#main"].sr-only.sr-only-focusable {
+    top: var(--spacer-xs);
+    left: var(--spacer-xs);
+    background: var(--chisel-neutral-900);
+    color: var(--chisel-neutral-50);
+    padding: var(--spacer-xs);
+    z-index: 1;
+  }
+</style>
