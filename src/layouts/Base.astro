@@ -1,13 +1,14 @@
 ---
-import site from '../data/site.json';
-import MainHead from '../components/MainHead.astro';
+import site from '../data/site.json'
+import Header from '../components/Header.astro'
+import MainHead from '../components/MainHead.astro'
 
 interface Props {
-	title: string;
-	description: string;
-	image: string;
-	pathname?: string;
-	canonicalURL: string;
+	title: string
+	description: string
+	image: string
+	pathname?: string
+	canonicalURL: string
 }
 
 const {
@@ -16,7 +17,7 @@ const {
 	image,
 	pathname,
 	canonicalURL
-} = Astro.props as props;
+} = Astro.props as props
 ---
 
 <html lang="en">
@@ -33,7 +34,9 @@ const {
       Skip to content
     </a>
 
-    <main id="main">
+    <Header />
+
+    <main class="container" id="main">
       <slot />
     </main>
 
@@ -44,21 +47,6 @@ const {
   body {
     font-family: var(--font-family-base);
     line-height: 1.5;
-  }
-
-  main {
-    display: grid;
-    grid-template-columns: 1fr min(65ch, calc(100% - 4rem)) 1fr;
-    column-gap: 2rem;
-  }
-
-  main > :global(*) {
-    grid-column: 2;
-  }
-
-  .full-bleed {
-    width: 100%;
-    grid-column: 1 / -1;
   }
 
   a[href="#main"].sr-only.sr-only-focusable {

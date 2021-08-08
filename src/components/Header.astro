@@ -1,0 +1,62 @@
+---
+import navigation from '../data/navigation.json'
+import site from '../data/site.json'
+---
+
+<header class="container">
+  <div class="header">
+    <a href='/' rel='home' aria-label='Go to Homepage'>
+      <img src='/favicon.svg' alt={site.title} />
+      {site.title}
+    </a>
+
+    <nav>
+      <ul>
+        {navigation.map(({ title, href }) => (
+          <li>
+            <a href={href}>{title}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style lang='scss'>
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacer-md) 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .header > a {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+  }
+  
+  img {
+    height: 3rem;
+    width: 3rem;
+    margin-right: var(--spacer-xs);
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+  }
+
+  li:not(:last-of-type) {
+    margin-right: var(--spacer-sm);
+  }
+
+  nav a {
+    padding: var(--spacer-sm) var(--spacer-xs);
+  }
+</style>

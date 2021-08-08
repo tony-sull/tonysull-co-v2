@@ -24,11 +24,32 @@
 }
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
-h6 {
+.h5,
+h6,
+.h6 {
   font-weight: 700;
   font-family: var(--font-family-display);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr min(90%, 1200px) 1fr;
+  column-gap: 2rem;
+}
+
+.container > * {
+  grid-column: 2;
+}
+
+.container > .full-bleed {
+  width: 100%;
+  grid-column: 1 / -1;
 }
