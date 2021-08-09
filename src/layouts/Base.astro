@@ -34,7 +34,7 @@ const {
       Skip to content
     </a>
 
-    <Header />
+    <Header pathname={Astro.request.url.pathname} />
 
     <main class="container" id="main">
       <slot />
@@ -52,8 +52,8 @@ const {
   a[href="#main"].sr-only.sr-only-focusable {
     top: var(--spacer-xs);
     left: var(--spacer-xs);
-    background: var(--chisel-neutral-900);
-    color: var(--chisel-neutral-50);
+    background: var(--chisel-neutral-50);
+    color: var(--chisel-neutral-900);
     padding: var(--spacer-xs);
     z-index: 1;
   }

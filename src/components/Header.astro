@@ -1,6 +1,12 @@
 ---
 import navigation from '../data/navigation.json'
 import site from '../data/site.json'
+
+interface Props {
+  pathname: string
+}
+
+const { pathname } = Astro.props as Props
 ---
 
 <header class="container">
@@ -11,14 +17,23 @@ import site from '../data/site.json'
     </a>
 
     <nav>
-      <ul>
+      <ol>
         {navigation.map(({ title, href }) => (
           <li>
-            <a href={href}>{title}</a>
+            <a href={href} aria-current={pathname === href ? "page" : false}>{title}</a>
           </li>
         ))}
-      </ul>
+      </ol>
     </nav>
+
+    <input type="checkbox" id="menubtn" class="sr-only" />
+    <label for="menubtn" class="button icon-btn">
+      <div class="menubtn__icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </label>
   </div>
 </header>
 
@@ -47,16 +62,117 @@ import site from '../data/site.json'
     margin-right: var(--spacer-xs);
   }
 
-  ul {
+  ol {
     list-style: none;
     display: flex;
+    counter-reset: menu;
+
+    li {
+      counter-increment: menu;
+
+      & a::before {
+        content: "0" counter(menu);
+        font-weight: bold;
+        margin-right: var(--spacer-xs);
+      }
+    }
   }
 
   li:not(:last-of-type) {
     margin-right: var(--spacer-sm);
   }
 
+  nav {
+    display: none;
+  }
+
   nav a {
-    padding: var(--spacer-sm) var(--spacer-xs);
+    padding: var(--spacer-sm);
+    position: relative;
+
+    &::after {
+      content: "";
+      display: block;
+      height: 3px;
+      position: absolute;
+      left: var(--spacer-sm);
+      right: var(--spacer-sm);
+      bottom: -3px;
+      transform: scale(0);
+      transform-origin: 0 50%;
+      transition: transform .3s cubic-bezier(.86,0,.07,1);
+    }
+
+    &[aria-current=page]::after {
+      transform: scale(1);
+      background: var(--chisel-secondary);
+    }
+
+    &:hover::after {
+      transform: scale(1);
+      background: var(--chisel-neutral-300);
+    }
+  }
+
+  label[for=menubtn] {
+    & .menubtn__icon {
+      display: flex;
+      flex-direction: column;
+      width: 24px;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    & span {
+      background-color: var(--chisel-neutral-900);
+      border-radius: 5px;
+      height: 3px;
+      margin: 3px 0;
+      transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+      &:nth-of-type(1) {
+        width: 50%;
+      }
+
+      &:nth-of-type(2) {
+          width: 100%;
+      }
+
+      &:nth-of-type(3) {
+          width: 75%;
+      }
+    }
+  }
+
+  input:focus-visible + label {
+    outline: 3px solid var(--chisel-accent);
+  }
+
+  input:checked + label {
+    & span:nth-of-type(1) {
+      transform-origin: bottom;
+      transform: rotatez(45deg) translate(4px, 1.5px);
+    }
+
+    & span:nth-of-type(2) {
+      transform-origin: top;
+      transform: rotatez(-45deg);
+    }
+
+    & span:nth-of-type(3) {
+      transform-origin: bottom;
+      width: 50%;
+      transform: translate(10.5px, -6px) rotatez(45deg);
+    }
+  }
+
+  @media screen and (min-width: 939px) {
+    nav {
+      display: initial;
+    }
+
+    label[for=menubtn] {
+      display: none;
+    }
   }
 </style>
