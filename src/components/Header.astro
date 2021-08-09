@@ -108,7 +108,7 @@ const { pathname } = Astro.props as Props
       background: var(--chisel-secondary);
     }
 
-    &:hover::after {
+    &:not([aria-current=page]):hover::after {
       transform: scale(1);
       background: var(--chisel-neutral-300);
     }

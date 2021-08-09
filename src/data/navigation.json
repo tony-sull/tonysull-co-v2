@@ -1,18 +1,22 @@
 [
     {
         "title": "home",
-        "href": "/"
+        "href": "/",
+        "icon": "home"
     },
     {
         "title": "blog",
-        "href": "/blog"
+        "href": "/blog",
+        "icon": "book"
     },
     {
         "title": "notes",
-        "href": "/notes"
+        "href": "/notes",
+        "icon": "bookmark"
     },
     {
         "title": "about",
-        "href": "/about"
+        "href": "/about",
+        "icon": "at"
     }
 ]
