@@ -26,8 +26,15 @@ const { pathname } = Astro.props as Props
       </ol>
     </nav>
 
+    <button class="subtle icon">
+      <span class="sr-only">toggle theme panel</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" role="img" aria-hidden="true">
+        <path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"/>
+      </svg>
+    </button>
+
     <input type="checkbox" id="menubtn" class="sr-only" />
-    <label for="menubtn" class="button icon-btn">
+    <label role="button" for="menubtn" class="button subtle icon">
       <div class="menubtn__icon">
         <span></span>
         <span></span>
@@ -39,10 +46,11 @@ const { pathname } = Astro.props as Props
 
 <style lang='scss'>
   .header {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    grid-template-areas: 'brand . theme menu';
+    column-gap: var(--spacer-sm);
     align-items: center;
-    justify-content: space-between;
-    padding: var(--spacer-md) 0;
   }
 
   a {
@@ -51,6 +59,7 @@ const { pathname } = Astro.props as Props
   }
 
   .header > a {
+    grid-area: brand;
     display: flex;
     align-items: center;
     font-weight: 700;
@@ -78,11 +87,12 @@ const { pathname } = Astro.props as Props
     }
   }
 
-  li:not(:last-of-type) {
+  li {
     margin-right: var(--spacer-sm);
   }
 
   nav {
+    grid-area: menu;
     display: none;
   }
 
@@ -114,7 +124,14 @@ const { pathname } = Astro.props as Props
     }
   }
 
+  button {
+    grid-area: theme;
+  }
+
   label[for=menubtn] {
+    grid-area: menu;
+    margin: 0;
+
     & .menubtn__icon {
       display: flex;
       flex-direction: column;
@@ -124,7 +141,7 @@ const { pathname } = Astro.props as Props
     }
 
     & span {
-      background-color: var(--chisel-neutral-900);
+      background-color: currentColor;
       border-radius: 5px;
       height: 3px;
       margin: 3px 0;
@@ -167,6 +184,10 @@ const { pathname } = Astro.props as Props
   }
 
   @media screen and (min-width: 939px) {
+    .header {
+      grid-template-areas: 'brand . menu theme';
+    }
+
     nav {
       display: initial;
     }

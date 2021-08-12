@@ -1,6 +1,6 @@
 ---
 import site from '../data/site.json'
-import NavBar from '../components/NavBar.astro'
+import Header from '../components/Header.astro'
 import MainHead from '../components/MainHead.astro'
 
 interface Props {
@@ -34,7 +34,7 @@ const {
       Skip to content
     </a>
 
-    <NavBar pathname={Astro.request.url.pathname} />
+    <Header pathname={Astro.request.url.pathname} />
 
     <main class="container" id="main">
       <slot />

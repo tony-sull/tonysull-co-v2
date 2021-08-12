@@ -23,7 +23,7 @@
   --spacer-xl: 6rem;
 
   /* Buttons */
-  --icon-btn-size: 36px;
+  --icon-btn-size: 3rem;
 }
 
 h1,
@@ -63,36 +63,22 @@ h6,
   grid-column: 1 / -1;
 }
 
-button,
-.button {
-  border-color: var(--chisel-primary);
-  background-color: var(--chisel-primary);
-  color: var(--chisel-neutral-50);
+button.secondary,
+.button.secondary {
+  border-color: var(--chisel-secondary);
+  background-color: var(--chisel-secondary);
+}
+
+button.subtle,
+.button.subtle {
+  border-color: var(--chisel-neutral-200);
+  background-color: var(--chisel-neutral-200);
+  color: var(--chisel-neutral-900);
 
   &:hover,
   &:focus {
     border-color: var(--chisel-neutral-300);
     background-color: var(--chisel-neutral-300);
-  }
-}
-
-button.secondary,
-.button.secondary {
-  border-color: var(--chisel-secondary);
-  background-color: var(--chisel-secondary);
-  color: var(--chisel-neutral-50);
-}
-
-button.subtle,
-.button.subtle {
-  border-color: var(--chisel-neutral-300);
-  background-color: var(--chisel-neutral-300);
-  color: var(--chisel-neutral-900);
-
-  &:hover,
-  &:focus {
-    border-color: var(--chisel-neutral-400);
-    background-color: var(--chisel-neutral-400);
   }
 }
 
@@ -120,10 +106,6 @@ button.icon,
 }
 
 @media screen and (min-width: 640px) {
-  :root {
-    --icon-btn-size: 48px;
-  }
-
   .container {
     --container-gap: 2rem;
     grid-template-columns: 1fr min(calc(100% - 4rem), 1200px) 1fr;
