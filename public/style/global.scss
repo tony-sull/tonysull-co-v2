@@ -21,6 +21,9 @@
   --spacer-md: 2.5rem;
   --spacer-lg: 4rem;
   --spacer-xl: 6rem;
+
+  /* Buttons */
+  --icon-btn-size: 36px;
 }
 
 h1,
@@ -44,9 +47,11 @@ h6,
 }
 
 .container {
+  --container-gap: 1rem;
   display: grid;
-  grid-template-columns: 1fr calc(100% - 3rem) 1fr;
-  column-gap: 1.5rem;
+  grid-template-columns: 1fr calc(100% - 2rem) 1fr;
+  column-gap: var(--container-gap);
+  padding: var(--container-gap) 0;
 }
 
 .container > * {
@@ -58,16 +63,11 @@ h6,
   grid-column: 1 / -1;
 }
 
-.icon-btn {
-  border-color: var(--chisel-neutral-200);
-  background-color: var(--chisel-neutral-200);
-  height: 48px;
-  width: 48px;
-  border-radius: 24px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+button,
+.button {
+  border-color: var(--chisel-primary);
+  background-color: var(--chisel-primary);
+  color: var(--chisel-neutral-50);
 
   &:hover,
   &:focus {
@@ -76,10 +76,57 @@ h6,
   }
 }
 
+button.secondary,
+.button.secondary {
+  border-color: var(--chisel-secondary);
+  background-color: var(--chisel-secondary);
+  color: var(--chisel-neutral-50);
+}
+
+button.subtle,
+.button.subtle {
+  border-color: var(--chisel-neutral-300);
+  background-color: var(--chisel-neutral-300);
+  color: var(--chisel-neutral-900);
+
+  &:hover,
+  &:focus {
+    border-color: var(--chisel-neutral-400);
+    background-color: var(--chisel-neutral-400);
+  }
+}
+
+button.icon,
+.button.icon {
+  height: var(--icon-btn-size);
+  width: var(--icon-btn-size);
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass {
+  background: var(--chisel-neutral-50);
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .glass {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.7);
+  }
+}
+
 @media screen and (min-width: 640px) {
+  :root {
+    --icon-btn-size: 48px;
+  }
+
   .container {
+    --container-gap: 2rem;
     grid-template-columns: 1fr min(calc(100% - 4rem), 1200px) 1fr;
-    column-gap: 2rem;
   }
 
   .container.container--prose {

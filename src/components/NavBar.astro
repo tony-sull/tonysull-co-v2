@@ -1,0 +1,146 @@
+---
+import navigation from '../data/navigation.json'
+import site from '../data/site.json'
+
+interface Props {
+  pathname: string
+}
+
+const { pathname } = Astro.props
+---
+
+<header class="container">
+  <section>
+    <div class="glass" aria-hidden></div>
+
+    <a href='/' rel='home' aria-label='Go to Homepage' class='button secondary icon'>
+      TS
+    </a>
+
+    <b>Tony Sullivan</b>
+
+    <nav class="glass">
+      <ul>
+        {navigation.map(({ href, title }) => (
+          <li>
+            <a href={href} aria-current={href === pathname ? "page" : false}>{title}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    
+    <button class="subtle icon">
+      <span class="sr-only">toggle theme panel</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" role="img" aria-hidden="true">
+        <path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"/>
+      </svg>
+    </button>
+  </section>
+</header>
+
+<style lang="scss">
+  header {
+    --content-height: 36px;
+    position: sticky;
+    top: var(--container-gap);
+    left: var(--container-gap);
+    right: var(--container-gap);
+    padding: 0 0 var(--container-gap);
+    z-index: 100;
+  }
+
+  section {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    padding: 6px;
+    border-radius: calc((var(--icon-btn-size) + 12px) / 2);
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+  }
+
+  section .glass[aria-hidden] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: calc((var(--icon-btn-size) + 12px) / 2);
+    z-index: -1;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-radius: calc(var(--content-height) / 2);
+    padding-right: var(--spacer-xs);
+  }
+
+  img {
+    height: var(--content-height);
+    width: var(--content-height);
+    margin-right: var(--spacer-xs);
+  }
+
+  section > a {
+    display: flex;
+    align-items: center;
+    font-weight: bold;  
+  }
+
+  nav {
+    display: flex;
+    align-item: center;
+    margin-right: var(--spacer-sm);
+  }
+
+  ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    justify-content: space-evenly;
+  }
+
+  li:not(:last-child) {
+    margin-right: var(--spacer-sm);
+  }
+
+  nav a {
+    display: inline-block;
+    line-height: var(--icon-btn-size);
+    border-radius: calc(var(--icon-btn-size) / 2);
+    padding: 0 var(--spacer-xs);
+    position: relative;
+  }
+
+  a[aria-current=page]::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    background-color: var(--chisel-secondary);
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @media screen and (min-width: 939px) {
+    nav.glass {
+      background: transparent;
+    }
+  }
+
+  @media screen and (max-width: 939px) {
+    nav {
+      position: fixed;
+      bottom: var(--container-gap);
+      left: var(--container-gap);
+      right: var(--container-gap);
+      justify-content: space-between;
+      padding: 6px;
+      margin-right: 0;
+      border-radius: calc((var(--content-height) + 12px) / 2);
+      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
+    }
+  }
+</style>
