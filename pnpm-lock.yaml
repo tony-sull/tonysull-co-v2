@@ -3,12 +3,14 @@ lockfileVersion: 5.3
 specifiers:
   '@astrojs/renderer-svelte': ^0.1.1
   '@fontsource/playfair-display': ^4.5.0
+  '@lukeed/uuid': ^2.0.0
   astro: ^0.18.9
   chisel.css: ^0.6.1
 
 devDependencies:
   '@astrojs/renderer-svelte': 0.1.1
   '@fontsource/playfair-display': 4.5.0
+  '@lukeed/uuid': 2.0.0
   astro: 0.18.9
   chisel.css: 0.6.1
 
@@ -380,6 +382,18 @@ packages:
 
   /@ljharb/has-package-exports-patterns/0.0.1:
     resolution: {integrity: sha512-J4HxcjHI8EzVwXj2HKfZrwnWv4wmOhGxSHyxDQLhiL4ibwRoIkYBqsacZUXFUWQzJtW6QC+FKSNy8HqKjkEqaQ==}
+    dev: true
+
+  /@lukeed/csprng/1.0.0:
+    resolution: {integrity: sha512-ruuGHsnabmObBdeMg3vKdGRmh06Oog3eFpf/Tk6X0kDSJDpJTDCj2dqdp1+0VjzIUgHlFF9GBm7uFqfYhhdX9g==}
+    engines: {node: '>=8'}
+    dev: true
+
+  /@lukeed/uuid/2.0.0:
+    resolution: {integrity: sha512-dUz8OmYvlY5A9wXaroHIMSPASpSYRLCqbPvxGSyHguhtTQIy24lC+EGxQlwv71AhRCO55WOtgwhzQLpw27JaJQ==}
+    engines: {node: '>=8'}
+    dependencies:
+      '@lukeed/csprng': 1.0.0
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
