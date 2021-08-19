@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "postinstall": "cp -r node_modules/@fontsource public/style",
     "start": "astro dev",
     "build": "astro build"
   },
