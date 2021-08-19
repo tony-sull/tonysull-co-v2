@@ -40,6 +40,7 @@ const { cta, title } = Astro.props as Props
   }
 
   main :global(a) {
+    text-transform: capitalize;
     text-decoration: none;
     position: relative;
     color: inherit;
@@ -53,7 +54,9 @@ const { cta, title } = Astro.props as Props
     bottom: 0;
     height: 0.5em;
     margin-left: -0.125em;
-    background: var(--chisel-neutral-200);
+    margin-bottom: -0.125em;
+    background: var(--chisel-secondary);
+    opacity: 0.1;
     z-index: -1;
   }
 </style>

@@ -106,6 +106,15 @@ button.icon,
 }
 
 @media screen and (min-width: 640px) {
+  :root {
+    --chisel-h1: 4.209rem;
+    --chisel-h2: 3.157rem;
+    --chisel-h3: 2.369rem;
+    --chisel-h4: 1.777rem;
+    --chisel-h5: 1.333rem;
+    --chisel-h6: 0.75rem;
+  }
+
   .container {
     --container-gap: 2rem;
     grid-template-columns: 1fr min(calc(100% - 4rem), 1200px) 1fr;
@@ -113,5 +122,16 @@ button.icon,
 
   .container.container--prose {
     grid-template-columns: 1fr min(65ch, calc(100% - 4rem)) 1fr;
+  }
+}
+
+@media screen and (min-width: 979px) {
+  :root {
+    --chisel-h1: 5.653rem;
+    --chisel-h2: 3.998rem;
+    --chisel-h3: 2.827rem;
+    --chisel-h4: 1.999rem;
+    --chisel-h5: 1.414rem;
+    --chisel-h6: 0.707rem;
   }
 }
