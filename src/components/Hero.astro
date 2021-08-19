@@ -1,0 +1,59 @@
+---
+interface Props {
+  cta: {
+    title: string
+    url: string
+  }
+  title: string
+}
+
+const { cta, title } = Astro.props as Props
+---
+
+<section class='container'>
+  <a href={cta.url}>{cta.title}</a>
+  <h1>{title}</h1>
+  <main>
+    <slot />
+  </main>
+</section>
+
+<style lang='scss'>
+  section {
+    padding: var(--spacer-md) 0;
+  }
+
+  a {
+    text-transform: uppercase;
+    font-size: var(--chisel-h5);
+    color: var(--chisel-secondary);
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 2;
+  }
+
+  main :global(p) {
+    font-size: var(--chisel-h4);
+    color: var(--chisel-neutral-700);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  main :global(a) {
+    text-decoration: none;
+    position: relative;
+    color: inherit;
+  }
+
+  main :global(a::before) {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0.5em;
+    margin-left: -0.125em;
+    background: var(--chisel-neutral-200);
+    z-index: -1;
+  }
+</style>
