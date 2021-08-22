@@ -25,6 +25,12 @@ const {
 <html lang="en" data-chisel-theme="light">
   <head>
     <MainHead title={title} description={description} image={image} canonicalURL={canonicalURL} />
+
+    <script>
+      const THEME_KEY = 'ts_theme'
+      const cached = localStorage.getItem(THEME_KEY)
+      document.documentElement.setAttribute('data-chisel-theme', cached || 'light')
+    </script>
   </head>
 
   <body>

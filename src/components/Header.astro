@@ -55,9 +55,11 @@ const { pathname } = Astro.props as Props
   const themeToggle = document.getElementById('themebtn')
   themeToggle.addEventListener('click', function() {
     const isDark = document.documentElement.getAttribute('data-chisel-theme') === 'dark'
-    document.documentElement.setAttribute('data-chisel-theme', isDark ? 'light' : 'dark')
+    const theme = isDark ? 'light' : 'dark'
+    document.documentElement.setAttribute('data-chisel-theme', theme)
+    localStorage.setItem(THEME_KEY, theme)
   })
-  themeToggle.style.display = 'flex';
+  themeToggle.style.display = 'flex'
 </script>
 
 <style global lang='scss'>
@@ -220,6 +222,16 @@ const { pathname } = Astro.props as Props
     display: initial;
   }
 
+  @media screen and (min-width: 640px) {
+    ol {
+      justify-content: flex-end;
+    }
+
+    li:not(:last-child) {
+      margin-right: calc(2 * var(--spacer-sm));
+    }
+  }
+
   @media screen and (min-width: 939px) {
     .header {
       grid-template-areas: 'brand . nav theme';
@@ -237,7 +249,7 @@ const { pathname } = Astro.props as Props
       margin: var(--spacer-sm) 0;
     }
 
-    li:not(:last-child) {
+    li {
       margin-right: var(--spacer-sm);
     }
 
