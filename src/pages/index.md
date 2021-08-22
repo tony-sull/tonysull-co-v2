@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/Base.astro"
+layout: "../layouts/Home.astro"
 blocks:
   - type: hero
     title: I make websites.
