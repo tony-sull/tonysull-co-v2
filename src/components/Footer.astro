@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro'
 import site from '../data/site.json'
 ---
 
@@ -25,6 +26,18 @@ import site from '../data/site.json'
       <strong>RSS Feed</strong>
       <a title='RSS Feed' href='/feed.xml'>Subscribe</a>
     </p>
+
+    <p>
+      <a title='Twitter' href={site.social.twitter_url}>
+        <Icon icon='twitter' size='24' />
+      </a>
+      <a title='GitHub' href={site.social.github_url}>
+        <Icon icon='github' size='24' />
+      </a>
+      <a title='RSS Feed' href='/feed.xml'>
+        <Icon icon='rss' size='24' />
+      </a>
+    </p>
   </section>
 </footer>
 
@@ -37,6 +50,7 @@ import site from '../data/site.json'
   section {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
   }
 
   p {
@@ -49,12 +63,36 @@ import site from '../data/site.json'
 
   a {
     color: inherit;
+    display: inline-block;
+  }
+
+  p:last-of-type a:not(:last-of-type) {
+    margin-right: var(--spacer-sm);
   }
 
   @media (min-width: 640px) {
     p {
       flex-basis: unset;
       margin-right: var(--spacer-md);
+      margin: 0 var(--spacer-md) 0 0;
+
+      &:last-of-type {
+        flex-basis: 100%;
+        margin-top: var(--spacer-md);
+      }
+    }
+  }
+
+  @media (min-width: 979px) {
+    p {
+      margin-bottom: 0;
+
+      &:last-of-type {
+        flex-basis: unset;
+        flex-grow: 1;
+        margin: 0;
+        text-align: end;
+      }
     }
   }
 </style>
