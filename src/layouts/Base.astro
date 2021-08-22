@@ -1,5 +1,6 @@
 ---
 import site from '../data/site.json'
+import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import MainHead from '../components/MainHead.astro'
 import Hero from '../components/Hero.astro'
@@ -21,7 +22,7 @@ const {
 } = Astro.props as props
 ---
 
-<html lang="en">
+<html lang="en" data-chisel-theme="light">
   <head>
     <MainHead title={title} description={description} image={image} canonicalURL={canonicalURL} />
   </head>
@@ -39,7 +40,7 @@ const {
 
     <Hero title='I make websites.' cta={{title: 'Hello, my name is Tony', url: '/about'}}>
       <p>
-        I'm a frontend developer and co-founder of Navillus, a think tank in The Hague. I also write about the web on my <a href='/blog'>blog</a> and on <a href='https://twitter.com/tony-sull'>Twitter</a>.
+        I'm a frontend developer and co-founder of Navillus, a software studio in The Hague. I also write about the web on my <a href='/blog'>blog</a> and on <a href='https://twitter.com/tony-sull'>Twitter</a>.
       </p>
     </Hero>
 
@@ -73,6 +74,8 @@ const {
         </article>
       </div>
     </main>
+
+    <Footer />
 
   </body>
 </html>

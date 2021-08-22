@@ -1,0 +1,59 @@
+---
+import site from '../data/site.json'
+---
+
+<footer class='container'>
+  <section class='h-card'>
+    <p>
+      <strong>© 2021</strong>
+      <a class='p-name u-url' rel='me' href={site.url}>{site.title}</a>
+    </p>
+
+    <p>
+      <strong>Social</strong>
+      <a title='Twitter' rel='me' href={site.social.twitter_url}>Twitter</a>
+      /
+      <a title='Github' rel='me' href={site.social.github_url}>Github</a>
+    </p>
+
+    <p>
+      <strong>Legal</strong>
+      <a href='/privacy'>Privacy Policy</a>
+    </p>
+
+    <p>
+      <strong>RSS Feed</strong>
+      <a title='RSS Feed' href='/feed.xml'>Subscribe</a>
+    </p>
+  </section>
+</footer>
+
+<style lang='scss'>
+  footer {
+    border-top: 1px solid var(--chisel-neutral-200);
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  p {
+    flex-basis: 50%;
+  }
+
+  p strong {
+    display: block;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  @media (min-width: 640px) {
+    p {
+      flex-basis: unset;
+      margin-right: var(--spacer-md);
+    }
+  }
+</style>
