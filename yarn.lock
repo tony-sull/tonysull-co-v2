@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@astrojs/markdown-support@0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@astrojs/markdown-support/-/markdown-support-0.2.3.tgz#e71ef643c2e537d692b466d20547aed1a42b88be"
-  integrity sha512-n8DVsJGAOGyAnaHl/SE32MXJSsFhw57nm0VbWg6ehxg0+5hcNNGtfpG/cWrIMoler1GIbs6HWT66vrWZqraGYw==
+"@astrojs/markdown-support@0.2.4":
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/@astrojs/markdown-support/-/markdown-support-0.2.4.tgz#de01c65a6c1173b30c983811fde26507e5296cf2"
+  integrity sha512-a/b9CZbB1YXanruPyMvp88Qn2q3mo3WdQK/PWbNzbFWz9pPSetj4SWxdu1rPbwkWSENX/t4Dso8/xv+eAJHkFg==
   dependencies:
     "@silvenon/remark-smartypants" "^1.0.0"
     github-slugger "^1.3.0"
@@ -23,10 +23,10 @@
     unist-util-map "^3.0.0"
     unist-util-visit "^3.1.0"
 
-"@astrojs/parser@0.18.5":
-  version "0.18.5"
-  resolved "https://registry.yarnpkg.com/@astrojs/parser/-/parser-0.18.5.tgz#439c133d216fe674f9f1b228eddb67eb4463da5c"
-  integrity sha512-YspNUbrFpZtwnwQAJcG/w8Z6JM+4uENNFsZcQtKH0ncVMCCdHsTrytLBIX3MqSSu3FRODiakj92oU8QRpAWIcw==
+"@astrojs/parser@0.18.6":
+  version "0.18.6"
+  resolved "https://registry.yarnpkg.com/@astrojs/parser/-/parser-0.18.6.tgz#a3444818ae37898261eb51e120fd4428196fba42"
+  integrity sha512-aJyrZG2FKkOxgP/HcRLCI4q+iC2DTSjdYMKHSJKk7k/2aDpbAUWJ6Z3dGlWQ+vviK52wxm0PyDQh9YjYbEtLwA==
   dependencies:
     acorn "^7.4.0"
     locate-character "^2.0.5"
@@ -930,13 +930,13 @@ astring@^1.7.4:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.7.5.tgz#a7d47fceaf32b052d33a3d07c511efeec67447ca"
   integrity sha512-lobf6RWXb8c4uZ7Mdq0U12efYmpD1UFnyOWVJPTa3ukqZrMopav+2hdNu0hgBF0JIBFK9QgrBDfwYvh3DFJDAA==
 
-astro@^0.18.9:
-  version "0.18.13"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-0.18.13.tgz#33f8c2e7c89477fd559fbcf1adc8afc95ce48398"
-  integrity sha512-HWQA/C+M6Mht2Jmy6gC6Pyh4qKxQC1doMBJR9cYrCDaJs+Reyz1CkKcndI/PeJcpz3HSxAlo77sfMCXtsg8SeQ==
+astro@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-0.19.1.tgz#a1413f638fcebdf36b8153d5240ca1cac3488f4f"
+  integrity sha512-UMkdu+gKnoCDrMzv5WF3OAcwCKeAuFGMQoshHXGpcIJKWL1hjKYHk1nlhR9KfiPlqe7/rSaxZ7SrCaBpz7ouqg==
   dependencies:
-    "@astrojs/markdown-support" "0.2.3"
-    "@astrojs/parser" "0.18.5"
+    "@astrojs/markdown-support" "0.2.4"
+    "@astrojs/parser" "0.18.6"
     "@astrojs/prism" "0.2.2"
     "@astrojs/renderer-preact" "0.2.1"
     "@astrojs/renderer-react" "0.2.0"
@@ -983,7 +983,7 @@ astro@^0.18.9:
     semver "^7.3.5"
     shorthash "^0.0.2"
     slash "^4.0.0"
-    snowpack "^3.8.3"
+    snowpack "^3.8.6"
     string-width "^5.0.0"
     supports-esm "^1.0.0"
     tiny-glob "^0.2.8"
@@ -4337,7 +4337,7 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.2.0.tgz#6e1d71fa4f18c05f7d0ff216dd16a481d0e8d9ae"
   integrity sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==
 
-snowpack@^3.8.3:
+snowpack@^3.8.6:
   version "3.8.6"
   resolved "https://registry.yarnpkg.com/snowpack/-/snowpack-3.8.6.tgz#0bef5c071caef86a2f91aa5c3d5b70d0c2e2793c"
   integrity sha512-EZ3Y7RtTiPvxnVFTKPfkvi2PKBrprXCvOHKWQQLBkHonf+xdtG51RiNjtrRLJeCjislAlD6OoeGHUxz76ToGHw==

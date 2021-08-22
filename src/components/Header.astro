@@ -22,6 +22,8 @@ const { pathname } = Astro.props as Props
       {site.title}
     </a>
 
+    <input type="checkbox" id="menubtn" class="sr-only" />
+
     <nav>
       <ol>
         {navigation.map(({ title, href }) => (
@@ -39,7 +41,6 @@ const { pathname } = Astro.props as Props
       </svg>
     </button>
 
-    <input type="checkbox" id="menubtn" class="sr-only" />
     <label role="button" for="menubtn" class="button subtle icon">
       <div class="menubtn__icon">
         <span></span>
@@ -51,10 +52,19 @@ const { pathname } = Astro.props as Props
 </header>
 
 <style lang='scss'>
+  header {
+    --container-gap: var(--spacer-sm);
+    background: var(--chisel-neutral-50);
+    filter: drop-shadow(0px 2px 4px #00000080);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
   .header {
     display: grid;
     grid-template-columns: auto 1fr auto auto;
-    grid-template-areas: 'brand . theme menu';
+    grid-template-areas: 'brand . theme menu' 'nav nav nav nav';
     column-gap: var(--spacer-sm);
     align-items: center;
   }
@@ -81,6 +91,8 @@ const { pathname } = Astro.props as Props
     list-style: none;
     display: flex;
     counter-reset: menu;
+    justify-content: space-between;
+    margin: var(--spacer-sm) 0 var(--spacer-xs);
 
     li {
       counter-increment: menu;
@@ -93,17 +105,13 @@ const { pathname } = Astro.props as Props
     }
   }
 
-  li {
-    margin-right: var(--spacer-sm);
-  }
-
   nav {
-    grid-area: menu;
+    grid-area: nav;
     display: none;
   }
 
   nav a {
-    padding: var(--spacer-sm);
+    padding: var(--spacer-xs) 0;
     position: relative;
 
     &::after {
@@ -111,8 +119,8 @@ const { pathname } = Astro.props as Props
       display: block;
       height: 3px;
       position: absolute;
-      left: var(--spacer-sm);
-      right: var(--spacer-sm);
+      left: 0;
+      right: 0;
       bottom: -3px;
       transform: scale(0);
       transform-origin: 0 50%;
@@ -167,11 +175,11 @@ const { pathname } = Astro.props as Props
     }
   }
 
-  input:focus-visible + label {
+  #menubtn:focus-visible + label {
     outline: 3px solid var(--chisel-secondary);
   }
 
-  input:checked + label {
+  #menubtn:checked + label {
     & span:nth-of-type(1) {
       transform-origin: bottom;
       transform: rotatez(45deg) translate(4px, 1.5px);
@@ -189,16 +197,33 @@ const { pathname } = Astro.props as Props
     }
   }
 
+  #menubtn:checked ~ nav {
+    display: initial;
+  }
+
   @media screen and (min-width: 939px) {
     .header {
-      grid-template-areas: 'brand . menu theme';
+      grid-template-areas: 'brand . nav theme';
     }
 
     nav {
       display: initial;
+
+      & a {
+        padding: var(--spacer-sm) 0;
+        margin-right: var(--spacer-sm);
+      }
     }
 
-    label[for=menubtn] {
+    ol {
+      margin: var(--spacer-sm) 0;
+    }
+
+    li:not(:last-child) {
+      margin-right: var(--spacer-sm);
+    }
+
+    label[for=menubtn], #menubtn {
       display: none;
     }
   }
