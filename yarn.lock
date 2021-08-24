@@ -930,10 +930,10 @@ astring@^1.7.4:
   resolved "https://registry.yarnpkg.com/astring/-/astring-1.7.5.tgz#a7d47fceaf32b052d33a3d07c511efeec67447ca"
   integrity sha512-lobf6RWXb8c4uZ7Mdq0U12efYmpD1UFnyOWVJPTa3ukqZrMopav+2hdNu0hgBF0JIBFK9QgrBDfwYvh3DFJDAA==
 
-astro@^0.19.1:
-  version "0.19.1"
-  resolved "https://registry.yarnpkg.com/astro/-/astro-0.19.1.tgz#a1413f638fcebdf36b8153d5240ca1cac3488f4f"
-  integrity sha512-UMkdu+gKnoCDrMzv5WF3OAcwCKeAuFGMQoshHXGpcIJKWL1hjKYHk1nlhR9KfiPlqe7/rSaxZ7SrCaBpz7ouqg==
+astro@^0.19.3:
+  version "0.19.3"
+  resolved "https://registry.yarnpkg.com/astro/-/astro-0.19.3.tgz#cad5c5952c0d56fcddf52ea9314b43c40724d9b9"
+  integrity sha512-UKhIDIfwNoxbGWSSwFu62g+kJmXgz1742bT4a31SqBLKV/LrrkiBKul88ZcQRDtb7m1pXjoR/6oyWOiLoAbI5A==
   dependencies:
     "@astrojs/markdown-support" "0.2.4"
     "@astrojs/parser" "0.18.6"
@@ -989,6 +989,7 @@ astro@^0.19.1:
     tiny-glob "^0.2.8"
     unified "^9.2.1"
     yargs-parser "^20.2.7"
+    zod "^3.8.1"
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -5033,6 +5034,11 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zod@^3.8.1:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-3.8.1.tgz#b1173c3b4ac2a9e06d302ff580e3b41902766b9f"
+  integrity sha512-u4Uodl7dLh8nXZwqXL1SM5FAl5b4lXYHOxMUVb9lqhlEAZhA2znX+0oW480m0emGFMxpoRHzUncAqRkc4h8ZJA==
 
 zwitch@^1.0.0:
   version "1.0.5"
