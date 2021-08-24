@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { pathname } = Astro.props
+const { main } = navigation as CMS.Navigation
 ---
 
 <header class="container">
@@ -21,7 +22,7 @@ const { pathname } = Astro.props
 
     <nav class="glass">
       <ul>
-        {navigation.map(({ href, title }) => (
+        {main.map(({ href, title }) => (
           <li>
             <a href={href} aria-current={href === pathname ? "page" : false}>{title}</a>
           </li>

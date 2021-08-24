@@ -1,0 +1,17 @@
+{
+  "moduleResolution": "node",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "types": ["node"],
+    "typeRoots": ["types"]
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "types": ["node"],
+      "typeRoots": ["types"]
+    }
+  }
+}

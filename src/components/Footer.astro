@@ -1,20 +1,22 @@
 ---
 import Icon from './Icon.astro'
 import site from '../data/site.json'
+
+const { url, title, social } = site as CMS.Site
 ---
 
 <footer class='container'>
   <section class='h-card'>
     <p>
       <strong>© 2021</strong>
-      <a class='p-name u-url' rel='me' href={site.url}>{site.title}</a>
+      <a class='p-name u-url' rel='me' href={url}>{title}</a>
     </p>
 
     <p>
       <strong>Social</strong>
-      <a title='Twitter' rel='me' href={site.social.twitter_url}>Twitter</a>
+      <a title='Twitter' rel='me' href={social.twitter_url}>Twitter</a>
       /
-      <a title='Github' rel='me' href={site.social.github_url}>Github</a>
+      <a title='Github' rel='me' href={social.github_url}>Github</a>
     </p>
 
     <p>
@@ -28,10 +30,10 @@ import site from '../data/site.json'
     </p>
 
     <p>
-      <a title='Twitter' href={site.social.twitter_url}>
+      <a title='Twitter' href={social.twitter_url}>
         <Icon icon='twitter' size='24' />
       </a>
-      <a title='GitHub' href={site.social.github_url}>
+      <a title='GitHub' href={social.github_url}>
         <Icon icon='github' size='24' />
       </a>
       <a title='RSS Feed' href='/feed.xml'>

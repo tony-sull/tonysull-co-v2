@@ -1,22 +1,24 @@
-[
+{
+  "main": [
     {
-        "title": "home",
-        "href": "/",
-        "icon": "home"
+      "title": "home",
+      "href": "/",
+      "icon": "home"
     },
     {
-        "title": "blog",
-        "href": "/blog",
-        "icon": "book"
+      "title": "blog",
+      "href": "/blog",
+      "icon": "book"
     },
     {
-        "title": "notes",
-        "href": "/notes",
-        "icon": "bookmark"
+      "title": "notes",
+      "href": "/notes",
+      "icon": "bookmark"
     },
     {
-        "title": "about",
-        "href": "/about",
-        "icon": "at"
+      "title": "about",
+      "href": "/about",
+      "icon": "at"
     }
-]
+  ]
+}
