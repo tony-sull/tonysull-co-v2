@@ -11,6 +11,7 @@ interface Props {
 	image: string
 	pathname?: string
 	canonicalURL: string
+  prose: boolean
 }
 
 const {
@@ -18,7 +19,8 @@ const {
 	description,
 	image,
 	pathname,
-	canonicalURL
+	canonicalURL,
+  prose = false
 } = Astro.props as props
 ---
 
@@ -44,7 +46,7 @@ const {
 
     <Header pathname={Astro.request.url.pathname} />
 
-    <main class="container" id="main">
+    <main class={`container ${prose && 'container--prose'}`} id="main">
       <slot />
     </main>
 

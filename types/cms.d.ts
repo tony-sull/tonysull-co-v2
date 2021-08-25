@@ -62,12 +62,6 @@ declare namespace CMS {
 
   type EntityId = string
 
-  interface TagEntity {
-    id: EntityId
-    type: "tag"
-    properties: Tag
-  }
-
   interface ArticleEntity {
     id: EntityId
     type: "article"
@@ -99,7 +93,6 @@ declare namespace CMS {
   }
 
   type Entity =
-    | TagEntity
     | ArticleEntity
     | NoteEntity
     | ImageEntity
@@ -122,7 +115,7 @@ declare namespace CMS {
     interface ArticlesBlock {
       type: "articles"
       title: string
-      ids: EntityId[]
+      ids: EntityId[] | undefined
     }
 
     type Block = HeroBlock | ArticlesBlock

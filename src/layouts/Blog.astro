@@ -1,0 +1,28 @@
+---
+import Layout from './Base.astro'
+import ArticlesBlock from '../components/ArticlesBlock.astro'
+
+interface Content {
+  title: string
+  description: string
+}
+
+interface Props {
+  content: Content
+}
+
+const { content } = Astro.props as Props
+const { title, description } = content
+---
+
+<Layout title={title} description={description} canonicalURL={Astro.request.canonicalURL} prose>
+  <h1>{title}</h1>
+
+  <ArticlesBlock />
+</Layout>
+
+<style lang='scss'>
+  h1 {
+    margin: var(--spacer-md) 0;
+  }
+</style>

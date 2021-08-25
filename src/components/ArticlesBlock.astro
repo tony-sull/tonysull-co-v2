@@ -4,6 +4,12 @@ import Icon from './Icon.astro'
 
 const { title, ids } = Astro.props as CMS.UI.ArticlesBlock
 
+function sortArticles(a: CMS.Article, b: CMS.Article) {
+  const aDate = new Date(a.published_date)
+  const bDate = new Date(b.published_date)
+  return bDate - aDate
+}
+
 const allEntities = Astro.fetchContent('../data/entities/*.md')
     .reduce((acc, { id, type, properties }) => {
         if (type === 'article')
@@ -12,11 +18,17 @@ const allEntities = Astro.fetchContent('../data/entities/*.md')
         return acc
     }, new Map())
 
-const entities = ids.map(id => allEntities.get(id))
+const entities = !!ids
+  ? ids.map(id => allEntities.get(id))
+  : Array
+    .from(allEntities.values())
+    .sort(sortArticles)
 ---
 
 <section>
-  <h2>{title}</h2>
+  {title && (
+    <h2>{title}</h2>
+  )}
 
   <ol>
     {entities.map((article) => (
