@@ -1,39 +1,33 @@
 ---
 import Layout from './Base.astro'
+import ArticlesBlock from '../components/ArticlesBlock.astro'
 import Hero from '../components/Hero.astro'
+
+interface Content {
+  title: string
+  description: string
+  blocks: CMS.UI.Block[]
+}
+
+interface Props {
+  content: Content
+}
+
+const { content } = Astro.props as Props
+const { title, description, blocks } = content
 ---
 
-<Layout canonicalURL={Astro.request.canonicalURL}>
-  <Hero title='I make websites.' cta={{title: 'Hello, my name is Tony', url: '/about'}}>
-    <p>
-      I'm a frontend developer and co-founder of Navillus, a software studio in The Hague. I also write about the web on my <a href='/blog'>blog</a> and on <a href='https://twitter.com/tony-sull'>Twitter</a>.
-    </p>
-  </Hero>
-
-  <div class="cards">
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-    <article>
-      <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" />
-    </article>
-  </div>
+<Layout title={title} description={description} canonicalURL={Astro.request.canonicalURL}>
+  {blocks.map(({ type, ...data }) => {
+    switch (type) {
+      case 'hero':
+        return (
+          <Hero {...data} />
+        )
+      case 'articles':
+        return (
+          <ArticlesBlock {...data} />
+        )
+    }
+  })}
 </Layout>

@@ -1,0 +1,65 @@
+---
+import ArticlePreview from './ArticlePreview.astro'
+import Icon from './Icon.astro'
+
+const { title, ids } = Astro.props as CMS.UI.ArticlesBlock
+
+const allEntities = Astro.fetchContent('../data/entities/*.md')
+    .reduce((acc, { id, type, properties }) => {
+        if (type === 'article')
+            acc.set(id, properties)
+
+        return acc
+    }, new Map())
+
+const entities = ids.map(id => allEntities.get(id))
+---
+
+<section>
+  <h2>{title}</h2>
+
+  <ol>
+    {entities.map((article) => (
+      <li>
+        <ArticlePreview article={article} />
+      </li>
+    ))}
+  </ol>
+
+  <a href='/blog'>
+    See All Posts
+    <Icon icon='arrow-right' size='32' />
+  </a>
+</section>
+
+<style lang="scss">
+  h2 {
+    font-size: var(--chisel-h4);
+  }
+
+  ol {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50ch, 1fr));
+    gap: 4rem;
+  }
+
+  a {
+    font-size: var(--chisel-h5);
+    text-decoration: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    & :global(svg) {
+      margin-left: var(--spacer-xs);
+      will-change: transfrom;
+      transition: transform 150ms ease;
+    }
+
+    &:hover :global(svg) {
+      transform: translateX(var(--spacer-sm));
+    }
+  }
+</style>

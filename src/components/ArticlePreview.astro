@@ -1,0 +1,40 @@
+---
+import { isoDate, shortDate } from '../utils/dates'
+
+interface Props {
+  article: CMS.Article
+}
+
+const { article } = Astro.props as Props
+---
+
+<article>
+  <h3>
+    <a href={`/blog/${article.id}`}>{article.title}</a>
+  </h3>
+  <p class='meta'>
+    <time date-time={isoDate(article.published_date)}>{shortDate(article.published_date)}</time>
+    <span aria-hidden>⋅</span>
+    <span>CODE</span>
+  </p>
+  <p>{article.description}</p>
+</article>
+
+<style lang="scss">
+  a {
+    text-decoration: none;
+    color: var(--chisel-secondary);
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+
+  .meta {
+    color: var(--chisel-neutral-700);
+  }
+
+  p:not(.meta) {
+    font-size: var(--chisel-h5);
+  }
+</style>

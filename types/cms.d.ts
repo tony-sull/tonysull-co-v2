@@ -1,5 +1,6 @@
 declare namespace CMS {
   type Icon =
+    | "arrow-right"
     | "at"
     | "book"
     | "bookmark"
@@ -10,6 +11,8 @@ declare namespace CMS {
     | "rss"
     | "sun"
     | "twitter"
+
+  type Markdown = string
 
   interface Navigation {
     main: [
@@ -26,7 +29,6 @@ declare namespace CMS {
     description: string
     url: string
     domain: string
-    author: string
     social: {
       twitter_card: string
       twitter_url: string
@@ -34,24 +36,9 @@ declare namespace CMS {
     }
   }
 
-  type AuthorId = string
-  interface Author {
-    slug: AuthorId
-    first_name: string
-    last_name: string
-    url: string
-    twitter_handle: string
-  }
-
   interface Image {
     src: string
     alt: string
-  }
-
-  type TagSlug = string
-  interface Tag {
-    slug: TagSlug
-    title: string
   }
 
   type ArticleSlug = string
@@ -60,20 +47,26 @@ declare namespace CMS {
     slug: ArticleSlug
     title: string
     description: string
-    author: AuthorId
     image: Image
-    tags: TagSlug[]
-    published_date: Date
-    modified_date?: Date
+    tags: string[]
+    category: string
+    published_date: Date | string
+    modified_date?: Date | string
     twitter_id?: TwitterPostId
     canonical_url?: string
   }
 
   type EntityContent = Article
 
-  type EntityType = "article" | "note" | "image" | "audio" | "video"
+  type EntityType = "article" | "note" | "image" | "audio" | "video" | "tag"
 
   type EntityId = string
+
+  interface TagEntity {
+    id: EntityId
+    type: "tag"
+    properties: Tag
+  }
 
   interface ArticleEntity {
     id: EntityId
@@ -106,9 +99,32 @@ declare namespace CMS {
   }
 
   type Entity =
+    | TagEntity
     | ArticleEntity
     | NoteEntity
     | ImageEntity
     | AudioEntity
     | VideoEntity
+
+  namespace UI {
+    interface CTA {
+      title: string
+      url: string
+    }
+
+    interface HeroBlock {
+      type: "hero"
+      title: string
+      content: Markdown
+      cta: CTA
+    }
+
+    interface ArticlesBlock {
+      type: "articles"
+      title: string
+      ids: EntityId[]
+    }
+
+    type Block = HeroBlock | ArticlesBlock
+  }
 }

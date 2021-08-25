@@ -24,6 +24,9 @@
 
   /* Buttons */
   --icon-btn-size: 3rem;
+
+  /* Containers */
+  --width-prose: 65ch;
 }
 
 h1,
@@ -40,6 +43,11 @@ h6,
 .h6 {
   font-weight: 700;
   font-family: var(--font-family-display);
+  letter-spacing: 0.0125em;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 :focus-visible {
@@ -117,11 +125,11 @@ button.icon,
 
   .container {
     --container-gap: 2rem;
-    grid-template-columns: 1fr min(calc(100% - 4rem), 1200px) 1fr;
+    grid-template-columns: 1fr min(calc(100% - 4rem), 1440px) 1fr;
   }
 
   .container.container--prose {
-    grid-template-columns: 1fr min(65ch, calc(100% - 4rem)) 1fr;
+    grid-template-columns: 1fr min(var(--width-prose), calc(100% - 4rem)) 1fr;
   }
 }
 

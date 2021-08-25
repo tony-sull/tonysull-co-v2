@@ -1,26 +1,26 @@
 ---
-interface Props {
-  cta: {
-    title: string
-    url: string
-  }
-  title: string
-}
+import { mdToHtml } from '../utils/markdown'
 
-const { cta, title } = Astro.props as Props
+const { cta, title, content } = Astro.props as CMS.UI.HeroBlock
+
+const contentHtml = mdToHtml(content)
 ---
 
 <section class='container'>
   <a href={cta.url}>{cta.title}</a>
   <h1>{title}</h1>
   <main>
-    <slot />
+    {contentHtml}
   </main>
 </section>
 
 <style lang='scss'>
   section {
-    padding: var(--spacer-md) 0;
+    padding: var(--spacer-lg) 0;
+  }
+
+  h1 {
+    margin-bottom: var(--spacer-md);
   }
 
   a {
@@ -58,5 +58,11 @@ const { cta, title } = Astro.props as Props
     background: var(--chisel-secondary);
     opacity: 0.2;
     z-index: -1;
+  }
+
+  @media (min-width: 979px) {
+    section {
+      padding: var(--spacer-xl) 0;
+    }
   }
 </style>
