@@ -52,7 +52,7 @@ const entities = !!ids
   ol {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(50ch, 1fr));
+    grid-template-columns: 1fr;
     gap: 4rem;
   }
 
@@ -72,6 +72,12 @@ const entities = !!ids
 
     &:hover :global(svg) {
       transform: translateX(var(--spacer-sm));
+    }
+  }
+
+  @media (min-width: 979px) {
+    ol {
+      grid-template-columns: repeat(auto-fill, minmax(50ch, 1fr));
     }
   }
 </style>
