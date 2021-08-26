@@ -82,7 +82,11 @@ const { article, content } = Astro.props
       margin: 1.5em 0 0.5em;
     }
 
-    & :global(pre + p) {
+    & p {
+      line-height: 1.7;
+    }
+
+    & pre + p {
       margin-top: var(--spacer-sm);
     }
 
