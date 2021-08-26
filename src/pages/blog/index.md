@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/Blog.astro"
+layout: "../../layouts/Blog.astro"
 title: Blog
 description: Placeholder description here
 ---

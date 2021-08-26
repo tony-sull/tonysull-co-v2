@@ -1,5 +1,7 @@
 ---
+import site from '../../data/site.json'
 import Layout from '../../layouts/Base.astro'
+import { isoDate, shortDate } from '../../utils/dates'
 
 export async function getStaticPaths() {
   const data = Astro.fetchContent('../../data/entities/*.md')
@@ -17,10 +19,75 @@ const { slug } = Astro.request.params
 const { article, content } = Astro.props
 ---
 
-<Layout prose title={article.title} description={article.description} image={article.image} canonicalURL={Astro.request.canonicalURL}>
-  <h1>{article.title}</h1>
+<Layout prose title={article.title} description={article.description} image={article.image} pathname={Astro.request.url.pathname} canonicalURL={Astro.request.canonicalURL}>
+  <section class="h-entry">
+    <header>
+      <h1 class="p-name">{article.title}</h1>
 
-  <article>
+      <p class="p-summary h5 lead">{article.description}</p>
+
+      <small>
+        <time class="dt-published" datetime={isoDate(article.published_date)}>{shortDate(article.published_date)}</time>
+        by
+        <b class="h-card p-author">
+          <a class="u-url" href="/">{site.title}</a>
+        </b>
+        • 7 min read
+    </small>
+
+    {article.modified_date &&
+        <small>
+            <time class="dt-updated" datetime={isoDate(article.modified_date)}>
+                <i>Updated: {shortDate(article.modified_date)}</i>
+            </time>
+        </small>
+    }
+    </header>
+  </section>
+  
+  <article class="e-content">
     {content}
   </article>
 </Layout>
+
+<style lang="scss">
+  header {
+    margin-bottom: var(--spacer-lg);
+
+    & small {
+      display: block;
+      margin-top: var(--spacer-tiny);
+    }
+
+    & h1 {
+      margin: 0 0 0.5em;
+      font-size: var(--chisel-h3);
+
+      @media (min-width: 640px) {
+        & {
+          font-size: var(--chisel-h2);
+        }
+      }
+    }
+
+    & .lead {
+      color: var(--chisel-neutral-700);
+    }
+  }
+</style>
+
+<style lang="scss" global>
+  article {
+    & h1, h2, h3, h4 {
+      margin: 1.5em 0 0.5em;
+    }
+
+    & :global(pre + p) {
+      margin-top: var(--spacer-sm);
+    }
+
+    & .twitter-tweet + p {
+      margin-top: 1em;
+    }
+  }
+</style>
