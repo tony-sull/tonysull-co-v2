@@ -2,6 +2,7 @@
 id: 2021-08-03-astro-plus-forestry-revisited
 type: article
 properties:
+  slug: astro-plus-forestry-revisited
   title: Astro + Foresty CMS Revisited
   description: Static sites powered by Forestry's git-based CMS, made even easier.
   image: posts/2021-08-03-astro-plus-forestry-revisited.jpg

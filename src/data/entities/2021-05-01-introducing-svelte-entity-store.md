@@ -2,6 +2,7 @@
 id: 2021-05-01-introducing-svelte-entity-store
 type: article
 properties:
+  slug: introducing-svelte-entity-store
   title: Introducing svelte-entity-store
   description: A (work-in-progress) generic entity store for Svelte projects.
   image: posts/2021-05-01-introducing-svelte-entity-store.jpg

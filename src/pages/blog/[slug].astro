@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Base.astro'
+
+export async function getStaticPaths() {
+  const data = Astro.fetchContent('../../data/entities/*.md')
+    .filter(({ type }) => type === 'article')
+
+  return data.map(({ properties, astro }) => {
+    return {
+      params: { slug: properties.slug },
+      props: { article: properties, content: astro.html }
+    }
+  })
+}
+
+const { slug } = Astro.request.params
+const { article, content } = Astro.props
+---
+
+<Layout prose title={article.title} description={article.description} image={article.image} canonicalURL={Astro.request.canonicalURL}>
+  <h1>{article.title}</h1>
+
+  <article>
+    {content}
+  </article>
+</Layout>

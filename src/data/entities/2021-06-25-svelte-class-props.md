@@ -2,6 +2,7 @@
 id: 2021-06-25-svelte-class-props
 type: article
 properties:
+  slug: svelte-class-props
   title: Class properties in Svelte
   description: A handy trick to make your Svelte components feel even more like plain old HTML.
   image: posts/2021-06-25-svelte-class-props.jpg

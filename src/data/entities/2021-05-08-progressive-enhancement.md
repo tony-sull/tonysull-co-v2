@@ -2,6 +2,7 @@
 id: 2021-05-08-progressive-enhancement
 type: article
 properties:
+  slug: progressive-enhancement
   title: Progressively enhancing Svelte with JavaScript
   description: That's right! Your site built with a JS framework with client-side code can still support users with JS disabled.
   image: posts/2021-05-08-progressive-enhancement.jpg

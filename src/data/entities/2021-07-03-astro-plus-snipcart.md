@@ -2,6 +2,7 @@
 id: 2021-07-03-astro-plus-snipcart
 type: article
 properties:
+  slug: astro-plus-snipcart
   title: Astro + Snipcart
   description: Scalable e-commerce made easy with the Jamstack.
   image: posts/2021-07-02-astro-plus-snipcart.jpg

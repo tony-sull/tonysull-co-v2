@@ -2,6 +2,7 @@
 id: 2021-07-04-astro-plus-swup
 type: article
 properties:
+  slug: astro-plus-swup
   title: Animated page transitions in Astro with Swup
   description: Static doesn't mean boring! Easily add client routing and page transition animations with swup.js
   image: posts/2021-07-24-astro-plus-swup.jpg

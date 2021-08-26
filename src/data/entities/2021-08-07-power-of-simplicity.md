@@ -2,6 +2,7 @@
 id: 2021-08-07-power-of-simplicity
 type: article
 properties:
+  slug: power-of-simplicity
   title: The power of simplicity
   description: It's easy to get swept up in the latest libraries and platforms, but don't underestimate the time savings of "boring" tech.
   image: posts/2021-08-07-power-of-simplicity.jpg

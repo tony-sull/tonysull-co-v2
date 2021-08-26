@@ -2,6 +2,7 @@
 id: 2021-06-02-introducing-chisel
 type: article
 properties:
+  slug: introducing-chisel
   title: Introducing chisel.css
   description: A (work-in-progress) minimalist CSS framework.
   image: posts/2021-06-02-introducing-chisel.jpg

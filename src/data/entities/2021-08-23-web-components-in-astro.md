@@ -2,6 +2,7 @@
 id: 2021-08-23-web-components-in-astro
 type: article
 properties:
+  slug: web-components-in-astro
   title: How to use Web Components in Astro
   description: Building custom elements in plain old JavaScript + trying out the new Astro.resolve() API!
   image: posts/2021-08-23-web-components-in-astro.jpg

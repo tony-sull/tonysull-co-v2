@@ -2,6 +2,7 @@
 id: 2021-06-28-astro-plus-forestry
 type: article
 properties:
+  slug: astro-plus-forestry
   title: Astro + Foresty CMS
   description: Static sites powered by Forestry's git-based CMS, made easy.
   image: posts/2021-06-28-astro-plus-forestry.jpg

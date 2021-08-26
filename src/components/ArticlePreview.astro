@@ -10,7 +10,7 @@ const { article } = Astro.props as Props
 
 <article>
   <h3>
-    <a href={`/blog/${article.id}`}>{article.title}</a>
+    <a href={`/blog/${article.slug}`}>{article.title}</a>
   </h3>
   <p class='meta'>
     <time date-time={isoDate(article.published_date)}>{shortDate(article.published_date)}</time>

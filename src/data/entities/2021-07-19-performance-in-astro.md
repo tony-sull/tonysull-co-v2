@@ -2,6 +2,7 @@
 id: 2021-07-19-performance-in-astro
 type: article
 properties:
+  slug: performance-in-astro
   title: Performance wins with Astro
   draft: true
   description: Does your site really need all that JS?

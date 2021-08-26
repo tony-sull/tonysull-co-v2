@@ -2,6 +2,7 @@
 id: 2021-06-14-keeping-it-simple-with-astro
 type: article
 properties:
+  slug: keeping-it-simple-with-astro
   title: Keeping it simple with Astro
   description: Do you really need all that JavaScript?
   image: posts/2021-06-14-keeping-it-simple-with-astro.jpg

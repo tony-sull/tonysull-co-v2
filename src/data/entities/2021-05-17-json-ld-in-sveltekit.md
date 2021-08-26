@@ -2,6 +2,7 @@
 id: 2021-05-17-json-ld-in-sveltekit
 type: article
 properties:
+  slug: json-ld-in-sveltekit
   title: Including json+ld structured data in Svelte
   description: Easily add json+ld structured data to pages build in Svelte, with TypeScript type checking!
   image: posts/2021-05-17-json-ld-in-sveltekit.jpg

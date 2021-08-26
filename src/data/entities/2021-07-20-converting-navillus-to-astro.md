@@ -2,6 +2,7 @@
 id: 2021-07-20-converting-navillus-to-astro
 type: article
 properties:
+  slug: converting-navillus-to-astro
   title: Converting our site to Astro
   description: Spoiler - you probably don't need a kitchen sink framework.
   image: posts/2021-07-20-converting-navillus-to-astro.jpg

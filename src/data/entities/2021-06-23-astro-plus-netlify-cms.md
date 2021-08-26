@@ -2,6 +2,7 @@
 id: 2021-06-23-astro-plus-netlify-cms
 type: article
 properties:
+  slug: astro-plus-netlify-cms
   title: Astro + Netlify CMS
   description: Static sites powered by a git-based CMS, made easy.
   image: posts/2021-06-23-astro-plus-netlify-cms.jpg

@@ -2,6 +2,7 @@
 id: 2021-06-03-power-of-svelte-actions
 type: article
 properties:
+  slug: power-of-svelte-actions
   title: The power of Svelte actions
   description: When you should `use:` actions in Svelte.
   image: posts/2021-06-03-power-of-svelte-actions.jpg
