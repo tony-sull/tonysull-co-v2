@@ -8,6 +8,7 @@ properties:
   image: posts/2021-08-03-astro-plus-forestry-revisited.jpg
   tweetId: "1422604180984934404"
   published_date: 2021-08-03
+  canonical_url: https://navillus.dev/blog/astro-plus-forestry-revisited/
   category: code
   tags:
     - astro

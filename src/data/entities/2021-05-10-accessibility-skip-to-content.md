@@ -10,6 +10,7 @@ properties:
     alt: "Web Accessibility: Hidden links make all the difference"
   published_date: 2021-05-10
   modified_date: 2021-07-21
+  canonical_url: https://navillus.dev/blog/accessibility-skip-to-content/
   category: code
   tags:
     - accessibility

@@ -9,6 +9,7 @@ properties:
   published_date: 2021-06-14
   modified_date: 2021-06-25
   tweetId: "1404538796767694857"
+  canonical_url: https://navillus.dev/blog/keeping-it-simple-with-astro/
   category: code
   tags:
     - astro

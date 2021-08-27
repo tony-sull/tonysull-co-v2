@@ -8,6 +8,7 @@ properties:
   image: posts/2021-06-23-astro-plus-netlify-cms.jpg
   published_date: 2021-06-23
   tweetId: "1407792706546458625"
+  canonical_url: https://navillus.dev/blog/astro-plus-netlify-cms/
   category: code
   tags:
     - astro

@@ -8,6 +8,7 @@ properties:
   image: posts/2021-07-02-astro-plus-snipcart.jpg
   published_date: 2021-07-03
   tweetId: "1411055265479368707"
+  canonical_url: https://navillus.dev/blog/astro-plus-snipcart/
   category: code
   tags:
     - astro

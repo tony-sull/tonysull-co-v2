@@ -8,6 +8,7 @@ properties:
   description: Does your site really need all that JS?
   image: posts/2021-07-19-performance-in-astro.jpg
   published_date: 2021-07-19
+  canonical_url: https://navillus.dev/blog/performance-in-astro/
   category: code
   tags:
     - astro

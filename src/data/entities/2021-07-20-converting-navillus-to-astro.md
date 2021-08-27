@@ -8,6 +8,7 @@ properties:
   image: posts/2021-07-20-converting-navillus-to-astro.jpg
   published_date: 2021-07-20
   tweetId: "1417535981058764809"
+  canonical_url: https://navillus.dev/blog/converting-navillus-to-astro/
   category: code
   tags:
     - astro

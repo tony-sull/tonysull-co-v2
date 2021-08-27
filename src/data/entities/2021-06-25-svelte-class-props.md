@@ -8,6 +8,7 @@ properties:
   image: posts/2021-06-25-svelte-class-props.jpg
   published_date: 2021-06-25
   tweetId: "1408488530779717636"
+  canonical_url: https://navillus.dev/blog/svelte-class-props/
   category: code
   tags:
     - svelte

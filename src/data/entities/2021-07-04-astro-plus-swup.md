@@ -8,6 +8,7 @@ properties:
   image: posts/2021-07-24-astro-plus-swup.jpg
   published_date: 2021-07-24
   tweetId: "1418952288476012545"
+  canonical_url: https://navillus.dev/blog/astro-plus-swup/
   category: code
   tags:
     - astro

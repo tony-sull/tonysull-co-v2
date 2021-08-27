@@ -8,6 +8,7 @@ properties:
   image: posts/2021-08-07-power-of-simplicity.jpg
   published_date: 2021-08-07
   tweetId: "1424057461368135681"
+  canonical_url: https://navillus.dev/blog/power-of-simplicity/
   category: code
   tags:
     - jamstack

@@ -8,6 +8,7 @@ properties:
   image: posts/2021-08-23-web-components-in-astro.jpg
   published_date: 2021-08-23
   tweetId: "1429903001574068232"
+  canonical_url: https://navillus.dev/blog/web-components-in-astro/
   category: code
   tags:
     - astro

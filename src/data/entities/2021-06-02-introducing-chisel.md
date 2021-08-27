@@ -9,6 +9,7 @@ properties:
   published_date: 2021-06-02
   modified_date: 2021-06-05
   tweetId: "1401971725412282374"
+  canonical_url: https://navillus.dev/blog/introducing-chisel/
   category: code
   tags:
     - intro

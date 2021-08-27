@@ -9,6 +9,7 @@ properties:
   published_date: 2021-05-08
   modified_date: 2021-06-05
   tweetId: "1402315819015622658"
+  canonical_url: https://navillus.dev/blog/progressive-enhancement/
   category: code
   tags:
     - svelte

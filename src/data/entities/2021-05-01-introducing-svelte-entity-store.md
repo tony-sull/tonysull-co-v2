@@ -8,6 +8,7 @@ properties:
   image: posts/2021-05-01-introducing-svelte-entity-store.jpg
   published_date: 2021-05-01
   modified_date: 2021-06-05
+  canonical_url: https://navillus.dev/blog/introducing-svelte-entity-store/
   category: code
   tags:
     - svelte

@@ -8,6 +8,7 @@ properties:
   image: posts/2021-06-03-power-of-svelte-actions.jpg
   published_date: 2021-06-03
   modified_date: 2021-06-05
+  canonical_url: https://navillus.dev/blog/power-of-svelte-actions/
   category: code
   tags:
     - svelte

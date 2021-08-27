@@ -8,6 +8,7 @@ properties:
   image: posts/2021-06-28-astro-plus-forestry.jpg
   published_date: 2021-06-28
   tweetId: "1409606618854088714"
+  canonical_url: https://navillus.dev/blog/astro-plus-forestry/
   category: code
   tags:
     - astro

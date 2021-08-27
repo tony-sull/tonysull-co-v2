@@ -8,6 +8,7 @@ properties:
   image: posts/2021-05-17-json-ld-in-sveltekit.jpg
   published_date: 2021-05-17
   modified_date: 2021-06-05
+  canonical_url: https://navillus.dev/blog/json-ld-in-sveltekit/
   category: code
   tags:
     - svelte
