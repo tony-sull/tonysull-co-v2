@@ -122,7 +122,7 @@ const { main } = navigation as CMS.Navigation
       & a::before {
         content: "0" counter(menu);
         font-weight: bold;
-        margin-right: var(--spacer-xs);
+        margin-right: var(--spacer-tiny);
       }
     }
   }
@@ -226,6 +226,10 @@ const { main } = navigation as CMS.Navigation
   @media screen and (min-width: 640px) {
     ol {
       justify-content: flex-end;
+
+      & li a::before {
+        margin-right: var(--spacer-xs);
+      }
     }
 
     li:not(:last-child) {

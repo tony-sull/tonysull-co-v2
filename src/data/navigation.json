@@ -2,23 +2,19 @@
   "main": [
     {
       "title": "home",
-      "href": "/",
-      "icon": "home"
+      "href": "/"
     },
     {
-      "title": "blog",
-      "href": "/blog",
-      "icon": "book"
+      "title": "articles",
+      "href": "/articles"
     },
     {
       "title": "notes",
-      "href": "/notes",
-      "icon": "bookmark"
+      "href": "/notes"
     },
     {
       "title": "about",
-      "href": "/about",
-      "icon": "at"
+      "href": "/about"
     }
   ]
 }

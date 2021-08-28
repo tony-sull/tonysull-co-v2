@@ -1,0 +1,44 @@
+---
+import Layout from './Base.astro'
+
+interface Content {
+  title: string
+  subtitle: string
+  description: string
+}
+
+interface Props {
+  content: Content
+}
+
+const { content } = Astro.props as Props
+const { title, subtitle, description } = content
+---
+
+<Layout prose title={title} description={description}>
+  <section>
+    <h1>{title}</h1>
+    <em>{subtitle}</em>
+
+    <slot />
+  </section>
+</Layout>
+
+<style lang='scss'>
+  section :global(p) {
+    line-height: 1.7;
+  }
+
+  h1 {
+    margin: var(--spacer-lg) 0 0;
+  }
+
+  em {
+    display: block;
+    margin-bottom: var(--spacer-lg);
+    font-size: var(--chisel-h4);
+    font-style: normal;
+    font-weight: 400;
+    color: var(--chisel-neutral-700);
+  }
+</style>

@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/Home.astro"
+layout: "../layouts/Page.astro"
 title: Home
 description: Placeholder description here
 blocks:
@@ -11,7 +11,7 @@ blocks:
       title: Hello, my name is Tony
       url: /about/
   - type: articles
-    title: Top Posts
+    title: Top Articles
     ids:
       - 2021-05-07-jamstack-2_0
       - 2021-06-02-introducing-chisel

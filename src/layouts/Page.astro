@@ -15,9 +15,13 @@ interface Props {
 
 const { content } = Astro.props as Props
 const { title, description, blocks } = content
+
+const hasHero = blocks.some(({ type }) => type === 'hero')
 ---
 
 <Layout title={title} description={description} canonicalURL={Astro.request.canonicalURL}>
+  {!hasHero && (<h1>{title}</h1>)}
+
   {blocks.map(({ type, ...data }) => {
     switch (type) {
       case 'hero':
@@ -31,3 +35,9 @@ const { title, description, blocks } = content
     }
   })}
 </Layout>
+
+<style lang="scss">
+  h1 {
+    margin: var(--spacer-md) 0;
+  }
+</style>
