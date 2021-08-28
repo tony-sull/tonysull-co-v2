@@ -34,9 +34,7 @@ export function getArticles(
       return acc
     }, new Map<string, CMS.Article>())
 
-  const articles = !!ids
+  return !!ids
     ? ids.map((id) => articlesMap.get(id))
-    : Array.from(articlesMap.values())
-
-  return articles.sort(sortArticles)
+    : Array.from(articlesMap.values()).sort(sortArticles)
 }
