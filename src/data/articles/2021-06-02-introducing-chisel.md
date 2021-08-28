@@ -1,19 +1,13 @@
 ---
-id: 2021-06-02-introducing-chisel
-type: article
-properties:
-  slug: introducing-chisel
-  title: Introducing chisel.css
-  description: A (work-in-progress) minimalist CSS framework.
-  image: posts/2021-06-02-introducing-chisel.jpg
-  published_date: 2021-06-02
-  modified_date: 2021-06-05
-  tweetId: "1401971725412282374"
-  canonical_url: https://navillus.dev/blog/introducing-chisel/
-  category: code
-  tags:
-    - intro
-    - css
+slug: introducing-chisel
+title: Introducing chisel.css
+description: A (work-in-progress) minimalist CSS framework.
+image: posts/2021-06-02-introducing-chisel.jpg
+published_date: 2021-06-02
+modified_date: 2021-06-05
+tweetId: "1401971725412282374"
+canonical_url: https://navillus.dev/blog/introducing-chisel/
+category: code
 ---
 
 Have you ever really tried rendering some HTML without any CSS? It's a hot mess! Modern browsers are [operating systems](https://www.google.com/chromebook/chrome-os/) unto themselves these days - I don't envy anyone who has to sift through the complexity to add even a basic feature to a browser these days. But damn do I wish they would add spend a couple days to ship some decent looking default styles for HTML5 elements!

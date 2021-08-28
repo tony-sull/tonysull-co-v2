@@ -6,13 +6,13 @@ import { getDomain } from '../../utils/links'
 import { readMinutes } from '../../utils/readMinutes'
 
 export async function getStaticPaths() {
-  const data = Astro.fetchContent('../../data/entities/*.md')
-    .filter(({ type }) => type === 'article')
+  const data = Astro.fetchContent('../../data/articles/*.md')
+    .filter(({ draft }) => !draft)
 
-  return data.map(({ properties, astro }) => {
+  return data.map(({ astro, file, url, ...article }) => {
     return {
-      params: { slug: properties.slug },
-      props: { article: { ...properties, minutes: readMinutes(astro.source) }, content: astro.html }
+      params: { slug: article.slug },
+      props: { article: { ...article, minutes: readMinutes(astro.source) }, content: astro.html }
     }
   })
 }

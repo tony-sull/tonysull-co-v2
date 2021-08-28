@@ -48,56 +48,13 @@ declare namespace CMS {
     title: string
     description: string
     image: Image
-    tags: string[]
     category: string
+    draft?: boolean
     published_date: Date | string
     modified_date?: Date | string
     twitter_id?: TwitterPostId
     canonical_url?: string
   }
-
-  type EntityContent = Article
-
-  type EntityType = "article" | "note" | "image" | "audio" | "video" | "tag"
-
-  type EntityId = string
-
-  interface ArticleEntity {
-    id: EntityId
-    type: "article"
-    properties: Article
-  }
-
-  interface NoteEntity {
-    id: EntityId
-    type: "note"
-    properties: {}
-  }
-
-  interface ImageEntity {
-    id: EntityId
-    type: "image"
-    properties: {}
-  }
-
-  interface AudioEntity {
-    id: EntityId
-    type: "audio"
-    properties: {}
-  }
-
-  interface VideoEntity {
-    id: EntityId
-    type: "video"
-    properties: {}
-  }
-
-  type Entity =
-    | ArticleEntity
-    | NoteEntity
-    | ImageEntity
-    | AudioEntity
-    | VideoEntity
 
   namespace UI {
     interface CTA {
@@ -115,7 +72,7 @@ declare namespace CMS {
     interface ArticlesBlock {
       type: "articles"
       title: string
-      ids: EntityId[] | undefined
+      ids: ArticleSlug[] | undefined
     }
 
     type Block = HeroBlock | ArticlesBlock

@@ -1,18 +1,12 @@
 ---
-id: 2021-08-07-power-of-simplicity
-type: article
-properties:
-  slug: power-of-simplicity
-  title: The power of simplicity
-  description: It's easy to get swept up in the latest libraries and platforms, but don't underestimate the time savings of "boring" tech.
-  image: posts/2021-08-07-power-of-simplicity.jpg
-  published_date: 2021-08-07
-  tweetId: "1424057461368135681"
-  canonical_url: https://navillus.dev/blog/power-of-simplicity/
-  category: code
-  tags:
-    - jamstack
-    - intro
+slug: power-of-simplicity
+title: The power of simplicity
+description: It's easy to get swept up in the latest libraries and platforms, but don't underestimate the time savings of "boring" tech.
+image: posts/2021-08-07-power-of-simplicity.jpg
+published_date: 2021-08-07
+tweetId: "1424057461368135681"
+canonical_url: https://navillus.dev/blog/power-of-simplicity/
+category: code
 ---
 
 Our last post highlighted the benefits of using [Astro](https://astro.build) and [Forestry CMS](https://forestry.io) (catch up [here](/blog/astro-plus-forestry-revisited) in case you missed it). Forestry actually shared our post with a really important point that I thought was worth digging into with a proper blog post.

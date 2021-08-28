@@ -1,18 +1,12 @@
 ---
-id: 2021-05-01-introducing-svelte-entity-store
-type: article
-properties:
-  slug: introducing-svelte-entity-store
-  title: Introducing svelte-entity-store
-  description: A (work-in-progress) generic entity store for Svelte projects.
-  image: posts/2021-05-01-introducing-svelte-entity-store.jpg
-  published_date: 2021-05-01
-  modified_date: 2021-06-05
-  canonical_url: https://navillus.dev/blog/introducing-svelte-entity-store/
-  category: code
-  tags:
-    - svelte
-    - intro
+slug: introducing-svelte-entity-store
+title: Introducing svelte-entity-store
+description: A (work-in-progress) generic entity store for Svelte projects.
+image: posts/2021-05-01-introducing-svelte-entity-store.jpg
+published_date: 2021-05-01
+modified_date: 2021-06-05
+canonical_url: https://navillus.dev/blog/introducing-svelte-entity-store/
+category: code
 ---
 
 A (**w**ork-**i**n-**p**rogress) generic entity store for Svelte projects.

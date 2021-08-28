@@ -1,4 +1,5 @@
 ---
+import path from 'node:path'
 import ArticlePreview from './ArticlePreview.astro'
 import Icon from './Icon.astro'
 
@@ -10,18 +11,24 @@ function sortArticles(a: CMS.Article, b: CMS.Article) {
   return bDate - aDate
 }
 
-const allEntities = Astro.fetchContent('../data/entities/*.md')
-    .reduce((acc, { id, type, properties }) => {
-        if (type === 'article')
-            acc.set(id, properties)
+const allArticles = Astro.fetchContent('../data/articles/*.md')
+  .reduce((acc, data) => {
+    const { astro, file, url, ...article } = data
 
-        return acc
-    }, new Map())
+    if (!article.draft) {
+      const key = path.basename(file.pathname).replace(path.extname(file.pathname), '')
+      acc.set(key, article)
+    }
 
-const entities = !!ids
-  ? ids.map(id => allEntities.get(id))
+    return acc
+  }, new Map())
+
+console.log(allArticles.keys())
+
+const articles = !!ids
+  ? ids.map(id => allArticles.get(id)).filter(Boolean)
   : Array
-    .from(allEntities.values())
+    .from(allArticles.values())
     .sort(sortArticles)
 ---
 
@@ -31,7 +38,7 @@ const entities = !!ids
   )}
 
   <ol>
-    {entities.map((article) => (
+    {articles.map((article) => (
       <li>
         <ArticlePreview article={article} />
       </li>

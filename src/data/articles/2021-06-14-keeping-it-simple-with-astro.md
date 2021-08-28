@@ -1,20 +1,13 @@
 ---
-id: 2021-06-14-keeping-it-simple-with-astro
-type: article
-properties:
-  slug: keeping-it-simple-with-astro
-  title: Keeping it simple with Astro
-  description: Do you really need all that JavaScript?
-  image: posts/2021-06-14-keeping-it-simple-with-astro.jpg
-  published_date: 2021-06-14
-  modified_date: 2021-06-25
-  tweetId: "1404538796767694857"
-  canonical_url: https://navillus.dev/blog/keeping-it-simple-with-astro/
-  category: code
-  tags:
-    - astro
-    - svelte
-    - performance
+slug: keeping-it-simple-with-astro
+title: Keeping it simple with Astro
+description: Do you really need all that JavaScript?
+image: posts/2021-06-14-keeping-it-simple-with-astro.jpg
+published_date: 2021-06-14
+modified_date: 2021-06-25
+tweetId: "1404538796767694857"
+canonical_url: https://navillus.dev/blog/keeping-it-simple-with-astro/
+category: code
 ---
 
 Frontend frameworks have taken over much of the web, but the question remains - do we really need all that JavaScript in the browser?

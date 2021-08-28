@@ -1,18 +1,12 @@
 ---
-id: 2021-07-19-performance-in-astro
-type: article
-properties:
-  slug: performance-in-astro
-  title: Performance wins with Astro
-  draft: true
-  description: Does your site really need all that JS?
-  image: posts/2021-07-19-performance-in-astro.jpg
-  published_date: 2021-07-19
-  canonical_url: https://navillus.dev/blog/performance-in-astro/
-  category: code
-  tags:
-    - astro
-    - svelte
+slug: performance-in-astro
+title: Performance wins with Astro
+draft: true
+description: Does your site really need all that JS?
+image: posts/2021-07-19-performance-in-astro.jpg
+published_date: 2021-07-19
+canonical_url: https://navillus.dev/blog/performance-in-astro/
+category: code
 ---
 
 Every frontend framework has its benefits, but it can be easy to forget how nice it is to stick with plain old JavaScript. [Astro](https://astro.build) already supports many of the most popular frameworks and is the list [is growing fast](https://github.com/snowpackjs/astro/issues/109), but when is it worth skipping the frameworks?

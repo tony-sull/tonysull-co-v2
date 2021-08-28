@@ -1,18 +1,12 @@
 ---
-id: 2021-06-25-svelte-class-props
-type: article
-properties:
-  slug: svelte-class-props
-  title: Class properties in Svelte
-  description: A handy trick to make your Svelte components feel even more like plain old HTML.
-  image: posts/2021-06-25-svelte-class-props.jpg
-  published_date: 2021-06-25
-  tweetId: "1408488530779717636"
-  canonical_url: https://navillus.dev/blog/svelte-class-props/
-  category: code
-  tags:
-    - svelte
-    - react
+slug: svelte-class-props
+title: Class properties in Svelte
+description: A handy trick to make your Svelte components feel even more like plain old HTML.
+image: posts/2021-06-25-svelte-class-props.jpg
+published_date: 2021-06-25
+tweetId: "1408488530779717636"
+canonical_url: https://navillus.dev/blog/svelte-class-props/
+category: code
 ---
 
 I've noticed an interesting pattern when a [React](https://reactjs.org/) developer gives [Svelte](https://svelte.dev) a try - they almost immediately add a `className` property to their first Svelte component.

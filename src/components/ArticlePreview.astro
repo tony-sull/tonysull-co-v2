@@ -6,18 +6,23 @@ interface Props {
 }
 
 const { article } = Astro.props as Props
+
+const { slug, title, description, published_date, category } = article
+
+const publishedDateISO = isoDate(published_date)
+const publishedDate = shortDate(published_date)
 ---
 
 <article>
   <h3>
-    <a href={`/blog/${article.slug}`}>{article.title}</a>
+    <a href={`/blog/${slug}`}>{title}</a>
   </h3>
   <p class='meta'>
-    <time date-time={isoDate(article.published_date)}>{shortDate(article.published_date)}</time>
-    <span aria-hidden>⋅</span>
-    <span>CODE</span>
+    <time date-time={publishedDateISO}>{publishedDate}</time>
+    <span aria-hidden> ⋅ </span>
+    <span>{category.toUpperCase()}</span>
   </p>
-  <p>{article.description}</p>
+  <p>{description}</p>
 </article>
 
 <style lang="scss">
