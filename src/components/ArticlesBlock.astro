@@ -2,34 +2,14 @@
 import path from 'node:path'
 import ArticlePreview from './ArticlePreview.astro'
 import Icon from './Icon.astro'
+import { getArticles } from '../utils/articles'
 
 const { title, ids } = Astro.props as CMS.UI.ArticlesBlock
 
-function sortArticles(a: CMS.Article, b: CMS.Article) {
-  const aDate = new Date(a.published_date)
-  const bDate = new Date(b.published_date)
-  return bDate - aDate
-}
-
-const allArticles = Astro.fetchContent('../data/articles/*.md')
-  .reduce((acc, data) => {
-    const { astro, file, url, ...article } = data
-
-    if (!article.draft) {
-      const key = path.basename(file.pathname).replace(path.extname(file.pathname), '')
-      acc.set(key, article)
-    }
-
-    return acc
-  }, new Map())
-
-console.log(allArticles.keys())
-
-const articles = !!ids
-  ? ids.map(id => allArticles.get(id)).filter(Boolean)
-  : Array
-    .from(allArticles.values())
-    .sort(sortArticles)
+const articles = getArticles(
+  Astro.fetchContent('../data/articles/*.md'),
+  ids
+)
 ---
 
 <section>
