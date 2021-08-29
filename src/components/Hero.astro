@@ -6,7 +6,7 @@ const { cta, title, content } = Astro.props as CMS.UI.HeroBlock
 const contentHtml = mdToHtml(content)
 ---
 
-<section class='container'>
+<section>
   <a href={cta.url}>{cta.title}</a>
   <h1>{title}</h1>
   <main>

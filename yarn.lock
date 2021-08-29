@@ -1315,10 +1315,10 @@ cheerio@1.0.0-rc.10, cheerio@^1.0.0-rc.6:
     parse5-htmlparser2-tree-adapter "^6.0.1"
     tslib "^2.2.0"
 
-chisel.css@^0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/chisel.css/-/chisel.css-0.6.1.tgz#91e18310da9cbb5df1355a1b7ff3a5a7926b3d0b"
-  integrity sha512-dDouWHX62njbx3fHombRGve8BF5uw9MbMl2ACz7o2ChwsionR98jqERIvS7rrk+woqmKGcXK4do5YiqtrSHnyw==
+chisel.css@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/chisel.css/-/chisel.css-0.7.0.tgz#d8618e56fc7629b7fd9eee7bfa709dd216367ae9"
+  integrity sha512-MQTvMQ3XpTNIUweNR8yd5mVKOSA3B19sjqwxzPCwxG1wx3P2fsQxyR4Mu3B8jGzEbfhNiFTbE2N2ELyEm3GaCw==
 
 "chokidar@>=3.0.0 <4.0.0", chokidar@^3.4.0:
   version "3.5.2"

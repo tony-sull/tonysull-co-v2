@@ -132,14 +132,3 @@ button.icon,
     grid-template-columns: 1fr min(var(--width-prose), calc(100% - 4rem)) 1fr;
   }
 }
-
-@media screen and (min-width: 979px) {
-  :root {
-    --chisel-h1: 5.653rem;
-    --chisel-h2: 3.998rem;
-    --chisel-h3: 2.827rem;
-    --chisel-h4: 1.999rem;
-    --chisel-h5: 1.414rem;
-    --chisel-h6: 0.707rem;
-  }
-}
