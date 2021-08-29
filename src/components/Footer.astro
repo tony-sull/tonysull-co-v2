@@ -26,7 +26,7 @@ const { url, title, social } = site as CMS.Site
 
     <p>
       <strong>RSS Feed</strong>
-      <a title='RSS Feed' href='/feed.xml'>Subscribe</a>
+      <a title='RSS Feed' href={site.rss.articles}>Subscribe</a>
     </p>
 
     <p>
@@ -36,7 +36,7 @@ const { url, title, social } = site as CMS.Site
       <a title='GitHub' href={social.github_url}>
         <Icon icon='github' size='24' />
       </a>
-      <a title='RSS Feed' href='/feed.xml'>
+      <a title='RSS Feed' href={site.rss.articles}>
         <Icon icon='rss' size='24' />
       </a>
     </p>

@@ -1,12 +1,15 @@
 {
-    "title": "Tony Sullivan",
-    "description": "Tony Sullivan is a fullstack developer based in The Hague, Netherlands.",
-    "url": "https://tonysull.co/",
-    "domain": "tonysull.co",
-    "author": "Tony Sullivan",
-    "social": {
-        "twitter_card": "summary_large_image",
-        "twitter_url": "https://twitter.com/tonysull_co",
-        "github_url": "https://github.com/tony-sull"
-    }
+  "title": "Tony Sullivan",
+  "description": "Tony Sullivan is a fullstack developer based in The Hague, Netherlands.",
+  "url": "https://tonysull.co/",
+  "domain": "tonysull.co",
+  "author": "Tony Sullivan",
+  "social": {
+    "twitter_card": "summary_large_image",
+    "twitter_url": "https://twitter.com/tonysull_co",
+    "github_url": "https://github.com/tony-sull"
+  },
+  "rss": {
+    "articles": "articles/feed.xml"
+  }
 }

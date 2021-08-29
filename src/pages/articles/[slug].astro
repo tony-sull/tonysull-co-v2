@@ -3,18 +3,38 @@ import site from '../../data/site.json'
 import Layout from '../../layouts/Base.astro'
 import { isoDate, shortDate } from '../../utils/dates'
 import { getDomain } from '../../utils/links'
+import { mdToHtml } from '../../utils/markdown'
 import { readMinutes } from '../../utils/readMinutes'
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ rss }) {
   const data = Astro.fetchContent('../../data/articles/*.md')
     .filter(({ draft }) => !draft)
 
-  return data.map(({ astro, file, url, ...article }) => {
+  const allArticles = data.map(({ astro, file, url, ...article }) => {
     return {
       params: { slug: article.slug },
-      props: { article: { ...article, minutes: readMinutes(astro.source) }, content: astro.html }
+      props: { article: { ...article, minutes: readMinutes(astro.source) }, content: astro.html, md: astro.source }
     }
   })
+
+  rss({
+    title: `Articles • ${site.title}`,
+    description: site.description,
+    customData: `<language>en-us</language><author><name>${site.title}</name></author><id>${site.url}${site.rss.articles}</id><updated>${isoDate(new Date())}</updated>`,
+    items: allArticles.map(({ props }) => {
+      const { article, md } = props
+
+      return {
+        title: article.title,
+        link: `/articles/${article.slug}/`,
+        pubDate: isoDate(article.published_date),
+        customData: `<id>${article.slug}</id><updated>${isoDate(article.modified_date || article.published_date)}</updated><content type="html"><![CDATA[ ${mdToHtml(md)} ]]></content>`
+      }
+    }),
+    dest: '/articles/feed.xml'
+  })
+
+  return allArticles
 }
 
 const { slug } = Astro.request.params
