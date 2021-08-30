@@ -25,10 +25,12 @@ const articles = getArticles(
     ))}
   </ol>
 
-  <a href='/articles'>
-    See All Articles
-    <Icon icon='arrow-right' size='32' />
-  </a>
+  {!!ids && (
+    <a href='/articles'>
+      See All Articles
+      <Icon icon='arrow-right' size='32' />
+    </a>
+  )}
 </section>
 
 <style lang="scss">
