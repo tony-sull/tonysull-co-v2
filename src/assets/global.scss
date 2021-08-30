@@ -115,6 +115,7 @@ button.icon,
 
 @media screen and (min-width: 640px) {
   :root {
+    font-size: 18px;
     --chisel-h1: 4.209rem;
     --chisel-h2: 3.157rem;
     --chisel-h3: 2.369rem;
@@ -125,7 +126,7 @@ button.icon,
 
   .container {
     --container-gap: 2rem;
-    grid-template-columns: 1fr min(calc(100% - 4rem), 1440px) 1fr;
+    grid-template-columns: 1fr min(calc(100% - 4rem), 1280px) 1fr;
   }
 
   .container.container--prose {
