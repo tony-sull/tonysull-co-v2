@@ -3,11 +3,12 @@ layout: "../layouts/Legal.astro"
 title: Privacy Policy
 subtitle: How I handle your data
 description: How I handle your data
+modified_date: 8-30-2021
 ---
 
-This website does not collect any personal data. It does not set any cookies and it does not use any third-party tracking scripts. No user analytics or other metrics are processed during your visit, and the server does not write any log files, which means your IP address is not stored anywhere.
+We want to process as little personal information as possible when you use our website. That's why we've chosen Fathom Analytics for our website analytics, which doesn't use cookies and complies with the GDPR, ePrivacy (including PECR), COPPA and CCPA. Using this privacy-friendly website analytics software, your IP address is only briefly processed, and we (running this website) have no way of identifying you. As per the CCPA, your personal information is de-identified. You can read more about this on [Fathom Analytics' website](https://usefathom.com/compliance).
 
-Basically, it’s just a free piece of content, no strings attached.
+The purpose of us using this software is to understand our website traffic in the most privacy-friendly way possible so that we can continually improve our website and business. The lawful basis as per the GDPR is "f); where our legitimate interests are to improve our website and business continually." As per the explanation, no personal data is stored over time.
 
 ### Secure Data Transfer
 
