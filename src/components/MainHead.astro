@@ -29,7 +29,7 @@ const fullTitle = [title, site.title]
 <meta name="description" content={description} />
 <meta
   name="keywords"
-  content="web development, consulting, jamstack, serverless, static site, netlify, svelte, software, engineering, software engineering, api development"
+  content="web development, jamstack, simplicity, minimalism, economics, engineering, science1"
 />
 <meta name="robots" content="index,follow" />
 <meta name="author" content={site.author} />
@@ -45,6 +45,7 @@ const fullTitle = [title, site.title]
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageAbsolute} />
 <meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
 <meta name="twitter:title" content={pageTitle} />
@@ -52,6 +53,8 @@ const fullTitle = [title, site.title]
 <meta name="twitter:image" content={imageAbsolute} />
 <meta name="twitter:url" content={canonicalURL} />
 <meta name="twitter:card" content={site.social.twitter_card} />
+<meta name="twitter:site" content={site.social.twitter_handle} />
+<meta name="twitter:creator" content={site.social.twitter_handle} />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap.xml" />
