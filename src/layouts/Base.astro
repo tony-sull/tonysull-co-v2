@@ -30,8 +30,19 @@ const {
 
     <script>
       const THEME_KEY = 'ts_theme'
-      const cached = localStorage.getItem(THEME_KEY)
-      document.documentElement.setAttribute('data-chisel-theme', cached || 'light')
+
+      function initTheme() {
+        let theme = localStorage.getItem(THEME_KEY)
+
+        if (!theme) {
+          theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ? 'dark' : 'light'
+        }
+
+        document.documentElement.setAttribute('data-chisel-theme', theme)
+      }
+      
+      initTheme()
     </script>
   </head>
 
