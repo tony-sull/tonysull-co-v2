@@ -11,6 +11,7 @@
     "github_url": "https://github.com/tony-sull"
   },
   "rss": {
-    "articles": "articles/feed.xml"
+    "articles": "articles/feed.xml",
+    "notes": "notes/feed.xml"
   }
 }

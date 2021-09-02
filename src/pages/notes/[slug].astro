@@ -1,0 +1,55 @@
+---
+import Note from '../../components/Note.astro'
+import site from '../../data/site.json'
+import Layout from '../../layouts/Base.astro'
+import { isoDate, shortDate } from '../../utils/dates'
+import { mdToHtml } from '../../utils/markdown'
+import { getNotes } from '../../utils/notes'
+
+export async function getStaticPaths({ rss }) {
+  const allNotes = getNotes(Astro.fetchContent('../../data/notes/*.md'))
+
+  rss({
+    title: `Notes • ${site.title}`,
+    description: site.description,
+    customData: `<language>en-us</language><author><name>${site.title}</name></author><id>${site.url}${site.rss.notes}</id><updated>${isoDate(new Date())}</updated>`,
+    items: allNotes.map(({ slug, date, title, content, tags = [] }) => {
+      return {
+        title,
+        link: `/notes/${slug}/`,
+        pubDate: isoDate(date),
+        customData: `<id>${slug}</id><updated>${isoDate(date)}</updated><content type="html"><![CDATA[ ${mdToHtml(content)} ]]></content>${tags.map((tag) => `<category>${tag}</category>`).join('')}`
+      }
+    }),
+    dest: `/${site.rss.notes}`
+  })
+
+  return allNotes.map((note) => ({
+    params: {
+      slug: note.slug,
+    },
+    props: note
+  }))
+}
+
+const { ...note } = Astro.props
+---
+
+<Layout
+  title={note.title}
+  pathname={Astro.request.url.pathname}
+  canonicalURL={Astro.request.canonicalURL}
+>
+  <section>
+    <Note note={note} />
+  </section>
+</Layout>
+
+<style lang='scss'>
+  section {
+    padding-top: var(--spacer-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>

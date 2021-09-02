@@ -31,7 +31,7 @@ export async function getStaticPaths({ rss }) {
         customData: `<id>${article.slug}</id><updated>${isoDate(article.modified_date || article.published_date)}</updated><content type="html"><![CDATA[ ${mdToHtml(md)} ]]></content>`
       }
     }),
-    dest: '/articles/feed.xml'
+    dest: `/${site.rss.articles}`
   })
 
   return allArticles
