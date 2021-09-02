@@ -12,10 +12,15 @@
     "@astrojs/renderer-svelte": "^0.1.1",
     "@fontsource/playfair-display": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
-    "astro": "^0.20.3",
-    "chisel.css": "^0.7.0",
+    "astro": "^0.20.4",
+    "chisel.css": "^0.7.1",
     "fecha": "^4.2.1",
     "markdown-reading-time": "^0.1.1",
-    "nano-markdown": "^1.2.1"
+    "nano-markdown": "^1.2.1",
+    "node-fetch": "^3.0.0",
+    "twitter-v2": "^1.1.0"
+  },
+  "dependencies": {
+    "netlify-lambda": "^2.0.14"
   }
 }

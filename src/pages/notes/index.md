@@ -11,4 +11,5 @@ blocks:
     cta:
       title: "@tonysull_co"
       url: https://twitter.com/tonysull_co
+  - type: notes
 ---

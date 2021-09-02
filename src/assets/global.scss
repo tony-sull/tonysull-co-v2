@@ -27,6 +27,13 @@
 
   /* Containers */
   --width-prose: 85ch;
+
+  /* Drop Shadows */
+  --drop-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+:root[data-chisel-theme="dark"] {
+  --drop-shadow: 0 0 3px rgba(255, 255, 255, 0.4);
 }
 
 h1,
@@ -103,6 +110,28 @@ button.icon,
 
 .glass {
   background: var(--chisel-neutral-50);
+}
+
+.markdown {
+  & h1,
+  h2,
+  h3,
+  h4 {
+    margin: 1.5em 0 0.5em;
+  }
+
+  & p {
+    line-height: 1.7;
+    font-size: 1.125rem;
+  }
+
+  & pre + p {
+    margin-top: var(--spacer-sm);
+  }
+
+  & .twitter-tweet + p {
+    margin-top: 1em;
+  }
 }
 
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {

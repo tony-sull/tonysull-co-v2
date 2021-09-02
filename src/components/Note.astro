@@ -1,0 +1,131 @@
+---
+import Icon from './Icon.astro'
+import site from '../data/site.json'
+import { isoDate, shortDate } from '../utils/dates'
+import { mdToHtml } from '../utils/markdown'
+
+interface Props {
+  note: CMS.Note
+}
+
+const { note } = Astro.props as Props
+
+const { title, date, tags = [], link, content } = note
+const contentHtml = mdToHtml(content)
+---
+
+<article class='h-entry'>
+  <header>
+    <p class='p-author h-card' rel='author' hidden>
+      <img class='u-photo' src={Astro.resolve('../assets/favicon.svg')} alt={site.author} />
+      <strong class='p-name'>{site.author}</strong>
+    </p>
+    <time class='dt-published' datetime={isoDate(date)}>{shortDate(date)}</time>
+  </header>
+  <main class='e-content p-name markdown'>
+    <h1 class='h4'>{title}</h1>
+    {contentHtml}
+
+    {tags.length > 0 && (
+      <div class='tags'>
+        {tags.map((tag) => (
+          <small>#{tag}</small>
+        ))}
+      </div>
+    )}
+  </main>
+  <footer>
+    <label>
+        <Icon icon='comment' size='24' />
+        0
+    </label>
+    <label>
+        <Icon icon='refresh' size='24' />
+        0
+    </label>
+    <label>
+        <Icon icon='heart' size='24' />
+        0
+    </label>
+
+    <a href={`${site.url}notes/${note.id}/`}>
+      <span class='sr-only'>View Note</span>
+      <Icon icon='twitter' size='24' solid />
+    </a>
+  </footer>
+</article>
+
+<style lang='scss'>
+  article {
+    max-width: calc(var(--width-prose) *.75);
+    border-radius: 0.5em;
+    box-shadow: var(--drop-shadow);
+    overflow: hidden;
+  }
+
+  header, main, footer {
+    padding: 0 var(--spacer-sm);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spacer-sm);
+    padding-bottom: var(--spacer-xs);
+  }
+
+  time {
+    color: var(--chisel-neutral-500);
+  }
+
+  h1 {
+    margin-bottom: var(--spacer-sm);
+  }
+
+  main {
+    padding-bottom: var(--spacer-sm);
+
+    & small {
+      padding: var(--spacer-xs) var(--spacer-sm);
+      background: var(--chisel-neutral-200);
+      border-radius: calc(0.5em + var(--spacer-sm));
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacer-sm) var(--spacer-xs);
+  }
+
+  footer {
+    display: flex;
+    gap: var(--spacer-sm);
+    background: var(--chisel-neutral-200);
+    color: var(--chisel-neutral-600);
+    padding-top: var(--spacer-sm);
+    padding-bottom: var(--spacer-xs);
+
+    & label {
+      display: flex;
+      align-items: center;
+      gap: var(--spacer-xs);
+      padding-right: var(--spacer-xs);
+
+      &:last-of-type {
+        flex: 1;
+      }
+    }
+
+    & a {
+      color: inherit;
+      transition: color 150ms ease-in-out;
+
+      &:hover, &:active {
+        color: var(--chisel-secondary);
+      }
+    }
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import Note from './Note.astro'
+import ArticlePreview from './ArticlePreview.astro'
+import Icon from './Icon.astro'
+import { getNotes } from '../utils/notes'
+
+const { title, ids } = Astro.props as CMS.UI.ArticlesBlock
+
+const notes = getNotes(
+  Astro.fetchContent('../data/notes/*.md'),
+  ids
+)
+---
+
+<section>
+  {notes.map((note) => (
+    <Note note={note} />
+  ))}
+</section>
+
+<style lang='scss'>
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: var(--spacer-md);
+  }
+</style>

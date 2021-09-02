@@ -84,7 +84,7 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
     </header>
   </section>
   
-  <article class="e-content">
+  <article class="e-content markdown">
     {content}
   </article>
 </Layout>
@@ -115,26 +115,6 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
 
     & .lead {
       color: var(--chisel-neutral-700);
-    }
-  }
-</style>
-
-<style lang="scss" global>
-  article {
-    & h1, h2, h3, h4 {
-      margin: 1.5em 0 0.5em;
-    }
-
-    & p {
-      line-height: 1.7;
-    }
-
-    & pre + p {
-      margin-top: var(--spacer-sm);
-    }
-
-    & .twitter-tweet + p {
-      margin-top: 1em;
     }
   }
 </style>

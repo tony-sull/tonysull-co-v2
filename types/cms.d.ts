@@ -56,6 +56,16 @@ declare namespace CMS {
     canonical_url?: string
   }
 
+  type NoteSlug = string
+  interface Note {
+    title: string
+    syndicate: boolean
+    date: Date | string
+    tags: string[]
+    link?: string
+    content: Markdown
+  }
+
   namespace UI {
     interface CTA {
       title: string

@@ -2,6 +2,7 @@
 import Layout from './Base.astro'
 import ArticlesBlock from '../components/ArticlesBlock.astro'
 import Hero from '../components/Hero.astro'
+import NotesBlock from '../components/NotesBlock.astro'
 
 interface Content {
   title: string
@@ -31,6 +32,10 @@ const hasHero = blocks.some(({ type }) => type === 'hero')
       case 'articles':
         return (
           <ArticlesBlock {...data} />
+        )
+      case 'notes':
+        return (
+          <NotesBlock {...data} />
         )
     }
   })}
