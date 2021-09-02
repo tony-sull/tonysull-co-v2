@@ -49,8 +49,8 @@ const contentHtml = mdToHtml(content)
     </label>
 
     <a href={`${site.url}notes/${note.id}/`}>
-      <span class='sr-only'>View Note</span>
-      <Icon icon='twitter' size='24' solid />
+      <span class='sr-only'>View or Share Note</span>
+      <Icon icon='share' size='24' />
     </a>
   </footer>
 </article>
@@ -61,6 +61,10 @@ const contentHtml = mdToHtml(content)
     border-radius: 0.5em;
     box-shadow: var(--drop-shadow);
     overflow: hidden;
+
+    & > a {
+      color: inherit;
+    }
   }
 
   header, main, footer {

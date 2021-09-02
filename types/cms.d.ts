@@ -58,6 +58,7 @@ declare namespace CMS {
 
   type NoteSlug = string
   interface Note {
+    slug: NoteSlug
     title: string
     syndicate: boolean
     date: Date | string
