@@ -62,7 +62,9 @@ const processNotes = async (notes) => {
 
 // Prepare the content string for tweet format
 const prepareStatusText = (note) => {
-  const maxLength = 280 - 3 - 23 - 1
+  const tags = note.categories.map((tag) => `#${tag}`).join(" ")
+
+  const maxLength = 280 - 23 - 2 - tags.length - 2
 
   // strip html tag and decode entities
   let text = note.content.trim().replace(/<[^>]+>/g, "")
@@ -70,11 +72,16 @@ const prepareStatusText = (note) => {
 
   // truncate note text if its too long for a tweet.
   if (text.length > maxLength) {
-    text = text.substring(0, maxLength + "...")
+    text = text.substring(0, maxLength - 3) + "..."
+  }
+
+  // include the hashtags
+  if (tags.length) {
+    text += "\n\n" + tags
   }
 
   // include the note url at the end
-  text += " " + note.link
+  text += "\n\n" + note.link
 
   // if it has a link, let that be the last url
   // so twitter picks it up for the preview

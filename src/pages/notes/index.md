@@ -5,9 +5,9 @@ title: Notes
 description: Placeholder description here
 blocks:
   - type: hero
-    title: Coming soon!
+    title: Hello, open web.
     content: |-
-      This site is still under construction and I haven't tied in to Twitter yet. Check back later and follow me on [Twitter](https://twitter.com/tony-sull) to get notified of my latest ramblings!
+      These are my notes, good or bad I wrote them. Why let them live in a walled garden? They are also syndicated to my [Twitter](https://twitter.com/tony-sull) account and an [RSS feed](https://tonysull.co/notes/feed.xml) if that's your thing!
     cta:
       title: "@tonysull_co"
       url: https://twitter.com/tonysull_co

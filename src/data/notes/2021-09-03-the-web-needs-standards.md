@@ -6,4 +6,4 @@ tags:
   - webdev
 ---
 
-alert("The open web needs standards. [@GoogleChromeDev](https://twitter.com/GoogleChromeDev), please don't send us back to the days of vendor prefixes and feature flags.")
+alert("The open web needs standards. [@Google](https://twitter.com/Google), please don't send us back to the days of vendor prefixes and feature flags.")
