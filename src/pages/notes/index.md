@@ -2,7 +2,7 @@
 # Add outgoing webhook for webmention.app!
 layout: "../../layouts/Page.astro"
 title: Notes
-description: Placeholder description here
+description: Tony Sullivan is a fullstack developer based in The Hague, Netherlands.
 blocks:
   - type: hero
     title: Hello, open web.

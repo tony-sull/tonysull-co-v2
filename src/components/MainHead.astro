@@ -29,7 +29,7 @@ const fullTitle = [title, site.title]
 <meta name="description" content={description} />
 <meta
   name="keywords"
-  content="web development, jamstack, simplicity, minimalism, economics, engineering, science1"
+  content="web development, jamstack, simplicity, minimalism, economics, engineering, science"
 />
 <meta name="robots" content="index,follow" />
 <meta name="author" content={site.author} />
@@ -39,8 +39,8 @@ const fullTitle = [title, site.title]
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <!-- Open Graph -->
-<meta property="og:title" content={pageTitle} />
-<meta property="og:site_name" content={pageTitle} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:site_name" content={site.title} />
 <meta property="og:type" content="website" />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={imageAbsolute} />
@@ -48,7 +48,7 @@ const fullTitle = [title, site.title]
 <meta property="og:locale" content="en_US" />
 
 <!-- Twitter -->
-<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageAbsolute} />
 <meta name="twitter:url" content={canonicalURL} />

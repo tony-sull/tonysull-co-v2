@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/Page.astro"
 title: About Me
-description: Placeholder description here
+description: Tony Sullivan is a fullstack developer based in The Hague, Netherlands.
 blocks:
   - type: hero
     title: Coming soon!
