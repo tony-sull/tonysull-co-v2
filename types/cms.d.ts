@@ -60,7 +60,6 @@ declare namespace CMS {
   interface Note {
     slug: NoteSlug
     title: string
-    syndicate: boolean
     date: Date | string
     tags: string[]
     link?: string

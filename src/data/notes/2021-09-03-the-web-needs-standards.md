@@ -1,7 +1,6 @@
 ---
 title: The Web Needs Standards
-date: 2021-09-02T16:37:16.800Z
-syndicate: true
+date: 2021-09-03T18:00:29.600Z
 tags:
   - openweb
   - webdev

@@ -2,6 +2,7 @@
 dist
 _cache
 public/style/@fontsource
+functions
 
 # dependencies
 node_modules/
