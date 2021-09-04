@@ -2,7 +2,9 @@
 import Icon from './Icon.astro'
 import site from '../data/site.json'
 import { isoDate, shortDate } from '../utils/dates'
+import { pathJoin } from '../utils/links'
 import { mdToHtml } from '../utils/markdown'
+import { getAllMentions, isForUrl } from '../utils/mentions'
 
 interface Props {
   note: CMS.Note,
@@ -13,6 +15,12 @@ const { note, share = false } = Astro.props as Props
 
 const { title, date, tags = [], link, content } = note
 const contentHtml = mdToHtml(content)
+
+const URL = `https://${pathJoin(site.domain, "notes", note.slug)}`
+
+const allMentions = await getAllMentions();
+const webMentions = allMentions.children
+    .filter(isForUrl(URL))
 ---
 
 <article class='h-entry'>
