@@ -16,9 +16,10 @@ export async function getStaticPaths({ rss }) {
     items: allNotes.map(({ slug, date, title, content, tags = [] }) => {
       return {
         title,
+        description: `${mdToHtml(content)}`,
         link: `/notes/${slug}/`,
         pubDate: isoDate(date),
-        customData: `<id>${slug}</id><updated>${isoDate(date)}</updated><content type="html"><![CDATA[ ${mdToHtml(content)} ]]></content>${tags.map((tag) => `<category>${tag}</category>`).join('')}`
+        customData: `<id>${slug}</id><updated>${isoDate(date)}</updated>${tags.map((tag) => `<category>${tag}</category>`).join('')}`
       }
     }),
     dest: `/${site.rss.notes}`
