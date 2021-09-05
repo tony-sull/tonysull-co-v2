@@ -40,7 +40,7 @@ export async function getStaticPaths({ rss }) {
 const { slug } = Astro.request.params
 const { article, content } = Astro.props
 
-const { title, description, image, canonical_url, published_date, modified_date, minutes } = article
+const { title, description, category, image, canonical_url, published_date, modified_date, minutes } = article
 
 const publishedDateISO = published_date && isoDate(published_date)
 const publishedDate = published_date && shortDate(published_date)
@@ -59,9 +59,8 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
 >
   <section class="h-entry">
     <header>
+      <em>{category}</em>
       <h1 class="p-name">{title}</h1>
-
-      <p class="p-summary h5 lead">{description}</p>
 
       <small>
         <time class="dt-published" datetime={publishedDateISO}>{publishedDate}</time>
@@ -81,6 +80,10 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
             </time>
         </small>
       }
+      
+      <blockquote class='h5'>
+        <p class="p-summary lead">{description}</p>
+      </blockquote>
     </header>
   </section>
   
@@ -91,7 +94,16 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
 
 <style lang="scss">
   header {
-    margin-bottom: var(--spacer-lg);
+    margin-bottom: var(--spacer-md);
+
+    & em {
+      font-style: normal;
+      text-transform: uppercase;
+      color: var(--chisel-secondary);
+      font-weight: 700;
+      margin-bottom: var(--spacer-sm);
+      display: block;
+    }
 
     & small {
       display: block;
@@ -104,7 +116,7 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
 
     & h1 {
       margin: 0 0 0.5em;
-      font-size: var(--chisel-h3);
+      font-size: var(--chisel-h2);
 
       @media (min-width: 640px) {
         & {
@@ -113,8 +125,25 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
       }
     }
 
-    & .lead {
+    & blockquote {
       color: var(--chisel-neutral-700);
+      font-weight:400;
+      line-height: 1.3;
+      margin: var(--spacer-md) 0 0;
+    }
+  }
+
+  article {
+    & :global(h2) {
+      font-size: var(--chisel-h3);
+    }
+
+    & :global(h3) {
+      font-size: var(--chisel-h4);
+    }
+
+    & :global(h4) {
+      font-size: var(--chisel-h5);
     }
   }
 </style>
