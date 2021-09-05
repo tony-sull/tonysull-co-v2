@@ -17,7 +17,7 @@ const twitter = new Twitter({
 // Configure RSS parser
 const parser = new Parser({
   customFields: {
-    item: ["content"],
+    item: ["content", "id"],
   },
 })
 
