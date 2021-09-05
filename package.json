@@ -13,7 +13,7 @@
     "@fontsource/playfair-display": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
     "astro": "^0.20.4",
-    "chisel.css": "^0.7.1",
+    "chisel.css": "^0.7.2",
     "fecha": "^4.2.1",
     "html-entities": "^2.3.2",
     "lodash": "^4.17.21",
