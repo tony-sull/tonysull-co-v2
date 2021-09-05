@@ -17,7 +17,7 @@ const twitter = new Twitter({
 // Configure RSS parser
 const parser = new Parser({
   customFields: {
-    item: ["content", "id"],
+    item: ["id", "description"],
   },
 })
 
@@ -67,7 +67,7 @@ const prepareStatusText = (note) => {
   const maxLength = 280 - 23 - 2 - tags.length - 2
 
   // strip html tag and decode entities
-  let text = note.content.trim().replace(/<[^>]+>/g, "")
+  let text = note.description.trim().replace(/<[^>]+>/g, "")
   text = decode(text)
 
   // truncate note text if its too long for a tweet.
@@ -96,8 +96,6 @@ const prepareStatusText = (note) => {
 const publishNote = async (note) => {
   try {
     const statusText = prepareStatusText(note)
-
-    return status(200, statusText)
 
     const tweet = await twitter.post("statuses/update", {
       status: statusText,
