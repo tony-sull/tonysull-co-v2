@@ -4,7 +4,7 @@ import site from '../data/site.json'
 import { isoDate, shortDate } from '../utils/dates'
 import { pathJoin } from '../utils/links'
 import { mdToHtml } from '../utils/markdown'
-import { getAllMentions, isForUrl } from '../utils/mentions'
+import { getAllMentions, isForUrl, isMentionType, MENTION_TYPE, sortMentions } from '../utils/mentions'
 
 interface Props {
   note: CMS.Note,
@@ -20,7 +20,12 @@ const URL = `https://${pathJoin(site.domain, "notes", note.slug)}`
 
 const allMentions = await getAllMentions();
 const webMentions = allMentions.children
-    .filter(isForUrl(URL))
+  .filter(isForUrl(URL))
+  .sort(sortMentions(true))
+
+const reposts = webMentions.filter(isMentionType(MENTION_TYPE.Share))
+const likes = webMentions.filter(isMentionType(MENTION_TYPE.Like))
+const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
 ---
 
 <article class='h-entry'>
@@ -49,15 +54,15 @@ const webMentions = allMentions.children
       <span class='sr-only'>View or Share Note</span>
       <label>
           <Icon icon='comment' size='24' />
-          <span>0</span>
+          <span>{replies.length}</span>
       </label>
       <label>
           <Icon icon='refresh' size='24' />
-          <span>0</span>
+          <span>{reposts.length}</span>
       </label>
       <label>
           <Icon icon='heart' size='24' />
-          <span>0</span>
+          <span>{likes.length}</span>
       </label>
 
       <a href={`/notes/${note.slug}/`}>
