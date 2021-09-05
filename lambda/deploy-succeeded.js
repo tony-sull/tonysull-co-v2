@@ -50,7 +50,7 @@ const processNotes = async (notes) => {
     // the RSS feed item's ID is either the post slug or
     // twitter post ID. Twitter post IDs don't contain hyphens,
     // if one isn't found assume it hasn't been posted yet
-    if (latestNote.id.indexOf("-") < 0) {
+    if (latestNote.id.indexOf("-") >= 0) {
       return publishNote(latestNote)
     } else {
       return status(400, "Latest note was already syndicated. No action taken.")
@@ -96,6 +96,8 @@ const prepareStatusText = (note) => {
 const publishNote = async (note) => {
   try {
     const statusText = prepareStatusText(note)
+
+    return status(200, statusText)
 
     const tweet = await twitter.post("statuses/update", {
       status: statusText,
