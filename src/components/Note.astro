@@ -30,14 +30,19 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
 
 <article class='h-entry'>
   <header>
-    <p class='p-author h-card' rel='author' hidden>
-      <img class='u-photo' src={Astro.resolve('../assets/favicon.svg')} alt={site.author} />
-      <strong class='p-name'>{site.author}</strong>
+    <p class='p-author h-card' rel='author'>
+      <img class='u-photo' src={Astro.resolve('../assets/avatar-96x96.jpg')} alt={site.author} />
+      <strong>
+        <span class='p-name'>{site.author}</span>
+        <br>
+        <small>
+          <a href={site.social.twitter_url}>{site.social.twitter_handle}</a> • 
+          <time class='dt-published' datetime={isoDate(date)}>{shortDate(date)}</time>
+        </small>
+      </strong>
     </p>
-    <time class='dt-published' datetime={isoDate(date)}>{shortDate(date)}</time>
   </header>
   <main class='e-content p-name markdown'>
-    <h1 class='h4'>{title}</h1>
     {contentHtml}
 
     {tags.length > 0 && (
@@ -112,15 +117,32 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
     align-items: center;
     justify-content: space-between;
     padding-top: var(--spacer-sm);
-    padding-bottom: var(--spacer-xs);
+    padding-bottom: var(--spacer-sm);
   }
 
-  time {
+  header .h-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-sm);
+    margin-bottom: 0;
+  }
+
+  .h-card small {
     color: var(--chisel-neutral-500);
   }
 
-  h1 {
-    margin-bottom: var(--spacer-sm);
+  .h-card a {
+    text-decoration: none;
+  }
+
+  time {
+    font-weight: 400;
+  }
+
+  .u-photo {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 1.5rem;
   }
 
   main {
