@@ -63,6 +63,7 @@ declare namespace CMS {
     date: Date | string
     tags: string[]
     link?: string
+    twitter_id?: TwitterPostId
     content: Markdown
   }
 

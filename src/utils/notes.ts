@@ -16,7 +16,6 @@ function parseData(data: NoteData): { id: string; note: CMS.Note } {
     note: {
       ...note,
       content: astro.source,
-      slug: id,
     },
   }
 }

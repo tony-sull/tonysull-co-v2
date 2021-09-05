@@ -47,10 +47,10 @@ const processNotes = async (notes) => {
   const latestNote = notes[0]
 
   try {
-    // check twitter for any tweets containing note URL
-    // if there are none, publish it.
-    const q = await twitter.get("search/tweets", { q: latestNote.link })
-    if (q.statuses && q.statuses.length === 0) {
+    // the RSS feed item's ID is either the post slug or
+    // twitter post ID. Twitter post IDs don't contain hyphens,
+    // if one isn't found assume it hasn't been posted yet
+    if (latestNote.id.indexOf("-") < 0) {
       return publishNote(latestNote)
     } else {
       return status(400, "Latest note was already syndicated. No action taken.")
