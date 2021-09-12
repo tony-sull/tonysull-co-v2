@@ -13,7 +13,7 @@ const { main } = navigation as CMS.Navigation
 const isCurrentPage = (href: string) => href === '/' ? pathname === href : pathname.startsWith(href)
 ---
 
-<header class="container">
+<header class="container" role="banner">
   <div class="header">
     <a href='/' rel='home' aria-label='Go to Homepage'>
       <svg aria-hidden viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,6 +64,16 @@ const isCurrentPage = (href: string) => href === '/' ? pathname === href : pathn
     localStorage.setItem(THEME_KEY, theme)
   })
   themeToggle.style.display = 'flex'
+
+  let lastScroll = 0
+  const header = document.querySelector("header[role=banner]")
+  function handleScroll() {
+    (window.pageYOffset > 50 && window.pageYOffset > lastScroll)
+      ? header.classList.add('hidden')
+      : header.classList.remove('hidden')
+    lastScroll = window.pageYOffset
+  }
+  window.addEventListener('scroll', handleScroll)
 </script>
 
 <style global lang='scss'>
@@ -84,6 +94,12 @@ const isCurrentPage = (href: string) => href === '/' ? pathname === href : pathn
     position: sticky;
     top: 0;
     z-index: 100;
+    will-change: transform;
+    transition: transform 150ms ease-in-out;
+  }
+
+  header.hidden {
+    transform: translate(0, -100%);
   }
 
   .header {
