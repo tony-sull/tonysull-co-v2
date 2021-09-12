@@ -1,9 +1,7 @@
 ---
-import site from '../data/site.json'
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 import MainHead from '../components/MainHead.astro'
-import Hero from '../components/Hero.astro'
 
 interface Props {
 	title: string
@@ -66,14 +64,18 @@ const {
   </body>
 </html>
 
-<style lang="scss">
+<style lang="scss" global>
   body {
     font-family: var(--font-family-base);
     line-height: 1.5;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+
+    & > * {
+      width: 100%;
+      overflow: hidden;
+    }
   }
 
   main {
