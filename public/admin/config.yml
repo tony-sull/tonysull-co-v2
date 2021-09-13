@@ -7,7 +7,7 @@ public_folder: /uploads
 collections:
   - name: author
     label: Author
-    folder: data/author
+    folder: src/data/card
     create: true
     identifier_field: name
     extension: md
@@ -110,7 +110,7 @@ collections:
         hint: birth date
   - name: article
     label: Article
-    folder: data/entry
+    folder: src/data/entry
     create: true
     identifier_field: name
     extension: md
@@ -172,7 +172,7 @@ collections:
         hint: URL(s) of syndicated copies of this article
   - name: note
     label: Note
-    folder: data/entry
+    folder: src/data/entry
     create: true
     identifier_field: name
     extension: md
@@ -230,7 +230,7 @@ collections:
         hint: URL(s) of syndicated copies of this note
   - name: photo
     label: Photo
-    folder: data/entry
+    folder: src/data/entry
     create: true
     identifier_field: name
     extension: md
