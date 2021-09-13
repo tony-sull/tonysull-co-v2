@@ -13,16 +13,6 @@ fields:
     required: true
   label: Name
   description: note name/title
-- name: content
-  type: textarea
-  default: ''
-  config:
-    required: true
-    wysiwyg: true
-    schema:
-      format: markdown
-  label: Content
-  description: full content of the note
 - name: published
   type: datetime
   label: Published Date
