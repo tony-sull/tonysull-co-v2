@@ -88,3 +88,5 @@ fields:
     display_utc: true
     export_format: YYYY-MM-DD
   default: now
+pages:
+- src/data/card/tony-sullivan.md
