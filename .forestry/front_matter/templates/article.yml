@@ -1,4 +1,64 @@
 ---
 label: Article
 hide_body: false
-fields: []
+display_field: name
+fields:
+- name: name
+  type: text
+  config:
+    required: true
+  label: Name
+  description: article name/title
+- name: summary
+  type: text
+  config:
+    required: true
+  label: Summary
+  description: short article summary
+- name: content
+  type: textarea
+  default: ''
+  config:
+    required: true
+    wysiwyg: true
+    schema:
+      format: markdown
+  label: Content
+  description: full content of the article
+- name: published
+  type: datetime
+  label: Published Date
+  description: when the article was published
+  config:
+    required: true
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: now
+- name: updated
+  type: datetime
+  label: Updated Date
+  description: when the article was updated
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: now
+- name: author
+  type: select
+  default: []
+  config:
+    required: true
+    options: []
+    source:
+      type: pages
+      section: cards
+      file: 
+      path: 
+  label: Author
+- name: category
+  type: tag_list
+  default: []
+  label: Tags
+  description: article categories/tags
