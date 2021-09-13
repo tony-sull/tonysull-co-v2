@@ -80,6 +80,11 @@ fields:
   config:
     required: false
   label: Telephone Number
+- name: address
+  type: include
+  config: {}
+  template: address
+  label: Address
 - name: bday
   type: datetime
   label: Birthday
