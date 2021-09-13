@@ -1,4 +1,34 @@
 ---
 label: Address
 hide_body: true
-fields: []
+fields:
+- name: streetAddress
+  type: text
+  config:
+    required: false
+  label: Street Address
+  description: house/apartment number, floor, street name
+- name: locality
+  type: text
+  config:
+    required: true
+  description: city/town/village
+  label: Locality
+- name: region
+  type: text
+  config:
+    required: true
+  label: Region
+  description: state/county/province
+- name: postalCode
+  type: text
+  config:
+    required: false
+  label: Postal Code
+  description: postal code, e.g. ZIP in the US
+- name: countryName
+  type: text
+  config:
+    required: true
+  label: Country
+  description: should be full name of country, country code ok
