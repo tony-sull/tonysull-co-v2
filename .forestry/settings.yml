@@ -9,11 +9,17 @@ sections:
   label: Cards
   create: documents
   match: "*.md"
+  templates:
+  - author
 - type: directory
   path: src/data/entry
   label: Entries
   create: documents
   match: "*.md"
+  templates:
+  - photo
+  - note
+  - article
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''

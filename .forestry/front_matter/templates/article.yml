@@ -57,6 +57,7 @@ fields:
       file: 
       path: 
   label: Author
+  description: who wrote the article
 - name: category
   type: tag_list
   default: []
