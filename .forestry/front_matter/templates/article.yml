@@ -3,6 +3,10 @@ label: Article
 hide_body: false
 display_field: name
 fields:
+- name: draft
+  type: boolean
+  label: Draft
+  default: true
 - name: name
   type: text
   config:
@@ -45,6 +49,8 @@ fields:
     time_format: 
     display_utc: false
   default: now
+  showOnly:
+    field: draft
 - name: author
   type: select
   default: []
