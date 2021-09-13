@@ -5,7 +5,7 @@
 @include PlayfairDisplay.fontFace(
   $weight: 700,
   $display: fallback,
-  $fontDir: "/style/@fontsource/playfair-display/files"
+  $fontDir: "/fonts/playfair-display/files"
 );
 
 :root {
