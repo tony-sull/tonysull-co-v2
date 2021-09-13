@@ -5,7 +5,7 @@ interface Props {
   title: string
   description: string
   image: string
-  canonicalURL: string
+  canonicalURL: URL
 }
 
 const {
@@ -16,7 +16,6 @@ const {
 } = Astro.props as Props
 
 const imageAbsolute = `${site.url}${image}`
-const pageTitle = title || site.title
 const fullTitle = [title, site.title]
   .filter(Boolean)
   .join(' • ')

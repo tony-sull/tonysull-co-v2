@@ -6,20 +6,19 @@ import MainHead from '../components/MainHead.astro'
 interface Props {
 	title: string
 	description: string
-	image: string
+	image?: string
 	pathname?: string
-	canonicalURL: string
-  prose: boolean
+	canonicalURL: URL
+  prose?: boolean
 }
 
 const {
 	title,
 	description,
 	image,
-	pathname,
 	canonicalURL,
   prose = false
-} = Astro.props as props
+} = Astro.props as Props
 ---
 
 <html lang="en" data-chisel-theme="light">

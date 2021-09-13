@@ -1,7 +1,16 @@
 ---
 import { mdToHtml } from '../utils/markdown'
 
-const { cta, title, content } = Astro.props as CMS.UI.HeroBlock
+export interface Props {
+  cta: {
+    url: string
+    title: string
+  }
+  title: string
+  content: string
+}
+
+const { cta, title, content } = Astro.props as Props
 
 const contentHtml = mdToHtml(content)
 ---

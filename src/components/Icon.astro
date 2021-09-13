@@ -1,8 +1,8 @@
 ---
-interface Props {
+export interface Props {
     icon: CMS.Icon
     size: number
-    solid: boolean
+    solid?: boolean
 }
 
 const { icon, size, solid = false } = Astro.props as Props

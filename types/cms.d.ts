@@ -4,9 +4,12 @@ declare namespace CMS {
     | "at"
     | "book"
     | "bookmark"
+    | "comment"
     | "github"
+    | "heart"
     | "home"
     | "moon"
+    | "refresh"
     | "roller"
     | "rss"
     | "sun"
@@ -86,6 +89,12 @@ declare namespace CMS {
       ids: ArticleSlug[] | undefined
     }
 
-    type Block = HeroBlock | ArticlesBlock
+    interface NotesBlock {
+      type: "notes"
+      title: string
+      ids: NoteSlug[] | undefined
+    }
+
+    type Block = HeroBlock | ArticlesBlock | NotesBlock
   }
 }

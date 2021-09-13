@@ -3,7 +3,12 @@ import ArticlePreview from './ArticlePreview.astro'
 import Icon from './Icon.astro'
 import { getArticles } from '../utils/articles'
 
-const { title, ids } = Astro.props as CMS.UI.ArticlesBlock
+export interface Props {
+  title: string
+  ids: CMS.ArticleSlug[]
+}
+
+const { title, ids } = Astro.props as Props
 
 const articles = getArticles(
   Astro.fetchContent('../data/articles/*.md'),
@@ -27,7 +32,7 @@ const articles = getArticles(
   {!!ids && (
     <a href='/articles'>
       See All Articles
-      <Icon icon='arrow-right' size='32' />
+      <Icon icon='arrow-right' size={32} />
     </a>
   )}
 </section>
