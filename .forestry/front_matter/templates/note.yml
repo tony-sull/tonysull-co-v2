@@ -47,7 +47,7 @@ fields:
     field: draft
 - name: author
   type: select
-  default: []
+  default: src/data/card/tony-sullivan.md
   config:
     required: true
     options: []
@@ -63,3 +63,7 @@ fields:
   default: []
   label: Tags
   description: note categories/tags
+pages:
+- src/data/entry/2021-09-03-the-web-needs-standards.md
+- src/data/entry/2021-09-04-deplatforming-should-be-the-goal.md
+- src/data/entry/2021-09-12-the-corporate-web.md

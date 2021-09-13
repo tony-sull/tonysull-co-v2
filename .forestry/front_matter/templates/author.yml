@@ -87,6 +87,6 @@ fields:
     time_format: 
     display_utc: true
     export_format: YYYY-MM-DD
-  default: now
+  default: '2021-09-13'
 pages:
 - src/data/card/tony-sullivan.md

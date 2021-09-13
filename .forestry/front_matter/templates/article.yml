@@ -53,7 +53,7 @@ fields:
     field: draft
 - name: author
   type: select
-  default: []
+  default: src/data/card/tony-sullivan.md
   config:
     required: true
     options: []
