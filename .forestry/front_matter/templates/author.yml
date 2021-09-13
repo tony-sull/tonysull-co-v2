@@ -46,18 +46,11 @@ fields:
   label: Nickname
   description: nickname/alias/handle
 - name: org
-  type: select
-  default: []
+  type: text
   config:
     required: false
-    options: []
-    source:
-      type: pages
-      section: cards
-      file: 
-      path: 
-  description: affiliated organization
   label: Organization
+  description: affiliated organization
 - name: photo
   type: file
   config:
