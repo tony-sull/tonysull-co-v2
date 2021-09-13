@@ -12,3 +12,6 @@ content: "Deplatforming should be the goal, not the punishment.\n\n  \nIf you pu
   be silenced by a keyword matching robot that doesn't like your latest tweet."
 
 ---
+Deplatforming should be the goal, not the punishment.
+
+If you publish your ideas to your own site and syndicate them out to other platforms, you can't be silenced by a keyword matching robot that doesn't like your latest tweet.
