@@ -1,6 +1,7 @@
 ---
 label: Note
 hide_body: false
+display_field: name
 fields:
 - name: name
   type: text
@@ -50,6 +51,7 @@ fields:
       file: 
       path: 
   label: Author
+  description: who wrote the note
 - name: category
   type: tag_list
   default: []

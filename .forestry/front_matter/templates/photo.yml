@@ -1,4 +1,61 @@
 ---
 label: Photo
 hide_body: false
-fields: []
+display_field: name
+fields:
+- name: name
+  type: text
+  config:
+    required: true
+  label: Caption
+  description: caption of the photo
+- name: summary
+  type: text
+  config:
+    required: true
+  label: Description
+  description: description of the photo
+- name: photo
+  type: image_gallery
+  config: {}
+  label: Photo(s)
+  description: one or more photos that is/are considered the primary content of the
+    entry
+- name: published
+  type: datetime
+  label: Published Date
+  description: when the photo was published
+  config:
+    required: true
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: now
+- name: updated
+  type: datetime
+  label: Updated Date
+  description: when the photo was updated
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+  default: now
+- name: author
+  type: select
+  default: []
+  config:
+    required: true
+    options: []
+    source:
+      type: pages
+      section: cards
+      file: 
+      path: 
+  label: Author
+  description: who took the photo
+- name: category
+  type: tag_list
+  default: []
+  label: Tags
+  description: photo categories/tags
