@@ -1,4 +1,92 @@
 ---
 label: Author
-hide_body: false
-fields: []
+hide_body: true
+display_field: name
+fields:
+- name: name
+  type: text
+  config:
+    required: true
+  label: Name
+  description: The full/formatted name of the author
+- name: honorificPrefix
+  type: text
+  config:
+    required: false
+  label: Honorific Prefix
+  description: e.g. Mrs., Mr., or Dr.
+- name: givenName
+  type: text
+  config:
+    required: false
+  label: Given Name
+  description: given (often first) name
+- name: additionalName
+  type: text
+  config:
+    required: false
+  label: Additional Name
+  description: other (e.g. middle) name
+- name: familyName
+  type: text
+  config:
+    required: false
+  label: Family Name
+  description: family (often last) name
+- name: honorificSuffix
+  type: text
+  config:
+    required: false
+  label: Honorific Suffix
+  description: e.g. Ph.D, Esq.
+- name: nickname
+  type: text
+  config:
+    required: false
+  label: Nickname
+  description: nickname/alias/handle
+- name: org
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: pages
+      section: cards
+      file: 
+      path: 
+  description: affiliated organization
+  label: Organization
+- name: photo
+  type: file
+  config:
+    maxSize: 64
+  label: Photo
+  description: a photo of the person
+- name: url
+  type: text
+  config:
+    required: true
+  label: URL
+  description: home page or other URL representing the person
+- name: emailAddress
+  type: text
+  config:
+    required: false
+  label: Email Address
+- name: tel
+  type: text
+  config:
+    required: false
+  label: Telephone Number
+- name: bday
+  type: datetime
+  label: Birthday
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: true
+    export_format: YYYY-MM-DD
+  default: now
