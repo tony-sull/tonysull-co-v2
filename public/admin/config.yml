@@ -1,0 +1,293 @@
+backend:
+  name: git-gateway
+  branch: main
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+collections:
+  - name: author
+    label: Author
+    folder: data/author
+    create: true
+    identifier_field: name
+    extension: md
+    filter:
+      field: type
+      value: author 
+    fields:
+      - name: type
+        label: Content Type
+        widget: hidden
+        default: author
+      - name: name
+        label: Name
+        widget: string
+        hint: The full/formatted name of the person
+      - name: honorificPrefix
+        label: Honorific Prefix
+        widget: string
+        required: false
+        hint: e.g. Mrs., Mr., or Dr.
+      - name: givenName
+        label: Given Name
+        widget: string
+        required: false
+        hint: given (often first) name
+      - name: additionalName
+        label: Additional Name
+        widget: string
+        required: false
+        hint: other (e.g. middle) name
+      - name: familyName
+        label: Family Name
+        widget: string
+        required: false
+        hint: family (often last) name
+      - name: honorificSuffix
+        label: Honorific Suffix
+        widget: string
+        required: false
+        hint: e.g. Ph.D, Esq.
+      - name: nickname
+        label: Nickname
+        widget: string
+        required: false
+        hint: nickname/alias/handle
+      - name: org
+        label: Organization
+        widget: string
+        required: false
+        hint: affiliated organization
+      - name: photo
+        label: Photo
+        widget: image
+        allow_multiple: false
+        hint: a photo of the person
+      - name: url
+        label: URL
+        widget: string
+        hint: home page or other URL representing the person
+      - name: email
+        label: Email Address
+        widget: string
+        required: false
+        hint: email address
+      - name: tel
+        label: Telephone Number
+        widget: string
+        required: false
+        hint: telephone number
+      - name: street-address
+        label: Street Address
+        widget: string
+        required: false
+        hint: house/apartment number, floor, street name
+      - name: locality
+        label: Locality
+        widget: string
+        required: false
+        hint: city/town/village
+      - name: region
+        label: Region
+        widget: string
+        required: false
+        hint: state/county/province
+      - name: postal-code
+        label: Postal Code
+        widget: string
+        required: false
+        hint: postal code, e.g. ZIP in the US
+      - name: country-name
+        label: Country Name
+        widget: string
+        required: false
+        hint: should be full name of country, country code ok
+      - name: bday
+        label: Birthday
+        widget: date
+        time_format: false
+        required: false
+        hint: birth date
+  - name: article
+    label: Article
+    folder: data/entry
+    create: true
+    identifier_field: name
+    extension: md
+    filter:
+      field: type
+      value: article
+    fields:
+      - name: type
+        label: Content Type
+        widget: hidden
+        default: article
+      - name: name
+        label: Name
+        widget: string
+        hint: article name/title
+      - name: summary
+        label: Summary
+        widget: text
+        hint: short article summary
+      - name: content
+        label: Content
+        widget: markdown
+        hint: full content of the article
+      - name: published
+        label: Published Date
+        widget: date
+        hint: when the article was published
+      - name: updated
+        label: Updated Date
+        widget: date
+        required: false
+        hint: when the article was updated
+      - name: author
+        label: Author
+        widget: relation
+        collection: author
+        search_fields: ["name", "nickname", "org"]
+        value_field: name
+        display_fields: ["name"]
+        multiple: true
+        hint: who wrote the article
+      - name: category
+        label: Category
+        widget: list
+        required: false
+        hint: article categories/tags
+      - name: url
+        label: URL
+        widget: string
+        hint: article permalink URL
+      - name: uid
+        label: Unique ID
+        widget: string
+        hint: universally unique identifier, typically canonical article URL
+      - name: syndication
+        label: Syndication
+        widget: list
+        required: false
+        hint: URL(s) of syndicated copies of this article
+  - name: note
+    label: Note
+    folder: data/entry
+    create: true
+    identifier_field: name
+    extension: md
+    filter:
+      field: type
+      value: note
+    fields:
+      - name: type
+        label: Content Type
+        widget: hidden
+        default: note
+      - name: name
+        label: Name
+        widget: string
+        hint: note name/title
+      - name: content
+        label: Content
+        widget: markdown
+        hint: full content of the note
+      - name: published
+        label: Published Date
+        widget: date
+        hint: when the note was published
+      - name: updated
+        label: Updated Date
+        widget: date
+        required: false
+        hint: when the note was updated
+      - name: author
+        label: Author
+        widget: relation
+        collection: author
+        search_fields: ["name", "nickname", "org"]
+        value_field: name
+        display_fields: ["name"]
+        multiple: true
+        hint: who wrote the note
+      - name: category
+        label: Category
+        widget: list
+        required: false
+        hint: note categories/tags
+      - name: url
+        label: URL
+        widget: string
+        hint: note permalink URL
+      - name: uid
+        label: Unique ID
+        widget: string
+        hint: universally unique identifier, typically canonical note URL
+      - name: syndication
+        label: Syndication
+        widget: list
+        required: false
+        hint: URL(s) of syndicated copies of this note
+  - name: photo
+    label: Photo
+    folder: data/entry
+    create: true
+    identifier_field: name
+    extension: md
+    filter:
+      field: type
+      value: photo
+    fields:
+      - name: type
+        label: Content Type
+        widget: hidden
+        default: photo
+      - name: name
+        label: Name
+        widget: string
+        hint: caption of the photo
+      - name: summary
+        label: Summary
+        widget: markdown
+        hint: description of the photo
+      - name: photo
+        label: Photo(s)
+        widget: image
+        allow_multiple: true
+        hint: one or more photos that is/are considered the primary content of the entry 
+      - name: published
+        label: Published Date
+        widget: date
+        hint: when the photo was published
+      - name: updated
+        label: Updated Date
+        widget: date
+        required: false
+        hint: when the photo was updated
+      - name: author
+        label: Author
+        widget: relation
+        collection: author
+        search_fields: ["name", "nickname", "org"]
+        value_field: name
+        display_fields: ["name"]
+        multiple: true
+        hint: who took the photo
+      - name: category
+        label: Category
+        widget: list
+        required: false
+        hint: photo categories/tags
+      - name: url
+        label: URL
+        widget: string
+        hint: photo permalink URL
+      - name: uid
+        label: Unique ID
+        widget: string
+        hint: universally unique identifier, typically canonical photo URL
+      - name: syndication
+        label: Syndication
+        widget: list
+        required: false
+        hint: URL(s) of syndicated copies of this photo
