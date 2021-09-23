@@ -12,3 +12,4 @@ content: alert("The open web needs standards. \[@Google\]([https://twitter.com/G
   prefixes and feature flags.")
 
 ---
+alert("The open web needs standards. \[@Google\]([https://twitter.com/Google](https://twitter.com/Google "https://twitter.com/Google")), please don't send us back to the days of vendor prefixes and feature flags.")

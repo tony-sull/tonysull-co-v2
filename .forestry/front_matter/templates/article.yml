@@ -19,16 +19,6 @@ fields:
     required: true
   label: Summary
   description: short article summary
-- name: content
-  type: textarea
-  default: ''
-  config:
-    required: true
-    wysiwyg: true
-    schema:
-      format: markdown
-  label: Content
-  description: full content of the article
 - name: published
   type: datetime
   label: Published Date
