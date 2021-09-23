@@ -2,6 +2,7 @@
 slug: 2021-09-23-economic-rethink
 title: Time to rethink global economics
 date: 2021-09-23T20:30:48.055Z
+twitter_id: "1441109367529488388"
 tags:
   - society
 ---
