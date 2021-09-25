@@ -8,7 +8,7 @@ import { getAllMentions, isForUrl, isMentionType, MENTION_TYPE, sortMentions } f
 
 interface Props {
   note: CMS.Note,
-  share: boolean
+  share?: boolean
 }
 
 const { note, share = false } = Astro.props as Props

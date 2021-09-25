@@ -37,7 +37,11 @@ export async function getStaticPaths({ rss }) {
   return allArticles
 }
 
-const { slug } = Astro.request.params
+interface Props {
+  article: CMS.Article,
+  content: string
+}
+
 const { article, content } = Astro.props
 
 const { title, description, category, image, canonical_url, published_date, modified_date, minutes } = article

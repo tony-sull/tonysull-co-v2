@@ -2,7 +2,7 @@
 import Note from '../../components/Note.astro'
 import site from '../../data/site.json'
 import Layout from '../../layouts/Base.astro'
-import { isoDate, shortDate } from '../../utils/dates'
+import { isoDate } from '../../utils/dates'
 import { mdToHtml } from '../../utils/markdown'
 import { getNotes } from '../../utils/notes'
 
@@ -33,7 +33,7 @@ export async function getStaticPaths({ rss }) {
   }))
 }
 
-const { ...note } = Astro.props
+const { ...note } = Astro.props as CMS.Note
 ---
 
 <Layout
