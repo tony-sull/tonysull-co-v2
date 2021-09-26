@@ -2,6 +2,7 @@
 slug: 2021-09-26-own-your-domain
 title: Own your domain
 date: 2021-09-26T17:29:48.055Z
+twitter_id: "1442150760976814082"
 tags:
   - openweb
 ---
