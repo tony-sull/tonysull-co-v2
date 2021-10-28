@@ -2,6 +2,7 @@
 slug: 2021-10-28-buying-the-environment
 title: Buying the environment
 date: 2021-10-28T19:55:48.055Z
+twitter_id: "1453783854435688448"
 tags:
   - politics
 ---
