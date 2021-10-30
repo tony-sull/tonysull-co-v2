@@ -23,8 +23,12 @@ const icons = {
   'rss': `<path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>`,
   'share': `<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/>`
 }
+
+const content = `
+<svg xmlns="http://www.w3.org/2000/svg" data-icon="${icon}" width="${size}" height="${size}" viewBox="0 0 24 24" fill="${solid ? "currentColor" : "none"}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  ${icons[icon]}
+</svg>
+`
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" data-icon={icon} width={size} height={size} viewBox="0 0 24 24" fill={solid ? "currentColor" : "none"} stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  {icons[icon]}
-</svg>
+{content}

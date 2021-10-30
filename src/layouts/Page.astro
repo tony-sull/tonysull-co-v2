@@ -25,13 +25,10 @@ const hasHero = blocks.some(({ type }) => type === 'hero')
   {!hasHero && (<h1>{title}</h1>)}
 
   {blocks.map((data) => {
-    if (isHeroBlock(data)) {
-      return (<Hero {...data} />)
-    } else if (isArticlesBlock(data)) {
-      return (<ArticlesBlock {...data} />)
-    } else if (isNotesBlock(data)) {
-      return (<NotesBlock {...data} />)
-    }
+    return isHeroBlock(data) ? (<Hero {...data} />)
+      : isArticlesBlock(data) ? (<ArticlesBlock {...data} />)
+      : isNotesBlock(data) ? (<NotesBlock {...data} />)
+      : undefined
   })}
 </Layout>
 
