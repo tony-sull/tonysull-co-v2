@@ -195,7 +195,7 @@ const isCurrentPage = (href: string) => href === '/' ? pathname === href : pathn
       margin: 0;
     }
 
-    & span {
+    & span:not(.sr-only) {
       background-color: currentColor;
       border-radius: 5px;
       height: 3px;
