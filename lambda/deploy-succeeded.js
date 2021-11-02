@@ -85,6 +85,10 @@ const prepareStatusText = (note) => {
     text += `\n\n${tags}\n\n${note.link}`
   }
 
+  console.log("--- SYNDICATING ---")
+  console.log(text)
+  console.log("-------------------")
+
   return text
 }
 
