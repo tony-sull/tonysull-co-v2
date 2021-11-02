@@ -61,6 +61,19 @@ const processNotes = async (notes) => {
   }
 }
 
+function lines(str) {
+  return str.split("\n")
+}
+
+function last(arr) {
+  return arr[arr.length - 1]
+}
+
+function getSharedLink(lines) {
+  const lastLine = last(lines)
+  return urlRegex(lastLine) ? lastLine : undefined
+}
+
 // Prepare the content string for tweet format
 const prepareStatusText = (note) => {
   const tags = note.categories.map((tag) => `#${tag}`).join(" ")
@@ -69,8 +82,17 @@ const prepareStatusText = (note) => {
   let text = note.description.trim().replace(/<[^>]+>/g, "")
   text = decode(text)
 
-  const containsLink = urlRegex().match(text)
-  const maxLength = 280 - 23 - 2 - tags.length - 2 - (containsLink ? 0 : 23)
+  const textLines = Array.from(lines(text))
+    .map((line) => line.trim())
+    .filter(Boolean)
+
+  const sharedLink = getSharedLink(textLines)
+  if (sharedLink) {
+    textLines.pop()
+  }
+  text = textLines.join("\n\n")
+
+  const maxLength = 280 - 23 - 2 - tags.length - 2
 
   // truncate note text if its too long for a tweet.
   if (text.length > maxLength) {
@@ -80,14 +102,8 @@ const prepareStatusText = (note) => {
   // include the hashtags
   text += "\n\n" + tags
 
-  // only add a link to the note if the tweet doesn't contain a shared URL
-  if (!containsLink) {
-    text += `\n\n${tags}\n\n${note.link}`
-  }
-
-  console.log("--- SYNDICATING ---")
-  console.log(text)
-  console.log("-------------------")
+  // include the shared URL, or the link URL otherwise
+  text += "\n\n" + sharedLink || note.link
 
   return text
 }
@@ -119,7 +135,6 @@ exports.handler = async () => {
     const feed = await parser.parseURL(NOTES_URL)
     return await processNotes(feed.items)
   } catch (err) {
-    console.log("Error syndicating to twitter!", err)
     return handleError(err)
   }
 }
