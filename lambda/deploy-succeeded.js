@@ -1,9 +1,8 @@
 import Twitter from "twitter"
 import { decode } from "html-entities"
 import Parser from "rss-parser"
+import urlRegex from "url-regex"
 import site from "../src/data/site.json"
-
-const URL_REGEX = /(www:|http:|https:)+[^\s]+[\w]/
 
 // URL of notes RSS feed
 const NOTES_URL = `${site.url}${site.rss.notes}`
@@ -66,11 +65,12 @@ const processNotes = async (notes) => {
 const prepareStatusText = (note) => {
   const tags = note.categories.map((tag) => `#${tag}`).join(" ")
 
-  const maxLength = 280 - 23 - 2 - tags.length - 2
-
   // strip html tag and decode entities
   let text = note.description.trim().replace(/<[^>]+>/g, "")
   text = decode(text)
+
+  const containsLink = urlRegex().match(text)
+  const maxLength = 280 - 23 - 2 - tags.length - 2 - (containsLink ? 0 : 23)
 
   // truncate note text if its too long for a tweet.
   if (text.length > maxLength) {
@@ -78,15 +78,11 @@ const prepareStatusText = (note) => {
   }
 
   // include the hashtags
-  if (tags.length) {
-    text += "\n\n" + tags
-  }
+  text += "\n\n" + tags
 
-  const containsLink = text.match(URL_REGEX)
-
-  // include the note url at the end
+  // only add a link to the note if the tweet doesn't contain a shared URL
   if (!containsLink) {
-    text += "\n\n" + note.link
+    text += `\n\n${tags}\n\n${note.link}`
   }
 
   return text
