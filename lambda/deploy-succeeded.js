@@ -92,7 +92,7 @@ const prepareStatusText = (note) => {
   }
   text = textLines.join("\n\n")
 
-  const maxLength = 280 - 23 - 2 - tags.length - 2 - (sharedLink ? 25 : 0)
+  const maxLength = 280 - 23 - 2 - tags.length - 2
 
   // truncate note text if its too long for a tweet.
   if (text.length > maxLength) {
