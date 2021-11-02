@@ -3,6 +3,8 @@ import { decode } from "html-entities"
 import Parser from "rss-parser"
 import site from "../src/data/site.json"
 
+const URL_REGEX = /(www:|http:|https:)+[^\s]+[\w]/
+
 // URL of notes RSS feed
 const NOTES_URL = `${site.url}${site.rss.notes}`
 
@@ -80,14 +82,12 @@ const prepareStatusText = (note) => {
     text += "\n\n" + tags
   }
 
-  // include the note url at the end
-  text += "\n\n" + note.link
+  const containsLink = text.match(URL_REGEX)
 
-  // if it has a link, let that be the last url
-  // so twitter picks it up for the preview
-  // if (note.link && note.link.length) {
-  //  text += " " + note.link
-  // }
+  // include the note url at the end
+  if (!containsLink) {
+    text += "\n\n" + note.link
+  }
 
   return text
 }
