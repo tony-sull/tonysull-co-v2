@@ -92,7 +92,7 @@ const prepareStatusText = (note) => {
   }
   text = textLines.join("\n\n")
 
-  const maxLength = 280 - 23 - 2 - tags.length - 2
+  const maxLength = 280 - 23 - 2 - tags.length - 2 - (sharedLink ? 25 : 0)
 
   // truncate note text if its too long for a tweet.
   if (text.length > maxLength) {
@@ -103,7 +103,12 @@ const prepareStatusText = (note) => {
   text += "\n\n" + tags
 
   // include the shared URL, or the link URL otherwise
-  text += "\n\n" + sharedLink || note.link
+  text += "\n\n" + note.link
+
+  // if the post has a shared link, include it last
+  if (sharedLink) {
+    text += "\n\n" + sharedLink
+  }
 
   return text
 }
