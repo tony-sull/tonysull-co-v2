@@ -13,7 +13,7 @@ const { main } = navigation as CMS.Navigation
 const isCurrentPage = (href: string) => href === '/' ? pathname === href : pathname.startsWith(href)
 ---
 
-<header class="container" role="banner" style="--container-gap: var(--spacer-sm);">
+<header class="container" role="banner">
   <div class="header">
     <a href='/' rel='home' aria-label='Go to Homepage'>
       <svg aria-hidden viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
