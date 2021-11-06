@@ -76,15 +76,17 @@ const isCurrentPage = (href: string) => href === '/' ? pathname === href : pathn
   window.addEventListener('scroll', handleScroll)
 </script>
 
+<style lang='scss' global>
+  [data-chisel-theme=light] svg[data-icon=sun] {
+    display: none;
+  }
+
+  [data-chisel-theme=dark] svg[data-icon=moon] {
+    display: none;
+  }
+</style>
+
 <style lang='scss'>
-  :global([data-chisel-theme=light] svg[data-icon=sun]) {
-    display: none;
-  }
-
-  :global([data-chisel-theme=dark] svg[data-icon=moon]) {
-    display: none;
-  }
-
   header {
     --container-gap: var(--spacer-sm);
     background: var(--chisel-neutral-100);
