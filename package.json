@@ -9,10 +9,10 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-    "@astrojs/renderer-svelte": "^0.1.2",
-    "@fontsource/playfair-display": "^4.5.0",
+    "@astrojs/renderer-svelte": "^0.2.1",
+    "@fontsource/playfair-display": "^4.5.1",
     "@lukeed/uuid": "^2.0.0",
-    "astro": "^0.20.12",
+    "astro": "^0.21.4",
     "chisel.css": "^0.7.5",
     "fecha": "^4.2.1",
     "get-urls": "^10.0.1",
@@ -22,7 +22,6 @@
     "nano-markdown": "^1.2.1",
     "netlify-plugin-a11y": "^0.0.12",
     "netlify-plugin-cache-folder": "^0.0.8",
-    "node-fetch": "^2.6.1",
     "rss-parser": "^3.12.0",
     "twitter": "^1.7.1",
     "url-regex": "^5.0.0"
