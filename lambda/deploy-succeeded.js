@@ -1,7 +1,7 @@
 import Twitter from "twitter"
 import { decode } from "html-entities"
 import Parser from "rss-parser"
-import urlRegex from "url-regex"
+import urlRegex from "url-regex-safe"
 import site from "../src/data/site.json"
 
 // URL of notes RSS feed

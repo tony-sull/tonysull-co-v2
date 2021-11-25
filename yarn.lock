@@ -2460,7 +2460,7 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
-ip-regex@^4.1.0, ip-regex@^4.3.0:
+ip-regex@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/ip-regex/-/ip-regex-4.3.0.tgz#687275ab0f57fa76978ff8f4dddc8a23d5990db5"
   integrity sha512-B9ZWJxHHOHUhUjCPrMpLD4xEq35bUTClHM1S6CBU5ixQnkZmwipwgc96vAd7AAGM9TGHvJR+Uss+/Ak6UphK+Q==
@@ -4107,7 +4107,7 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-re2@^1.15.9:
+re2@^1.15.9, re2@^1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/re2/-/re2-1.16.0.tgz#f311eb4865b1296123800ea8e013cec8dab25590"
   integrity sha512-eizTZL2ZO0ZseLqfD4t3Qd0M3b3Nr0MBWpX81EbPMIud/1d/CSfUIx2GQK8fWiAeHoSekO5EOeFib2udTZLwYw==
@@ -4807,7 +4807,7 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
-tlds@^1.203.0, tlds@^1.217.0:
+tlds@^1.217.0:
   version "1.226.0"
   resolved "https://registry.yarnpkg.com/tlds/-/tlds-1.226.0.tgz#a20d4260141b0f76dccb736103ba1ec1c841afd2"
   integrity sha512-8zUqBmpXX573ZrvqfL1pDYcnKq/12IROcipqmSSgj5ro/KvyPUnpsXAIAojpgNchVo5LXJwlV0anZGL1l1vr9Q==
@@ -5104,13 +5104,14 @@ url-regex-safe@^2.0.2:
     re2 "^1.15.9"
     tlds "^1.217.0"
 
-url-regex@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/url-regex/-/url-regex-5.0.0.tgz#8f5456ab83d898d18b2f91753a702649b873273a"
-  integrity sha512-O08GjTiAFNsSlrUWfqF1jH0H1W3m35ZyadHrGv5krdnmPPoxP27oDTqux/579PtaroiSGm5yma6KT1mHFH6Y/g==
+url-regex-safe@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/url-regex-safe/-/url-regex-safe-2.1.0.tgz#3b06da306e729e1abc03dbd7c9c8cc7734f81900"
+  integrity sha512-nfrmOb62+kN4JJRkY/w9QzZeuc63/ddIFfqS9ntok0UYsJW3C5J/jGvYZecwk8V68og2zWA7fcVn4GUXIi5qbg==
   dependencies:
-    ip-regex "^4.1.0"
-    tlds "^1.203.0"
+    ip-regex "^4.3.0"
+    re2 "^1.16.0"
+    tlds "^1.217.0"
 
 util-deprecate@~1.0.1:
   version "1.0.2"
