@@ -1124,10 +1124,10 @@ check-types@^7.3.0:
   resolved "https://registry.yarnpkg.com/check-types/-/check-types-7.4.0.tgz#0378ec1b9616ec71f774931a3c6516fad8c152f4"
   integrity sha512-YbulWHdfP99UfZ73NcUDlNJhEIDgm9Doq9GhpyXbF+7Aegi3CVV7qqMCKTTqJxlvEvnQBp9IA+dxsGN6xK/nSg==
 
-chisel.css@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/chisel.css/-/chisel.css-0.8.0.tgz#c82b19d2be191d43325818a6ba8155a71b6b9156"
-  integrity sha512-RnmwtYZyt+1BO1FGmISujkixyszNtbGt4tYvBHEaOCvXDQdTetuf+1zmWzXQysvyNi9mtFaaPiFCrcwMo9j8aA==
+chisel.css@^0.8.1:
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/chisel.css/-/chisel.css-0.8.1.tgz#ca9db770e2515330b48940e8f63bcabb9f0b7cad"
+  integrity sha512-MQNpsGUhGx1qRyZJ3CIxuLe2NpevPRiKi3Hp19oEnXBKEuLaxPdmJ8qK8F+iep8+vhYXdLAKUOCtHbfTc9SzqQ==
 
 "chokidar@>=3.0.0 <4.0.0":
   version "3.5.2"
