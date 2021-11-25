@@ -1,7 +1,5 @@
 ---
 import Note from './Note.astro'
-import ArticlePreview from './ArticlePreview.astro'
-import Icon from './Icon.astro'
 import { getNotes } from '../utils/notes'
 
 export interface Props {
@@ -9,7 +7,7 @@ export interface Props {
   ids: CMS.NoteSlug[]
 }
 
-const { title, ids } = Astro.props as Props
+const { ids } = Astro.props as Props
 
 const notes = getNotes(
   Astro.fetchContent('../data/notes/*.md'),
