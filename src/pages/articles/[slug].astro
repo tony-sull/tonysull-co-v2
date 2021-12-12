@@ -1,26 +1,35 @@
 ---
-import site from '../../data/site.json'
-import Layout from '../../layouts/Base.astro'
-import { isoDate, shortDate } from '../../utils/dates'
-import { getDomain } from '../../utils/links'
-import { mdToHtml } from '../../utils/markdown'
-import { readMinutes } from '../../utils/readMinutes'
+import site from "../../data/site.json"
+import Layout from "../../layouts/Base.astro"
+import { isoDate, shortDate } from "../../utils/dates"
+import { getDomain } from "../../utils/links"
+import { mdToHtml } from "../../utils/markdown"
+import { readMinutes } from "../../utils/readMinutes"
 
 export async function getStaticPaths({ rss }) {
-  const data = Astro.fetchContent('../../data/articles/*.md')
-    .filter(({ draft }) => !draft)
+  const data = Astro.fetchContent("../../data/articles/*.md").filter(
+    ({ draft }) => !draft
+  )
 
   const allArticles = data.map(({ astro, file, url, ...article }) => {
     return {
       params: { slug: article.slug },
-      props: { article: { ...article, minutes: readMinutes(astro.source) }, content: astro.html, md: astro.source }
+      props: {
+        article: { ...article, minutes: readMinutes(astro.source) },
+        content: astro.html,
+        md: astro.source,
+      },
     }
   })
 
   rss({
     title: `Articles • ${site.title}`,
     description: site.description,
-    customData: `<language>en-us</language><author><name>${site.title}</name></author><id>${site.url}${site.rss.articles}</id><updated>${isoDate(new Date())}</updated>`,
+    customData: `<language>en-us</language><author><name>${
+      site.title
+    }</name></author><id>${site.url}${site.rss.articles}</id><updated>${isoDate(
+      new Date()
+    )}</updated>`,
     items: allArticles.map(({ props }) => {
       const { article, md } = props
 
@@ -28,23 +37,36 @@ export async function getStaticPaths({ rss }) {
         title: article.title,
         link: `/articles/${article.slug}/`,
         pubDate: isoDate(article.published_date),
-        customData: `<id>${article.slug}</id><updated>${isoDate(article.modified_date || article.published_date)}</updated><content type="html"><![CDATA[ ${mdToHtml(md)} ]]></content>`
+        customData: `<id>${article.slug}</id><updated>${isoDate(
+          article.modified_date || article.published_date
+        )}</updated><content type="html"><![CDATA[ ${mdToHtml(
+          md
+        )} ]]></content>`,
       }
     }),
-    dest: `/${site.rss.articles}`
+    dest: `/${site.rss.articles}`,
   })
 
   return allArticles
 }
 
 interface Props {
-  article: CMS.Article,
+  article: CMS.Article
   content: string
 }
 
 const { article, content } = Astro.props
 
-const { title, description, category, image, canonical_url, published_date, modified_date, minutes } = article
+const {
+  title,
+  description,
+  category,
+  image,
+  canonical_url,
+  published_date,
+  modified_date,
+  minutes,
+} = article
 
 const publishedDateISO = published_date && isoDate(published_date)
 const publishedDate = published_date && shortDate(published_date)
@@ -55,9 +77,9 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
 
 <Layout
   prose
-  title={title}
-  description={description}
-  image={image}
+  {title}
+  {description}
+  {image}
   pathname={Astro.request.url.pathname}
   canonicalURL={canonical_url || Astro.request.canonicalURL}
 >
@@ -67,9 +89,14 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
       <h1 class="p-name">{title}</h1>
 
       <small>
-        <time class="dt-published" datetime={publishedDateISO}>{publishedDate}</time>
+        <time class="dt-published" datetime={publishedDateISO}
+          >{publishedDate}</time
+        >
         {canonical_url && (
-          <i>• Originally published at <a href={canonical_url}>{canonicalDomain}</a></i>
+          <i>
+            • Originally published at{" "}
+            <a href={canonical_url}>{canonicalDomain}</a>
+          </i>
         )}
         <b class="h-card p-author">
           <a class="u-url" href="/">{title}</a>
@@ -77,20 +104,20 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
         • {minutes} min read
       </small>
 
-      {modifiedDate &&
+      {modifiedDate && (
         <small>
-            <time class="dt-updated" datetime={modifiedDateISO}>
-                <i>Updated: {modifiedDate}</i>
-            </time>
+          <time class="dt-updated" datetime={modifiedDateISO}>
+            <i>Updated: {modifiedDate}</i>
+          </time>
         </small>
-      }
-      
-      <blockquote class='h5'>
+      )}
+
+      <blockquote class="h5">
         <p class="p-summary lead">{description}</p>
       </blockquote>
     </header>
   </section>
-  
+
   <article class="e-content markdown">
     {content}
   </article>
@@ -131,7 +158,7 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
 
     & blockquote {
       color: var(--chisel-neutral-700);
-      font-weight:400;
+      font-weight: 400;
       line-height: 1.3;
       margin: var(--spacer-md) 0 0;
     }

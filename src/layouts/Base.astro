@@ -1,65 +1,63 @@
 ---
-import Footer from '../components/Footer.astro'
-import Header from '../components/Header.astro'
-import MainHead from '../components/MainHead.astro'
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import MainHead from "../components/MainHead.astro"
 
 interface Props {
-	title?: string
-	description?: string
-	image?: string
-	pathname?: string
-	canonicalURL: URL
+  title?: string
+  description?: string
+  image?: string
+  pathname?: string
+  canonicalURL: URL
   prose?: boolean
 }
 
 const {
-	title,
-	description,
-	image,
-	canonicalURL,
-  prose = false
+  title,
+  description,
+  image,
+  canonicalURL,
+  prose = false,
 } = Astro.props as Props
 ---
 
 <html lang="en" data-chisel-theme="light">
   <head>
-    <MainHead title={title} description={description} image={image} canonicalURL={canonicalURL} />
+    <MainHead {title} {description} {image} {canonicalURL} />
 
     <script>
-      const THEME_KEY = 'ts_theme'
+      const THEME_KEY = "ts_theme"
 
       function initTheme() {
         let theme = localStorage.getItem(THEME_KEY)
 
         if (!theme) {
-          theme = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-            ? 'dark' : 'light'
+          theme =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light"
         }
 
-        document.documentElement.setAttribute('data-chisel-theme', theme)
+        document.documentElement.setAttribute("data-chisel-theme", theme)
       }
-      
+
       initTheme()
     </script>
   </head>
 
   <body>
-    <a
-      id="skip-to-content"
-      href="#main"
-      class="sr-only sr-only-focusable"
-    >
+    <a id="skip-to-content" href="#main" class="sr-only sr-only-focusable">
       Skip to content
     </a>
 
     <Header pathname={Astro.request.url.pathname} />
 
-    <main class={`container ${prose && 'container--prose'}`} id="main">
+    <main class={`container ${prose && "container--prose"}`} id="main">
       <slot />
     </main>
 
     <Footer />
-
   </body>
 </html>
 

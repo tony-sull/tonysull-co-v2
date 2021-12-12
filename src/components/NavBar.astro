@@ -1,6 +1,6 @@
 ---
-import navigation from '../data/navigation.json'
-import site from '../data/site.json'
+import navigation from "../data/navigation.json"
+import site from "../data/site.json"
 
 interface Props {
   pathname: string
@@ -14,7 +14,12 @@ const { main } = navigation as CMS.Navigation
   <section>
     <div class="glass" aria-hidden></div>
 
-    <a href='/' rel='home' aria-label='Go to Homepage' class='button secondary icon'>
+    <a
+      href="/"
+      rel="home"
+      aria-label="Go to Homepage"
+      class="button secondary icon"
+    >
       TS
     </a>
 
@@ -24,16 +29,27 @@ const { main } = navigation as CMS.Navigation
       <ul>
         {main.map(({ href, title }) => (
           <li>
-            <a href={href} aria-current={href === pathname ? "page" : false}>{title}</a>
+            <a href={href} aria-current={href === pathname ? "page" : false}>
+              {title}
+            </a>
           </li>
         ))}
       </ul>
     </nav>
-    
+
     <button class="subtle icon">
       <span class="sr-only">toggle theme panel</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" role="img" aria-hidden="true">
-        <path d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        role="img"
+        aria-hidden="true"
+      >
+        <path
+          d="M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z"
+        ></path>
       </svg>
     </button>
   </section>
@@ -86,7 +102,7 @@ const { main } = navigation as CMS.Navigation
   section > a {
     display: flex;
     align-items: center;
-    font-weight: bold;  
+    font-weight: bold;
   }
 
   nav {
@@ -115,7 +131,7 @@ const { main } = navigation as CMS.Navigation
     position: relative;
   }
 
-  a[aria-current=page]::after {
+  a[aria-current="page"]::after {
     content: "";
     position: absolute;
     height: 3px;

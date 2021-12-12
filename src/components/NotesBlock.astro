@@ -1,6 +1,6 @@
 ---
-import Note from './Note.astro'
-import { getNotes } from '../utils/notes'
+import Note from "./Note.astro"
+import { getNotes } from "../utils/notes"
 
 export interface Props {
   title: string
@@ -9,19 +9,14 @@ export interface Props {
 
 const { ids } = Astro.props as Props
 
-const notes = getNotes(
-  Astro.fetchContent('../data/notes/*.md'),
-  ids
-)
+const notes = getNotes(Astro.fetchContent("../data/notes/*.md"), ids)
 ---
 
 <section>
-  {notes.map((note) => (
-    <Note note={note} share />
-  ))}
+  {notes.map((note) => <Note note={note} share />)}
 </section>
 
-<style lang='scss'>
+<style lang="scss">
   section {
     display: flex;
     flex-direction: column;

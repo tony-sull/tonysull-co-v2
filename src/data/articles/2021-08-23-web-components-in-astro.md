@@ -144,7 +144,8 @@ In the demo project, the web component is defined in `src/components/my-counter.
 <head>
   <title>Welcome to Astro</title>
 
-  <script type="module" src={Astro.resolve('../components/my-counter.js')}></script>
+  <script type="module" src={Astro.resolve("../components/my-counter.js")}
+  ></script>
 </head>
 
 <body>

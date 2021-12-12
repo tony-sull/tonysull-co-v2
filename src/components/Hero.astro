@@ -1,5 +1,5 @@
 ---
-import { mdToHtml } from '../utils/markdown'
+import { mdToHtml } from "../utils/markdown"
 
 export interface Props {
   cta: {
@@ -23,7 +23,7 @@ const contentHtml = mdToHtml(content)
   </main>
 </section>
 
-<style lang='scss'>
+<style lang="scss">
   section {
     padding: var(--spacer-lg) 0;
   }
@@ -58,7 +58,7 @@ const contentHtml = mdToHtml(content)
   }
 
   main :global(a::before) {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     right: 0;

@@ -1,6 +1,6 @@
-@use 'chisel.css/dist/chisel.css';
-@use 'chisel.css/dist/chisel-prism.css';
-@use '@fontsource/playfair-display/scss/mixins' as PlayfairDisplay;
+@use "chisel.css/dist/chisel.css";
+@use "chisel.css/dist/chisel-prism.css";
+@use "@fontsource/playfair-display/scss/mixins" as PlayfairDisplay;
 
 @include PlayfairDisplay.fontFace(
   $weight: 700,

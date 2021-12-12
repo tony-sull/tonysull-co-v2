@@ -1,5 +1,5 @@
 ---
-import { isoDate, shortDate } from '../utils/dates'
+import { isoDate, shortDate } from "../utils/dates"
 
 interface Props {
   article: CMS.Article
@@ -17,7 +17,7 @@ const publishedDate = shortDate(published_date)
   <h3>
     <a href={`/articles/${slug}`}>{title}</a>
   </h3>
-  <p class='meta'>
+  <p class="meta">
     <time date-time={publishedDateISO}>{publishedDate}</time>
     <span aria-hidden> ⋅ </span>
     <span>{category.toUpperCase()}</span>

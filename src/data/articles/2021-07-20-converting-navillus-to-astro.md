@@ -48,9 +48,7 @@ becomes...
   ...
 )}
 
-{items.map((item) => (
-  <li>{item}</li>
-))}
+{items.map((item) => <li>{item}</li>)}
 ```
 
 Coming from Svelte this feels a little too React-y for my taste, but it is really handy to be able to use JavaScript right in the template. I haven't actually tried this yet, but I assume you could `sort()` or `filter()` the array right in your template!

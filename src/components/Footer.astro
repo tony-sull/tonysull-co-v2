@@ -1,51 +1,51 @@
 ---
-import Icon from './Icon.astro'
-import site from '../data/site.json'
+import Icon from "./Icon.astro"
+import site from "../data/site.json"
 
 const { url, title, social } = site as CMS.Site
 ---
 
-<footer class='container'>
-  <section class='h-card'>
+<footer class="container">
+  <section class="h-card">
     <p>
       <strong>© 2021</strong>
-      <a class='p-name u-url' rel='me' href={url}>{title}</a>
+      <a class="p-name u-url" rel="me" href={url}>{title}</a>
       /
-      <a href='/about'>About</a>
+      <a href="/about">About</a>
     </p>
 
     <p>
       <strong>Social</strong>
-      <a title='Twitter' rel='me' href={social.twitter_url}>Twitter</a>
+      <a title="Twitter" rel="me" href={social.twitter_url}>Twitter</a>
       /
-      <a title='Github' rel='me' href={social.github_url}>Github</a>
+      <a title="Github" rel="me" href={social.github_url}>Github</a>
     </p>
 
     <p>
       <strong>Legal</strong>
-      <a href='/privacy'>Privacy Policy</a>
+      <a href="/privacy">Privacy Policy</a>
     </p>
 
     <p>
       <strong>RSS Feed</strong>
-      <a title='RSS Feed' href={site.rss.articles}>Subscribe</a>
+      <a title="RSS Feed" href={site.rss.articles}>Subscribe</a>
     </p>
 
     <p>
-      <a title='Twitter' href={social.twitter_url}>
-        <Icon icon='twitter' size={24} />
+      <a title="Twitter" href={social.twitter_url}>
+        <Icon icon="twitter" size={24} />
       </a>
-      <a title='GitHub' href={social.github_url}>
-        <Icon icon='github' size={24} />
+      <a title="GitHub" href={social.github_url}>
+        <Icon icon="github" size={24} />
       </a>
-      <a title='RSS Feed' href={site.rss.articles}>
-        <Icon icon='rss' size={24} />
+      <a title="RSS Feed" href={site.rss.articles}>
+        <Icon icon="rss" size={24} />
       </a>
     </p>
   </section>
 </footer>
 
-<style lang='scss'>
+<style lang="scss">
   footer {
     background: var(--chisel-neutral-100);
     filter: drop-shadow(0px 2px 4px #00000080);

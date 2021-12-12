@@ -1,4 +1,5 @@
 {
-    "semi": false,
-    "tabWidth": 2
+  "semi": false,
+  "tabWidth": 2,
+  "plugins": ["prettier-plugin-astro"]
 }

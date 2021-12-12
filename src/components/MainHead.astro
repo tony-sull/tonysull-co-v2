@@ -1,5 +1,5 @@
 ---
-import site from '../data/site.json'
+import site from "../data/site.json"
 
 interface Props {
   title: string
@@ -12,13 +12,11 @@ const {
   title,
   description = site.description,
   image = site.social.image,
-  canonicalURL
+  canonicalURL,
 } = Astro.props as Props
 
 const imageAbsolute = `${site.url}${image}`
-const fullTitle = [title, site.title]
-  .filter(Boolean)
-  .join(' • ')
+const fullTitle = [title, site.title].filter(Boolean).join(" • ")
 ---
 
 <!-- Common -->
@@ -35,7 +33,7 @@ const fullTitle = [title, site.title]
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Favicons -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 <!-- Open Graph -->
 <meta property="og:title" content={fullTitle} />
@@ -59,7 +57,7 @@ const fullTitle = [title, site.title]
 <link rel="sitemap" href="/sitemap.xml" />
 
 <!-- Global Styles -->
-<link rel="stylesheet" href={Astro.resolve('../assets/global.scss')} />
+<link rel="stylesheet" href={Astro.resolve("../assets/global.scss")} />
 
 <!-- Web Mentions -->
 <link rel="webmention" href="https://webmention.io/tonysull.co/webmention" />

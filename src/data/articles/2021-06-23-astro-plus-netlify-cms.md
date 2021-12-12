@@ -91,12 +91,10 @@ export async function createCollection() {
 That's really all there is to it! The `fetchContent` API takes care of loading all matching markdown files. I left out RSS feed support here for brevity, but you can find that in the demo repo [here](https://github.com/Navillus-BV/demo-astro-netlify-cms/blob/main/src/pages/%24blog.astro).
 
 ```astro
-<Layout title={title} description={description}>
-    <h1>{title}</h1>
+<Layout {title} {description}>
+  <h1>{title}</h1>
 
-    {collection.data.map((post) => (
-        <PostPreview post={post} />
-    ))}
+  {collection.data.map((post) => <PostPreview post={post} />)}
 </Layout>
 ```
 

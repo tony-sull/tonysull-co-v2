@@ -1,7 +1,7 @@
 ---
-import ArticlePreview from './ArticlePreview.astro'
-import Icon from './Icon.astro'
-import { getArticles } from '../utils/articles'
+import ArticlePreview from "./ArticlePreview.astro"
+import Icon from "./Icon.astro"
+import { getArticles } from "../utils/articles"
 
 export interface Props {
   title: string
@@ -10,16 +10,11 @@ export interface Props {
 
 const { title, ids } = Astro.props as Props
 
-const articles = getArticles(
-  Astro.fetchContent('../data/articles/*.md'),
-  ids
-)
+const articles = getArticles(Astro.fetchContent("../data/articles/*.md"), ids)
 ---
 
 <section>
-  {title && (
-    <h2>{title}</h2>
-  )}
+  {title && <h2>{title}</h2>}
 
   <ol>
     {articles.map((article) => (
@@ -30,9 +25,9 @@ const articles = getArticles(
   </ol>
 
   {!!ids && (
-    <a href='/articles'>
+    <a href="/articles">
       See All Articles
-      <Icon icon='arrow-right' size={32} />
+      <Icon icon="arrow-right" size={32} />
     </a>
   )}
 </section>
