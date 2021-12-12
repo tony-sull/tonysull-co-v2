@@ -1,5 +1,6 @@
 ---
 import site from "../../data/site.json"
+import Show from '../../components/Show.astro'
 import Layout from "../../layouts/Base.astro"
 import { isoDate, shortDate } from "../../utils/dates"
 import { getDomain } from "../../utils/links"
@@ -92,25 +93,25 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
         <time class="dt-published" datetime={publishedDateISO}
           >{publishedDate}</time
         >
-        {canonical_url && (
+        <Show when={!!canonical_url}>
           <i>
             • Originally published at{" "}
             <a href={canonical_url}>{canonicalDomain}</a>
           </i>
-        )}
+        </Show>
         <b class="h-card p-author">
           <a class="u-url" href="/">{title}</a>
         </b>
         • {minutes} min read
       </small>
 
-      {modifiedDate && (
+      <Show when={modifiedDate}>
         <small>
           <time class="dt-updated" datetime={modifiedDateISO}>
             <i>Updated: {modifiedDate}</i>
           </time>
         </small>
-      )}
+      </Show>
 
       <blockquote class="h5">
         <p class="p-summary lead">{description}</p>

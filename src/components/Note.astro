@@ -1,5 +1,6 @@
 ---
 import Icon from "./Icon.astro"
+import Show from './Show.astro'
 import site from "../data/site.json"
 import { isoDate, shortDate } from "../utils/dates"
 import { pathJoin } from "../utils/links"
@@ -47,9 +48,9 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
         <br />
         <small>
           <a href={site.social.twitter_url}>{site.social.twitter_handle}</a> •
-          <time class="dt-published" datetime={isoDate(date)}
-            >{shortDate(date)}</time
-          >
+          <time class="dt-published" datetime={isoDate(date)}>
+            {shortDate(date)}
+          </time>
         </small>
       </strong>
     </p>
@@ -57,16 +58,16 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
   <main class="e-content p-name markdown">
     {contentHtml}
 
-    {tags.length > 0 && (
+    <Show when={tags.length > 0}>
       <div class="tags">
         {tags.map((tag) => (
           <small>#{tag}</small>
         ))}
       </div>
-    )}
+    </Show>
   </main>
 
-  {share ? (
+  <Show when={share}>
     <footer>
       <span class="sr-only">View or Share Note</span>
       <label>
@@ -89,8 +90,8 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
         <Icon icon="arrow-right" size={24} />
       </a>
     </footer>
-  ) : (
-    <footer>
+
+    <footer slot="fallback">
       <span class="sr-only">View or Share Note</span>
       <label>
         <Icon icon="comment" size={24} />
@@ -105,7 +106,7 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
         <span>0</span>
       </label>
     </footer>
-  )}
+  </Show>
 </article>
 
 <style lang="scss">

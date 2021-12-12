@@ -1,6 +1,7 @@
 ---
 import ArticlePreview from "./ArticlePreview.astro"
 import Icon from "./Icon.astro"
+import Show from "./Show.astro"
 import { getArticles } from "../utils/articles"
 
 export interface Props {
@@ -14,7 +15,9 @@ const articles = getArticles(Astro.fetchContent("../data/articles/*.md"), ids)
 ---
 
 <section>
-  {title && <h2>{title}</h2>}
+  <Show when={!!title}>
+    <h2>{title}</h2>
+  </Show>
 
   <ol>
     {articles.map((article) => (
@@ -24,12 +27,12 @@ const articles = getArticles(Astro.fetchContent("../data/articles/*.md"), ids)
     ))}
   </ol>
 
-  {!!ids && (
+  <Show when={!!ids}>
     <a href="/articles">
       See All Articles
       <Icon icon="arrow-right" size={32} />
     </a>
-  )}
+  </Show>
 </section>
 
 <style lang="scss">

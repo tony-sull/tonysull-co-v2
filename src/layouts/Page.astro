@@ -3,6 +3,7 @@ import Layout from "./Base.astro"
 import ArticlesBlock from "../components/ArticlesBlock.astro"
 import Hero from "../components/Hero.astro"
 import NotesBlock from "../components/NotesBlock.astro"
+import Show from "../components/Show.astro"
 import { isArticlesBlock, isHeroBlock, isNotesBlock } from "../utils/blocks"
 
 interface Content {
@@ -22,7 +23,9 @@ const hasHero = blocks.some(({ type }) => type === "hero")
 ---
 
 <Layout {title} {description} canonicalURL={Astro.request.canonicalURL}>
-  {!hasHero && <h1>{title}</h1>}
+  <Show when={!hasHero}>
+    <h1>{title}</h1>
+  </Show>
 
   {blocks.map((data) => {
     return isHeroBlock(data) ? (
