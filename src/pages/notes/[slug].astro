@@ -52,7 +52,7 @@ const { ...note } = Astro.props as CMS.Note
   canonicalURL={Astro.request.canonicalURL}
 >
   <section>
-    <Note note={note} />
+    <Note {note} />
   </section>
 </Layout>
 

@@ -1,11 +1,11 @@
 ---
-  export interface Props {
-    when: boolean;
-  }
+export interface Props {
+  when: boolean
+}
 
-  const { when } = Astro.props as Props
+const { when } = Astro.props as Props
 ---
 
-{when && (<slot></slot>)}
+{when && <slot></slot>}
 
-{!when && (<slot name='fallback'></slot>)}
+{!when && <slot name="fallback"></slot>}

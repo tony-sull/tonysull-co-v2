@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro"
-import Show from './Show.astro'
+import Show from "./Show.astro"
 import site from "../data/site.json"
 import { isoDate, shortDate } from "../utils/dates"
 import { pathJoin } from "../utils/links"
@@ -60,9 +60,7 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
 
     <Show when={tags.length > 0}>
       <div class="tags">
-        {tags.map((tag) => (
-          <small>#{tag}</small>
-        ))}
+        {tags.map((tag) => <small>#{tag}</small>)}
       </div>
     </Show>
   </main>
