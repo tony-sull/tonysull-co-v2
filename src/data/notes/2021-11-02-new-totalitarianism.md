@@ -1,6 +1,6 @@
 ---
 slug: 2021-11-02-new-totalitarianism
-title: Buying the environment
+title: New totalitarianism
 date: 2021-11-02T20:47:48.055Z
 twitter_id: "1455622479184019458"
 tags:

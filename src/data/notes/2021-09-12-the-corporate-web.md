@@ -1,6 +1,6 @@
 ---
 slug: 2021-09-12-the-corporate-web
-title: Deplatforming should be the goal
+title: The corporate web
 date: 2021-09-12T17:12:48.055Z
 twitter_id: "1437102266624925700"
 tags:

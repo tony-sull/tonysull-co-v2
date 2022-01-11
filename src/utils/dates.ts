@@ -9,5 +9,10 @@ export function shortDate(date: Date | string) {
 }
 
 export function isoDate(date: Date | string) {
-  return safeDate(date).toISOString()
+  try {
+    return safeDate(date).toISOString()
+  } catch (err) {
+    console.error(date, err)
+    return ""
+  }
 }
