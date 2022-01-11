@@ -2,6 +2,7 @@
 slug: 2022-01-11-privacy-first-javascript
 title: Privacy-first javascript
 date: 2022-01-11T18:10:48.055Z
+twitter_id: "1480951802992365569"
 tags:
   - openweb
   - privacy
