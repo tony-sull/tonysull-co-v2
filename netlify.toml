@@ -1,5 +1,5 @@
 [build]
-    command = "yarn build"
+    command = "pnpm build"
     publish = "dist"
 
 [functions]
@@ -7,7 +7,7 @@
     node_bundler = "esbuild"
 
 [dev]
-    command = "yarn dev"
+    command = "pnpm dev"
 
 [[plugins]]
     package = "netlify-plugin-a11y"

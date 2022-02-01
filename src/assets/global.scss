@@ -1,12 +1,5 @@
 @use "chisel.css/dist/chisel.css";
 @use "chisel.css/dist/chisel-prism.css";
-@use "@fontsource/playfair-display/scss/mixins" as PlayfairDisplay;
-
-@include PlayfairDisplay.fontFace(
-  $weight: 700,
-  $display: fallback,
-  $fontDir: "/fonts/playfair-display/files"
-);
 
 :root {
   --font-family-base: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
