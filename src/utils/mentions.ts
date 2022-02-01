@@ -11,12 +11,12 @@ interface WebMentionResponse {
   children: WebMention[]
 }
 
-const { domain } = site
+const domain = new URL(site.url).hostname
 
 // Define cache location and API endpoint
 const CACHE_FILE_PATH = "_cache/webmentions.json"
 const API = "https://webmention.io/api"
-const TOKEN = process.env.WEBMENTION_IO_TOKEN
+const TOKEN = import.meta.env.WEBMENTION_IO_TOKEN
 
 async function fetchWebmentions(since, perPage = 1000) {
   // If we don't have a domain name or token, abort
@@ -63,7 +63,7 @@ function writeToCache(data: any) {
 // get cache contents from json file
 function readFromCache() {
   if (fs.existsSync(CACHE_FILE_PATH)) {
-    const cacheFile = fs.readFileSync(CACHE_FILE_PATH)
+    const cacheFile = fs.readFileSync(CACHE_FILE_PATH, 'utf-8')
     return JSON.parse(cacheFile)
   }
 
@@ -94,6 +94,10 @@ async function _getAllMentions() {
       writeToCache(webmentions)
       return webmentions
     }
+  } else {
+    console.log(
+      `>>> Skipping webmentions check, WEBMENTION_IO_TOKEN not provided`
+    )
   }
 
   return cache

@@ -1,6 +1,5 @@
 # build output
 dist
-_cache
 functions
 
 # dependencies

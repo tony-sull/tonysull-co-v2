@@ -93,15 +93,15 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
       <span class="sr-only">View or Share Note</span>
       <label>
         <Icon icon="comment" size={24} />
-        <span>0</span>
+        <span>{replies.length}</span>
       </label>
       <label>
         <Icon icon="refresh" size={24} />
-        <span>0</span>
+        <span>{reposts.length}</span>
       </label>
       <label>
         <Icon icon="heart" size={24} />
-        <span>0</span>
+        <span>{likes.length}</span>
       </label>
     </footer>
   </Show>
