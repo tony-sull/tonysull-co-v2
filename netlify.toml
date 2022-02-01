@@ -13,9 +13,6 @@
     command = "pnpm dev"
 
 [[plugins]]
-    package = "netlify-plugin-a11y"
-
-[[plugins]]
     package = "netlify-plugin-cache-folder"
 
 [[redirects]]
