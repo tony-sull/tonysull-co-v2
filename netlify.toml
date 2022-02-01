@@ -1,6 +1,9 @@
 [build]
-    command = "pnpm build"
+    command = "npx pnpm install --store=node_modules/.pnpm-store && npx pnpm build"
     publish = "dist"
+
+[build.environment]
+    NPM_FLAGS = "--version"
 
 [functions]
     directory = "lambda"
