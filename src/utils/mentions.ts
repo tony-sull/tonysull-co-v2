@@ -63,7 +63,7 @@ function writeToCache(data: any) {
 // get cache contents from json file
 function readFromCache() {
   if (fs.existsSync(CACHE_FILE_PATH)) {
-    const cacheFile = fs.readFileSync(CACHE_FILE_PATH, 'utf-8')
+    const cacheFile = fs.readFileSync(CACHE_FILE_PATH, "utf-8")
     return JSON.parse(cacheFile)
   }
 
