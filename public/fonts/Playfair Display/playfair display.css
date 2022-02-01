@@ -1,8 +1,0 @@
-
-  /** Playfair Display[700] - normal */
-  @font-face {
-    font-family: 'Playfair Display';
-    font-style:  normal;
-    font-weight: 700;
-    src: url('https://fonts.gstatic.com/s/playfairdisplay/v25/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKeiunDZbtM.woff2') format('woff2'); /* Chrome 26+, Opera 23+, Firefox 39+ */
-  }
