@@ -71,7 +71,7 @@ function last(arr) {
 
 function getSharedLink(lines) {
   const lastLine = last(lines)
-  return urlRegex(lastLine) ? lastLine : undefined
+  return lastLine.match(urlRegex()) ? lastLine : undefined
 }
 
 // Prepare the content string for tweet format
