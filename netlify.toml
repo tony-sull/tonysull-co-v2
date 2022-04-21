@@ -12,9 +12,6 @@
 [dev]
     command = "pnpm dev"
 
-[[plugins]]
-    package = "netlify-plugin-cache-folder"
-
 [[redirects]]
     from = "/api/*"
     to = "/.netlify/functions/:splat"
