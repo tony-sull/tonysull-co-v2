@@ -1,19 +1,17 @@
-// Full Astro Configuration API Documentation:
-// https://docs.astro.build/reference/configuration-reference
+import { defineConfig } from 'astro/config';
 
-// @type-check enabled!
-// VSCode and other TypeScript-enabled text editors will provide auto-completion,
-// helpful tooltips, and warnings if your exported object is invalid.
-// You can disable this by removing "@ts-check" and `@type` comments below.
+import sitemap from "@astrojs/sitemap";
 
-// @ts-check
-export default /** @type {import('astro').AstroUserConfig} */ ({
-  buildOptions: {
-    site: "https://tonysull.co",
-    sitemap: true,
+// https://astro.build/config
+export default defineConfig({
+  site: 'https://tonysull.co',
+  server: {
+    port: 8080
   },
-  devOptions: {
-    port: 8080,
+  integrations: [sitemap()],
+  vite: {
+    ssr: {
+      external: ["svgo"],
+    },
   },
-  renderers: [],
-})
+});

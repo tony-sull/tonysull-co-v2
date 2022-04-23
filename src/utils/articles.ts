@@ -1,17 +1,12 @@
 import path from "path"
+import type { MarkdownInstance } from 'astro'
 
-interface ArticleData extends CMS.Article {
-  astro: any
-  file: URL
-  url: string
-}
-
-function parseData(data: ArticleData): { id: string; article: CMS.Article } {
-  const { astro, file, url, ...article } = data
+function parseData(data: MarkdownInstance<CMS.Article>): { id: string; article: CMS.Article } {
+  const { frontmatter: article, file, Content } = data
   const id = path
-    .basename(file.pathname)
-    .replace(path.extname(file.pathname), "")
-  return { id, article }
+    .basename(file)
+    .replace(path.extname(file), "")
+  return { id, article, Content }
 }
 
 function sortArticles(a: CMS.Article, b: CMS.Article) {
@@ -21,7 +16,7 @@ function sortArticles(a: CMS.Article, b: CMS.Article) {
 }
 
 export function getArticles(
-  allArticles: ArticleData[],
+  allArticles: MarkdownInstance<CMS.Article>[],
   ids?: CMS.ArticleSlug[]
 ) {
   const articlesMap = allArticles

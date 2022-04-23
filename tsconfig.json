@@ -6,8 +6,9 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "types": ["node"],
-    "typeRoots": ["types"]
+    "typeRoots": ["types"],
   },
+  "include": ["types/cms.d.ts"],
   "ts-node": {
     "transpileOnly": true,
     "files": true,

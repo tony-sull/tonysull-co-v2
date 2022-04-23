@@ -1,4 +1,5 @@
 ---
+import { Sprite } from "astro-icon"
 import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
 import MainHead from "../components/MainHead.astro"
@@ -47,21 +48,23 @@ const {
   </head>
 
   <body>
-    <a id="skip-to-content" href="#main" class="sr-only sr-only-focusable">
-      Skip to content
-    </a>
+    <Sprite.Provider>
+      <a id="skip-to-content" href="#main" class="sr-only sr-only-focusable">
+        Skip to content
+      </a>
 
-    <Header pathname={Astro.request.url.pathname} />
+      <Header pathname={Astro.canonicalURL.pathname} />
 
-    <main class={`container ${prose && "container--prose"}`} id="main">
-      <slot />
-    </main>
+      <main class={`container ${prose && "container--prose"}`} id="main">
+        <slot />
+      </main>
 
-    <Footer />
+      <Footer />
+    </Sprite.Provider>
   </body>
 </html>
 
-<style lang="scss" global>
+<style is:global lang="scss">
   body {
     font-family: var(--font-family-base);
     line-height: 1.5;

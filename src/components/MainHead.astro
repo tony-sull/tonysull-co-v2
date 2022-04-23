@@ -1,5 +1,5 @@
 ---
-import Font from 'astro-fonts'
+import '../assets/global.scss'
 import site from "../data/site.json"
 
 interface Props {
@@ -57,9 +57,8 @@ const fullTitle = [title, site.title].filter(Boolean).join(" • ")
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap.xml" />
 
-<!-- Global Styles -->
-<link rel="stylesheet" href={Astro.resolve("../assets/global.scss")} />
-<Font name="Playfair Display" weights='700' styles='normal' />
+<!-- Custom Fonts -->
+<link rel="stylesheet" href="/fonts/Playfair Display/playfair display.css">
 
 <!-- Web Mentions -->
 <link rel="webmention" href="https://webmention.io/tonysull.co/webmention" />

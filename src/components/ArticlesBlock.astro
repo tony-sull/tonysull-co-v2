@@ -1,6 +1,6 @@
 ---
+import { Sprite } from "astro-icon"
 import ArticlePreview from "./ArticlePreview.astro"
-import Icon from "./Icon.astro"
 import Show from "./Show.astro"
 import { getArticles } from "../utils/articles"
 
@@ -11,7 +11,7 @@ export interface Props {
 
 const { title, ids } = Astro.props as Props
 
-const articles = getArticles(Astro.fetchContent("../data/articles/*.md"), ids)
+const articles = getArticles(await Astro.glob('../data/articles/*.md'), ids)
 ---
 
 <section>
@@ -30,7 +30,7 @@ const articles = getArticles(Astro.fetchContent("../data/articles/*.md"), ids)
   <Show when={!!ids}>
     <a href="/articles">
       See All Articles
-      <Icon icon="arrow-right" size={32} />
+      <Sprite name="arrow-right" size={32} />
     </a>
   </Show>
 </section>

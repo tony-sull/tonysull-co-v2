@@ -2,23 +2,19 @@
 import site from "../../data/site.json"
 import Show from "../../components/Show.astro"
 import Layout from "../../layouts/Base.astro"
-import { isoDate, shortDate } from "../../utils/dates"
-import { getDomain } from "../../utils/links"
-import { mdToHtml } from "../../utils/markdown"
-import { readMinutes } from "../../utils/readMinutes"
+import { isoDate, shortDate } from "../../utils/dates.ts"
+import { getDomain } from "../../utils/links.ts"
 
 export async function getStaticPaths({ rss }) {
-  const data = Astro.fetchContent("../../data/articles/*.md").filter(
-    ({ draft }) => !draft
-  )
+  const data = await Astro.glob<CMS.Article>('../../data/articles/*.md')
+    .then(matches => matches.filter(match => !match.frontmatter.draft));
 
-  const allArticles = data.map(({ astro, file, url, ...article }) => {
+  const allArticles = data.map(({ frontmatter: article, Content }) => {
     return {
       params: { slug: article.slug },
       props: {
-        article: { ...article, minutes: readMinutes(astro.source) },
-        content: astro.html,
-        md: astro.source,
+        article: { ...article },
+        Content
       },
     }
   })
@@ -32,17 +28,16 @@ export async function getStaticPaths({ rss }) {
       new Date()
     )}</updated>`,
     items: allArticles.map(({ props }) => {
-      const { article, md } = props
+      const { article } = props
 
       return {
         title: article.title,
+        description: article.description,
         link: `/articles/${article.slug}/`,
         pubDate: isoDate(article.published_date),
         customData: `<id>${article.slug}</id><updated>${isoDate(
           article.modified_date || article.published_date
-        )}</updated><content type="html"><![CDATA[ ${mdToHtml(
-          md
-        )} ]]></content>`,
+        )}</updated>`,
       }
     }),
     dest: `/${site.rss.articles}`,
@@ -53,10 +48,9 @@ export async function getStaticPaths({ rss }) {
 
 interface Props {
   article: CMS.Article
-  content: string
 }
 
-const { article, content } = Astro.props
+const { article, Content } = Astro.props
 
 const {
   title,
@@ -65,8 +59,7 @@ const {
   image,
   canonical_url,
   published_date,
-  modified_date,
-  minutes,
+  modified_date
 } = article
 
 const publishedDateISO = published_date && isoDate(published_date)
@@ -81,8 +74,8 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
   {title}
   {description}
   {image}
-  pathname={Astro.request.url.pathname}
-  canonicalURL={canonical_url || Astro.request.canonicalURL}
+  pathname={Astro.canonicalURL.pathname}
+  canonicalURL={canonical_url || Astro.canonicalURL}
 >
   <section class="h-entry">
     <header>
@@ -102,7 +95,6 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
         <b class="h-card p-author">
           <a class="u-url" href="/">{title}</a>
         </b>
-        • {minutes} min read
       </small>
 
       <Show when={modifiedDate}>
@@ -120,7 +112,7 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
   </section>
 
   <article class="e-content markdown">
-    {content}
+    <Content />
   </article>
 </Layout>
 

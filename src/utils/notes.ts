@@ -1,21 +1,17 @@
 import path from "path"
+import type { MarkdownInstance } from 'astro'
+import { CMS } from "../../types/cms";
 
-interface NoteData extends CMS.Note {
-  astro: any
-  file: URL
-  url: string
-}
-
-function parseData(data: NoteData): { id: string; note: CMS.Note } {
-  const { astro, file, url, ...note } = data
+function parseData(data: MarkdownInstance<CMS.Note>): { id: string; note: CMS.Note } {
+  const { file, frontmatter: note, Content } = data
   const id = path
-    .basename(file.pathname)
-    .replace(path.extname(file.pathname), "")
+    .basename(file)
+    .replace(path.extname(file), "")
   return {
     id,
     note: {
       ...note,
-      content: astro.source,
+      Content
     },
   }
 }
@@ -26,7 +22,7 @@ function sortNotes(a: CMS.Note, b: CMS.Note) {
   return bDate.getTime() - aDate.getTime()
 }
 
-export function getNotes(allNotes: NoteData[], ids?: CMS.NoteSlug[]) {
+export function getNotes(allNotes: MarkdownInstance<CMS.Note>[], ids?: CMS.NoteSlug[]) {
   const notesMap = allNotes.map(parseData).reduce((acc, { id, note }) => {
     acc.set(id, note)
 
