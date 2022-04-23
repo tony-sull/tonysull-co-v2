@@ -1,22 +1,6 @@
 import type { MarkdownInstance } from 'astro'
 
-declare namespace CMS {
-  type Icon =
-    | "arrow-right"
-    | "at"
-    | "book"
-    | "bookmark"
-    | "comment"
-    | "github"
-    | "heart"
-    | "home"
-    | "moon"
-    | "refresh"
-    | "roller"
-    | "rss"
-    | "sun"
-    | "twitter"
-
+declare module CMS {
   type Markdown = string
 
   interface Navigation {
@@ -24,7 +8,6 @@ declare namespace CMS {
       {
         title: string
         href: string
-        icon: Icon
       }
     ]
   }
@@ -59,6 +42,7 @@ declare namespace CMS {
     modified_date?: Date | string
     twitter_id?: TwitterPostId
     canonical_url?: string
+    Content: MarkdownInstance<Article>['Content']
   }
 
   type NoteSlug = string

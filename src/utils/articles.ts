@@ -2,11 +2,11 @@ import path from "path"
 import type { MarkdownInstance } from 'astro'
 
 function parseData(data: MarkdownInstance<CMS.Article>): { id: string; article: CMS.Article } {
-  const { frontmatter: article, file } = data
+  const { frontmatter: article, file, Content } = data
   const id = path
     .basename(file)
     .replace(path.extname(file), "")
-  return { id, article }
+  return { id, article, Content }
 }
 
 function sortArticles(a: CMS.Article, b: CMS.Article) {

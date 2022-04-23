@@ -1,5 +1,5 @@
 ---
-import Icon from "./Icon.astro"
+import { Sprite } from "astro-icon"
 import navigation from "../data/navigation.json"
 import site from "../data/site.json"
 
@@ -49,8 +49,8 @@ const isCurrentPage = (href: string) =>
 
     <button id="themebtn" class="subtle icon" style="display: none;">
       <span class="sr-only">toggle theme panel</span>
-      <Icon icon="sun" size={24} />
-      <Icon icon="moon" size={24} />
+      <Sprite name="sun" size={24} />
+      <Sprite name="moon" size={24} />
     </button>
 
     <label role="button" for="menubtn" class="button subtle icon">
@@ -87,11 +87,11 @@ const isCurrentPage = (href: string) =>
 </script>
 
 <style is:global lang="scss">
-  [data-chisel-theme="light"] svg[data-icon="sun"] {
+  [data-chisel-theme="light"] svg[astro-icon="sun"] {
     display: none;
   }
 
-  [data-chisel-theme="dark"] svg[data-icon="moon"] {
+  [data-chisel-theme="dark"] svg[astro-icon="moon"] {
     display: none;
   }
 </style><style lang="scss">

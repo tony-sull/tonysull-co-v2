@@ -4,18 +4,17 @@ import Show from "../../components/Show.astro"
 import Layout from "../../layouts/Base.astro"
 import { isoDate, shortDate } from "../../utils/dates"
 import { getDomain } from "../../utils/links"
-import { mdToHtml } from "../../utils/markdown"
-import { readMinutes } from "../../utils/readMinutes"
 
 export async function getStaticPaths({ rss }) {
   const data = await Astro.glob<CMS.Article>('../../data/articles/*.md')
-    .then(matches => matches.filter(match => match.frontmatter.draft));
+    .then(matches => matches.filter(match => !match.frontmatter.draft));
 
-  const allArticles = data.map(({ file, url, frontmatter: article }) => {
+  const allArticles = data.map(({ file, url, frontmatter: article, Content }) => {
     return {
       params: { slug: article.slug },
       props: {
-        article: { ...article, minutes: 0 }
+        article: { ...article, minutes: 0 },
+        Content
       },
     }
   })
@@ -48,10 +47,9 @@ export async function getStaticPaths({ rss }) {
 
 interface Props {
   article: CMS.Article
-  content: string
 }
 
-const { article, content } = Astro.props
+const { article, Content } = Astro.props
 
 const {
   title,
@@ -115,7 +113,7 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
   </section>
 
   <article class="e-content markdown">
-    {content}
+    <Content />
   </article>
 </Layout>
 

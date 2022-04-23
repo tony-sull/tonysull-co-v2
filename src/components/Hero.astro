@@ -18,9 +18,7 @@ const contentHtml = mdToHtml(content)
 <section>
   <a href={cta.url}>{cta.title}</a>
   <h1>{title}</h1>
-  <main>
-    {contentHtml}
-  </main>
+  <main set:html={contentHtml}></main>
 </section>
 
 <style lang="scss">

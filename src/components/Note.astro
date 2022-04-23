@@ -1,5 +1,6 @@
 ---
-import Icon from "./Icon.astro"
+import { Sprite } from "astro-icon"
+import Avatar from "../assets/avatar-96x96.jpg"
 import Show from "./Show.astro"
 import site from "../data/site.json"
 import { isoDate, shortDate } from "../utils/dates"
@@ -38,7 +39,7 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
     <p class="p-author h-card" rel="author">
       <img
         class="u-photo"
-        src={Astro.resolve("../assets/avatar-96x96.jpg")}
+        src={Avatar}
         alt={site.author}
       />
       <strong>
@@ -67,15 +68,15 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
     <footer>
       <span class="sr-only">View or Share Note</span>
       <label>
-        <Icon icon="comment" size={24} />
+        <Sprite name="comment" size={24} />
         <span>{replies.length}</span>
       </label>
       <label>
-        <Icon icon="refresh" size={24} />
+        <Sprite name="refresh" size={24} />
         <span>{reposts.length}</span>
       </label>
       <label>
-        <Icon icon="heart" size={24} />
+        <Sprite name="heart" size={24} />
         <span>{likes.length}</span>
       </label>
 
@@ -83,22 +84,22 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
         <small>
           <b>view</b>
         </small>
-        <Icon icon="arrow-right" size={24} />
+        <Sprite name="arrow-right" size={24} />
       </a>
     </footer>
 
     <footer slot="fallback">
       <span class="sr-only">View or Share Note</span>
       <label>
-        <Icon icon="comment" size={24} />
+        <Sprite name="comment" size={24} />
         <span>{replies.length}</span>
       </label>
       <label>
-        <Icon icon="refresh" size={24} />
+        <Sprite name="refresh" size={24} />
         <span>{reposts.length}</span>
       </label>
       <label>
-        <Icon icon="heart" size={24} />
+        <Sprite name="heart" size={24} />
         <span>{likes.length}</span>
       </label>
     </footer>

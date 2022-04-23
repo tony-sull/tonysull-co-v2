@@ -8,5 +8,10 @@ export default defineConfig({
   server: {
     port: 8080
   },
-  integrations: [sitemap()]
+  integrations: [sitemap()],
+  vite: {
+    ssr: {
+      external: ["svgo"],
+    },
+  },
 });
