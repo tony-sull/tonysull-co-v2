@@ -169,5 +169,12 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
     & :global(h4) {
       font-size: var(--chisel-h5);
     }
+
+    & :global(img) {
+      display: block;
+      margin: 0 auto;
+      border-radius: 0.5rem;
+      filter: drop-shadow(var(--drop-shadow));
+    }
   }
 </style>
