@@ -22,7 +22,7 @@ const { title, description, blocks } = content
 const hasHero = blocks.some(({ type }) => type === "hero")
 ---
 
-<Layout {title} {description} canonicalURL={Astro.request.canonicalURL}>
+<Layout {title} {description} canonicalURL={Astro.canonicalURL}>
   <Show when={!hasHero}>
     <h1>{title}</h1>
   </Show>

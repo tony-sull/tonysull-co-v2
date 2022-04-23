@@ -4,7 +4,6 @@ import Show from "./Show.astro"
 import site from "../data/site.json"
 import { isoDate, shortDate } from "../utils/dates"
 import { pathJoin } from "../utils/links"
-import { mdToHtml } from "../utils/markdown"
 import {
   getAllMentions,
   isForUrl,
@@ -21,7 +20,6 @@ interface Props {
 const { note, share = false } = Astro.props as Props
 
 const { title, date, tags = [], link, content } = note
-const contentHtml = mdToHtml(content)
 
 const URL = `https://${pathJoin(site.domain, "notes", note.slug)}`
 
@@ -56,7 +54,7 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
     </p>
   </header>
   <main class="e-content p-name markdown">
-    {contentHtml}
+    <note.Content />
 
     <Show when={tags.length > 0}>
       <div class="tags">

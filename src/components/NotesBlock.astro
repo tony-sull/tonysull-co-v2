@@ -9,7 +9,7 @@ export interface Props {
 
 const { ids } = Astro.props as Props
 
-const notes = getNotes(Astro.fetchContent("../data/notes/*.md"), ids)
+const notes = getNotes(await Astro.glob('../data/notes/*.md'), ids)
 ---
 
 <section>

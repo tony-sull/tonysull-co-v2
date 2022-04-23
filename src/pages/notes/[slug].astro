@@ -7,7 +7,7 @@ import { mdToHtml } from "../../utils/markdown"
 import { getNotes } from "../../utils/notes"
 
 export async function getStaticPaths({ rss }) {
-  const allNotes = getNotes(Astro.fetchContent("../../data/notes/*.md"))
+  const allNotes = getNotes(await Astro.glob('../../data/notes/*.md'));
 
   rss({
     title: `Notes • ${site.title}`,
@@ -18,10 +18,9 @@ export async function getStaticPaths({ rss }) {
       new Date()
     )}</updated>`,
     items: allNotes.map(
-      ({ slug, date, title, content, twitter_id, tags = [] }) => {
+      ({ slug, date, title, twitter_id, tags = [] }) => {
         return {
           title,
-          description: `${mdToHtml(content)}`,
           link: `/notes/${slug}/`,
           pubDate: isoDate(date),
           customData: `<id>${twitter_id || slug}</id><updated>${isoDate(
@@ -48,8 +47,8 @@ const { ...note } = Astro.props as CMS.Note
 
 <Layout
   title={note.title}
-  pathname={Astro.request.url.pathname}
-  canonicalURL={Astro.request.canonicalURL}
+  pathname={Astro.canonicalURL.pathname}
+  canonicalURL={Astro.canonicalURL}
 >
   <section>
     <Note note={note} />

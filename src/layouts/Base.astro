@@ -51,7 +51,7 @@ const {
       Skip to content
     </a>
 
-    <Header pathname={Astro.request.url.pathname} />
+    <Header pathname={Astro.canonicalURL.pathname} />
 
     <main class={`container ${prose && "container--prose"}`} id="main">
       <slot />
@@ -61,7 +61,7 @@ const {
   </body>
 </html>
 
-<style lang="scss" global>
+<style is:global lang="scss">
   body {
     font-family: var(--font-family-base);
     line-height: 1.5;

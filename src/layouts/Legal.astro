@@ -19,7 +19,7 @@ const { title, subtitle, description, modified_date } = content
 const modifiedDate = shortDate(modified_date)
 ---
 
-<Layout prose {title} {description} canonicalURL={Astro.request.canonicalURL}>
+<Layout prose {title} {description} canonicalURL={Astro.canonicalURL}>
   <section>
     <h1>{title}</h1>
     <em>{subtitle}</em>

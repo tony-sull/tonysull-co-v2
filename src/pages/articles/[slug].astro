@@ -8,17 +8,14 @@ import { mdToHtml } from "../../utils/markdown"
 import { readMinutes } from "../../utils/readMinutes"
 
 export async function getStaticPaths({ rss }) {
-  const data = Astro.fetchContent("../../data/articles/*.md").filter(
-    ({ draft }) => !draft
-  )
+  const data = await Astro.glob<CMS.Article>('../../data/articles/*.md')
+    .then(matches => matches.filter(match => match.frontmatter.draft));
 
-  const allArticles = data.map(({ astro, file, url, ...article }) => {
+  const allArticles = data.map(({ file, url, frontmatter: article }) => {
     return {
       params: { slug: article.slug },
       props: {
-        article: { ...article, minutes: readMinutes(astro.source) },
-        content: astro.html,
-        md: astro.source,
+        article: { ...article, minutes: 0 }
       },
     }
   })
@@ -32,7 +29,7 @@ export async function getStaticPaths({ rss }) {
       new Date()
     )}</updated>`,
     items: allArticles.map(({ props }) => {
-      const { article, md } = props
+      const { article } = props
 
       return {
         title: article.title,
@@ -40,9 +37,7 @@ export async function getStaticPaths({ rss }) {
         pubDate: isoDate(article.published_date),
         customData: `<id>${article.slug}</id><updated>${isoDate(
           article.modified_date || article.published_date
-        )}</updated><content type="html"><![CDATA[ ${mdToHtml(
-          md
-        )} ]]></content>`,
+        )}</updated>`,
       }
     }),
     dest: `/${site.rss.articles}`,
@@ -81,8 +76,8 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
   {title}
   {description}
   {image}
-  pathname={Astro.request.url.pathname}
-  canonicalURL={canonical_url || Astro.request.canonicalURL}
+  pathname={Astro.canonicalURL.pathname}
+  canonicalURL={canonical_url || Astro.canonicalURL}
 >
   <section class="h-entry">
     <header>

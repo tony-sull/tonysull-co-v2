@@ -1,5 +1,5 @@
 import fs from "fs"
-import unionBy from "lodash/unionBy"
+import unionBy from "lodash/unionBy.js"
 import site from "../data/site.json"
 
 interface WebMention {

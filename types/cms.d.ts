@@ -1,3 +1,5 @@
+import type { MarkdownInstance } from 'astro'
+
 declare namespace CMS {
   type Icon =
     | "arrow-right"
@@ -67,7 +69,7 @@ declare namespace CMS {
     tags: string[]
     link?: string
     twitter_id?: TwitterPostId
-    content: Markdown
+    Content: MarkdownInstance<Note>['Content']
   }
 
   namespace UI {

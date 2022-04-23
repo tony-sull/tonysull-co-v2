@@ -11,7 +11,7 @@ export interface Props {
 
 const { title, ids } = Astro.props as Props
 
-const articles = getArticles(Astro.fetchContent("../data/articles/*.md"), ids)
+const articles = getArticles(await Astro.glob('../data/articles/*.md'), ids)
 ---
 
 <section>
