@@ -2,18 +2,18 @@
 import site from "../../data/site.json"
 import Show from "../../components/Show.astro"
 import Layout from "../../layouts/Base.astro"
-import { isoDate, shortDate } from "../../utils/dates"
-import { getDomain } from "../../utils/links"
+import { isoDate, shortDate } from "../../utils/dates.ts"
+import { getDomain } from "../../utils/links.ts"
 
 export async function getStaticPaths({ rss }) {
   const data = await Astro.glob<CMS.Article>('../../data/articles/*.md')
     .then(matches => matches.filter(match => !match.frontmatter.draft));
 
-  const allArticles = data.map(({ file, url, frontmatter: article, Content }) => {
+  const allArticles = data.map(({ frontmatter: article, Content }) => {
     return {
       params: { slug: article.slug },
       props: {
-        article: { ...article, minutes: 0 },
+        article: { ...article },
         Content
       },
     }
@@ -32,6 +32,7 @@ export async function getStaticPaths({ rss }) {
 
       return {
         title: article.title,
+        description: article.description,
         link: `/articles/${article.slug}/`,
         pubDate: isoDate(article.published_date),
         customData: `<id>${article.slug}</id><updated>${isoDate(
@@ -58,8 +59,7 @@ const {
   image,
   canonical_url,
   published_date,
-  modified_date,
-  minutes,
+  modified_date
 } = article
 
 const publishedDateISO = published_date && isoDate(published_date)
@@ -95,7 +95,6 @@ const canonicalDomain = canonical_url && getDomain(canonical_url)
         <b class="h-card p-author">
           <a class="u-url" href="/">{title}</a>
         </b>
-        • {minutes} min read
       </small>
 
       <Show when={modifiedDate}>
