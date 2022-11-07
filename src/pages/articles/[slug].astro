@@ -1,0 +1,181 @@
+---
+import { Markdown } from 'astro-remote'
+import site from "@data/site.json"
+import Show from "@components/Show.astro"
+import Layout from "@layouts/Base.astro"
+import { fetchArticles } from '@utils/api.js'
+import { isoDate, shortDate } from "@utils/dates.js"
+import { getDomain } from "@utils/links.js"
+import { identifierToSlug } from '@utils/slugs.js'
+import type { Article } from 'schema-dts'
+
+export async function getStaticPaths() {
+  const allArticles = await fetchArticles('articles')
+
+  return allArticles.map((article) => ({
+    params: { slug: identifierToSlug(article.identifier!.toString()) },
+    props: { article }
+  }))
+
+  /*
+  rss({
+    title: `Articles • ${site.title}`,
+    description: site.description,
+    customData: `<language>en-us</language><author><name>${
+      site.title
+    }</name></author><id>${site.url}${site.rss.articles}</id><updated>${isoDate(
+      new Date()
+    )}</updated>`,
+    items: allArticles.map(({ props }) => {
+      const { article } = props
+
+      return {
+        title: article.title,
+        description: article.description,
+        link: `/articles/${article.slug}/`,
+        pubDate: isoDate(article.published_date),
+        customData: `<id>${article.slug}</id><updated>${isoDate(
+          article.modified_date || article.published_date
+        )}</updated>`,
+      }
+    }),
+    dest: `/${site.rss.articles}`,
+  })
+  */
+}
+
+interface Props {
+  article: Article
+}
+
+const { article } = Astro.props
+
+const {
+  name,
+  description,
+  keywords,
+  image,
+  sameAs,
+  datePublished,
+  dateModified,
+} = article
+
+const publishedDateISO = datePublished && isoDate(datePublished.toString())
+const publishedDate = datePublished && shortDate(datePublished.toString())
+const modifiedDateISO = dateModified && isoDate(dateModified.toString())
+const modifiedDate = dateModified && shortDate(dateModified.toString())
+const canonicalDomain = sameAs && getDomain(sameAs.toString())
+const canonicalURL = sameAs ? new URL(sameAs.toString()) : undefined
+
+const category = keywords?.toString() || 'code'
+---
+
+<Layout
+  prose
+  title={name?.toString()}
+  description={description?.toString()}
+  image={image?.toString()}
+  pathname={Astro.url.pathname}
+  canonicalURL={canonicalURL}
+>
+  <section class="h-entry">
+    <header>
+      <em>{category}</em>
+      <h1 class="p-name">{name}</h1>
+
+      <small>
+        <time class="dt-published" datetime={publishedDateISO}
+          >{publishedDate}</time
+        >
+        <Show when={!!sameAs}>
+          <i>
+            • Originally published at{" "}
+            <a href={sameAs?.toString()}>{canonicalDomain}</a>
+          </i>
+        </Show>
+        <b class="h-card p-author">
+          <a class="u-url" href="/">{name}</a>
+        </b>
+      </small>
+
+      <Show when={modifiedDate}>
+        <small>
+          <time class="dt-updated" datetime={modifiedDateISO}>
+            <i>Updated: {modifiedDate}</i>
+          </time>
+        </small>
+      </Show>
+
+      <blockquote class="h5">
+        <p class="p-summary lead">{description}</p>
+      </blockquote>
+    </header>
+  </section>
+
+  <article class="e-content markdown">
+    <Markdown content={article.articleBody?.toString() || ''} />
+  </article>
+</Layout>
+
+<style lang="scss">
+  header {
+    margin-bottom: var(--spacer-md);
+
+    & em {
+      font-style: normal;
+      text-transform: uppercase;
+      color: var(--chisel-secondary);
+      font-weight: 700;
+      margin-bottom: var(--spacer-sm);
+      display: block;
+    }
+
+    & small {
+      display: block;
+      margin-top: var(--spacer-tiny);
+    }
+
+    & .p-author {
+      display: none;
+    }
+
+    & h1 {
+      margin: 0 0 0.5em;
+      font-size: var(--chisel-h2);
+
+      @media (min-width: 640px) {
+        & {
+          font-size: var(--chisel-h2);
+        }
+      }
+    }
+
+    & blockquote {
+      color: var(--chisel-neutral-700);
+      font-weight: 400;
+      line-height: 1.3;
+      margin: var(--spacer-md) 0 0;
+    }
+  }
+
+  article {
+    & :global(h2) {
+      font-size: var(--chisel-h3);
+    }
+
+    & :global(h3) {
+      font-size: var(--chisel-h4);
+    }
+
+    & :global(h4) {
+      font-size: var(--chisel-h5);
+    }
+
+    & :global(img) {
+      display: block;
+      margin: 0 auto;
+      border-radius: 0.5rem;
+      filter: drop-shadow(var(--drop-shadow));
+    }
+  }
+</style>

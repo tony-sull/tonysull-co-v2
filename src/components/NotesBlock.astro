@@ -1,0 +1,26 @@
+---
+import Note from "./Note.astro"
+import { fetchArticles } from "@utils/api.js"
+
+export interface Props {
+  title: string
+  ids: string[]
+}
+
+const { ids } = Astro.props as Props
+
+const notes = await fetchArticles('notes', ids)
+---
+
+<section>
+  {notes.map((note) => <Note note={note} share />)}
+</section>
+
+<style lang="scss">
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: var(--spacer-md);
+  }
+</style>

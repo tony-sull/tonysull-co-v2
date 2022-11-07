@@ -1,0 +1,66 @@
+---
+import Note from "@components/Note.astro"
+import site from "@data/site.json"
+import Layout from "@layouts/Base.astro"
+import { isoDate } from "@utils/dates.js"
+import { fetchArticles } from "@utils/api.js"
+import { identifierToSlug } from '@utils/slugs.js'
+import type { Article } from 'schema-dts'
+
+export async function getStaticPaths({ rss }) {
+  const allNotes = await fetchArticles('notes')
+
+  /*
+  rss({
+    title: `Notes • ${site.title}`,
+    description: site.description,
+    customData: `<language>en-us</language><author><name>${
+      site.title
+    }</name></author><id>${site.url}${site.rss.notes}</id><updated>${isoDate(
+      new Date()
+    )}</updated>`,
+    items: allNotes.map(
+      ({ slug, date, title, twitter_id, tags = [] }) => {
+        return {
+          title,
+          link: `/notes/${slug}/`,
+          pubDate: isoDate(date),
+          customData: `<id>${twitter_id || slug}</id><updated>${isoDate(
+            date
+          )}</updated>${tags
+            .map((tag) => `<category>${tag}</category>`)
+            .join("")}`,
+        }
+      }
+    ),
+    dest: `/${site.rss.notes}`,
+  })*/
+
+  return allNotes.map((note) => ({
+    params: {
+      slug: identifierToSlug(note.identifier!.toString()),
+    },
+    props: { note },
+  }))
+}
+
+const { note } = Astro.props as { note: Article }
+---
+
+<Layout
+  title={note.name?.toString()}
+  pathname={Astro.url.pathname}
+>
+  <section>
+    <Note note={note} />
+  </section>
+</Layout>
+
+<style lang="scss">
+  section {
+    padding-top: var(--spacer-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>

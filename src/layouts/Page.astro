@@ -1,0 +1,46 @@
+---
+import Layout from "./Base.astro"
+import ArticlesBlock from "@components/ArticlesBlock.astro"
+import Hero from "@components/Hero.astro"
+import NotesBlock from "@components/NotesBlock.astro"
+import Show from "@components/Show.astro"
+import { isArticlesBlock, isHeroBlock, isNotesBlock } from "@utils/blocks.js"
+import type { Block } from '@utils/blocks.js'
+
+interface Content {
+  title: string
+  description: string
+  blocks: Block[]
+}
+
+interface Props {
+  content: Content
+}
+
+const { content } = Astro.props as Props
+const { title, description, blocks } = content
+
+const hasHero = blocks.some(({ type }) => type === "hero")
+---
+
+<Layout title={title} description={description}>
+  <Show when={!hasHero}>
+    <h1>{title}</h1>
+  </Show>
+
+  {blocks.map((data) => {
+    return isHeroBlock(data) ? (
+      <Hero {...data} />
+    ) : isArticlesBlock(data) ? (
+      <ArticlesBlock {...data} />
+    ) : isNotesBlock(data) ? (
+      <NotesBlock {...data} />
+    ) : undefined
+  })}
+</Layout>
+
+<style lang="scss">
+  h1 {
+    margin: var(--spacer-md) 0;
+  }
+</style>

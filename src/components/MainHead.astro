@@ -1,0 +1,65 @@
+---
+import '@assets/global.scss'
+import site from '@data/site.json'
+import '@fontsource/playfair-display/400.css'
+import '@fontsource/playfair-display/400-italic.css'
+import '@fontsource/playfair-display/700.css'
+
+interface Props {
+  title?: string
+  description?: string
+  image?: string
+  canonicalURL?: URL
+}
+
+const {
+  title,
+  description = site.description,
+  image = site.social.image,
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
+} = Astro.props
+
+const imageAbsolute = `${site.url}${image}`
+const fullTitle = [title, site.title].filter(Boolean).join(" • ")
+---
+
+<!-- Common -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<meta
+  name="keywords"
+  content="web development, jamstack, simplicity, minimalism, economics, engineering, science"
+/>
+<meta name="robots" content="index,follow" />
+<meta name="author" content={site.author} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- Open Graph -->
+<meta property="og:title" content={fullTitle} />
+<meta property="og:site_name" content={site.title} />
+<meta property="og:type" content="website" />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageAbsolute} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content="en_US" />
+
+<!-- Twitter -->
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageAbsolute} />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:card" content={site.social.twitter_card} />
+<meta name="twitter:site" content={site.social.twitter_handle} />
+<meta name="twitter:creator" content={site.social.twitter_handle} />
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap.xml" />
+
+<!-- Web Mentions -->
+<link rel="webmention" href="https://webmention.io/tonysull.co/webmention" />
+<link rel="pingback" href="https://webmention.io/tonysull.co/xmlrpc" />

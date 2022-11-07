@@ -1,0 +1,77 @@
+---
+import { Markdown } from 'astro-remote'
+
+export interface Props {
+  cta: {
+    url: string
+    title: string
+  }
+  title: string
+  content: string
+}
+
+const { cta, title, content } = Astro.props as Props
+---
+
+<section>
+  <a href={cta.url}>{cta.title}</a>
+  <h1>{title}</h1>
+  <main>
+    <Markdown content={content} />
+  </main>
+</section>
+
+<style lang="scss">
+  section {
+    padding: var(--spacer-lg) 0;
+  }
+
+  h1 {
+    margin-bottom: var(--spacer-md);
+  }
+
+  a {
+    text-transform: uppercase;
+    font-size: var(--chisel-h5);
+    color: var(--chisel-secondary);
+    font-weight: 700;
+    text-decoration: none;
+    line-height: 2;
+  }
+
+  main :global(p) {
+    font-size: var(--chisel-h4);
+    color: var(--chisel-neutral-700);
+    line-height: 1.5;
+    font-weight: 300;
+    max-width: calc(0.75 * var(--width-prose));
+  }
+
+  main :global(a) {
+    text-transform: capitalize;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    color: inherit;
+  }
+
+  main :global(a::before) {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0.5em;
+    margin-left: -0.125em;
+    margin-bottom: -0.125em;
+    background: var(--chisel-secondary);
+    opacity: 0.2;
+    z-index: -1;
+  }
+
+  @media (min-width: 979px) {
+    section {
+      padding: var(--spacer-xl) 0;
+    }
+  }
+</style>

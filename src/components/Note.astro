@@ -1,0 +1,229 @@
+---
+import { Sprite } from "astro-icon"
+import { Markdown } from "astro-remote"
+import Avatar from "@assets/avatar-96x96.jpg"
+import Show from "./Show.astro"
+import site from "@data/site.json"
+import { isoDate, shortDate } from "@utils/dates.js"
+import {
+  getAllMentions,
+  isForUrl,
+  isMentionType,
+  MENTION_TYPE,
+  sortMentions,
+} from "@utils/mentions.js"
+import { identifierToSlug } from '@utils/slugs.js'
+import type { Article } from 'schema-dts'
+
+interface Props {
+  note: Article
+  share?: boolean
+}
+
+const { note, share = false } = Astro.props as Props
+
+const { datePublished, keywords = '' } = note
+const tags = keywords.toString().split(',').filter(Boolean)
+
+const slug = identifierToSlug(note.identifier!.toString())
+
+const allMentions = await getAllMentions()
+const webMentions = allMentions.children
+  .filter(isForUrl(new URL(Astro.url.pathname, Astro.site)))
+  .sort(sortMentions(true))
+
+const reposts = webMentions.filter(isMentionType(MENTION_TYPE.Share))
+const likes = webMentions.filter(isMentionType(MENTION_TYPE.Like))
+const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
+
+const date = datePublished!.toString()
+---
+
+<article class="h-entry">
+  <header>
+    <p class="p-author h-card" rel="author">
+      <img
+        class="u-photo"
+        src={Avatar.src}
+        width={Avatar.width}
+        height={Avatar.height}
+        alt={site.author}
+      />
+      <strong>
+        <span class="p-name">{site.author}</span>
+        <br />
+        <small>
+          <a href={site.social.twitter_url}>{site.social.twitter_handle}</a> •
+          <time class="dt-published" datetime={isoDate(date)}>
+            {shortDate(date)}
+          </time>
+        </small>
+      </strong>
+    </p>
+  </header>
+  <main class="e-content p-name markdown">
+    <Markdown content={note.articleBody?.toString()} />
+
+    <Show when={tags.length > 0}>
+      <div class="tags">
+        {tags.map((tag) => <small>#{tag}</small>)}
+      </div>
+    </Show>
+  </main>
+
+  <Show when={share}>
+    <footer>
+      <span class="sr-only">View or Share Note</span>
+      <label>
+        <Sprite name="comment" size={24} />
+        <span>{replies.length}</span>
+      </label>
+      <label>
+        <Sprite name="refresh" size={24} />
+        <span>{reposts.length}</span>
+      </label>
+      <label>
+        <Sprite name="heart" size={24} />
+        <span>{likes.length}</span>
+      </label>
+
+      <a href={`/notes/${slug}/`}>
+        <small>
+          <b>view</b>
+        </small>
+        <Sprite name="arrow-right" size={24} />
+      </a>
+    </footer>
+
+    <footer slot="fallback">
+      <span class="sr-only">View or Share Note</span>
+      <label>
+        <Sprite name="comment" size={24} />
+        <span>{replies.length}</span>
+      </label>
+      <label>
+        <Sprite name="refresh" size={24} />
+        <span>{reposts.length}</span>
+      </label>
+      <label>
+        <Sprite name="heart" size={24} />
+        <span>{likes.length}</span>
+      </label>
+    </footer>
+  </Show>
+</article>
+
+<style lang="scss">
+  article {
+    max-width: calc(var(--width-prose) * 0.75);
+    border-radius: 0.5em;
+    box-shadow: var(--drop-shadow);
+    overflow: hidden;
+
+    & > a {
+      color: inherit;
+    }
+  }
+
+  header,
+  main,
+  footer {
+    padding: 0 var(--spacer-sm);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--spacer-sm);
+    padding-bottom: var(--spacer-sm);
+  }
+
+  header .h-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacer-sm);
+    margin-bottom: 0;
+  }
+
+  .h-card small {
+    color: var(--chisel-neutral-500);
+  }
+
+  .h-card a {
+    text-decoration: none;
+  }
+
+  time {
+    font-weight: 400;
+  }
+
+  .u-photo {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 1.5rem;
+  }
+
+  main {
+    padding-bottom: var(--spacer-sm);
+
+    & small {
+      padding: var(--spacer-xs) var(--spacer-sm);
+      background: var(--chisel-neutral-200);
+      border-radius: calc(0.5em + var(--spacer-sm));
+    }
+  }
+
+  .tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacer-sm) var(--spacer-xs);
+  }
+
+  footer {
+    background: var(--chisel-neutral-200);
+    color: var(--chisel-neutral-600);
+    text-decoration: none;
+    display: flex;
+    gap: var(--spacer-sm);
+    padding-top: var(--spacer-sm);
+    padding-bottom: var(--spacer-xs);
+
+    & label {
+      display: flex;
+      align-items: center;
+      gap: var(--spacer-xs);
+      padding-right: var(--spacer-xs);
+
+      &:last-of-type {
+        flex: 1;
+      }
+    }
+
+    & a {
+      text-decoration: underline;
+      display: flex;
+      color: inherit;
+      transition: color 150ms ease-in-out;
+
+      & small {
+        margin: 2px 4px 0 0;
+      }
+
+      & :global(svg) {
+        will-change: transfrom;
+        transition: transform 150ms ease;
+      }
+
+      &:hover,
+      &:active {
+        color: var(--chisel-secondary);
+
+        & :global(svg) {
+          transform: translateX(var(--spacer-xs));
+        }
+      }
+    }
+  }
+</style>

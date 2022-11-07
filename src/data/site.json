@@ -1,0 +1,18 @@
+{
+  "title": "Tony Sullivan",
+  "description": "Tony Sullivan is a fullstack developer based in Onbekend, USA.",
+  "url": "https://tonysull.co/",
+  "domain": "tonysull.co",
+  "author": "Tony Sullivan",
+  "social": {
+    "image": "assets/share.jpg",
+    "twitter_handle": "@tonysull_co",
+    "twitter_card": "summary_large_image",
+    "twitter_url": "https://twitter.com/tonysull_co",
+    "github_url": "https://github.com/tony-sull"
+  },
+  "rss": {
+    "articles": "/articles/feed.xml",
+    "notes": "/notes/feed.xml"
+  }
+}

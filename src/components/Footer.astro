@@ -1,0 +1,102 @@
+---
+import { Sprite } from "astro-icon"
+import site from "@data/site.json"
+
+const { url, title, social } = site
+---
+
+<footer class="container">
+  <section class="h-card">
+    <p>
+      <strong>© 2021</strong>
+      <a class="p-name u-url" rel="me" href={url}>{title}</a>
+      /
+      <a href="/about">About</a>
+    </p>
+
+    <p>
+      <strong>Social</strong>
+      <a title="Twitter" rel="me" href={social.twitter_url}>Twitter</a>
+      /
+      <a title="Github" rel="me" href={social.github_url}>Github</a>
+    </p>
+
+    <p>
+      <strong>Legal</strong>
+      <a href="/privacy">Privacy Policy</a>
+    </p>
+
+    <p>
+      <strong>RSS Feed</strong>
+      <a title="RSS Feed" href={site.rss.articles}>Subscribe</a>
+    </p>
+
+    <p>
+      <a title="Twitter" href={social.twitter_url}>
+        <Sprite name="twitter" size={24} />
+      </a>
+      <a title="GitHub" href={social.github_url}>
+        <Sprite name="github" size={24} />
+      </a>
+      <a title="RSS Feed" href={site.rss.articles}>
+        <Sprite name="rss" size={24} />
+      </a>
+    </p>
+  </section>
+</footer>
+
+<style lang="scss">
+  footer {
+    background: var(--chisel-neutral-100);
+    filter: drop-shadow(0px 2px 4px #00000080);
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  p {
+    flex-basis: 50%;
+  }
+
+  p strong {
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    display: inline-block;
+  }
+
+  p:last-of-type a:not(:last-of-type) {
+    margin-right: var(--spacer-sm);
+  }
+
+  @media (min-width: 640px) {
+    p {
+      flex-basis: unset;
+      margin-right: var(--spacer-md);
+      margin: 0 var(--spacer-md) 0 0;
+
+      &:last-of-type {
+        flex-basis: 100%;
+        margin-top: var(--spacer-md);
+      }
+    }
+  }
+
+  @media (min-width: 979px) {
+    p {
+      margin-bottom: 0;
+
+      &:last-of-type {
+        flex-basis: unset;
+        flex-grow: 1;
+        margin: 0;
+        text-align: end;
+      }
+    }
+  }
+</style>

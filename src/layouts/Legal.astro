@@ -1,0 +1,55 @@
+---
+import Layout from "./Base.astro"
+import { shortDate } from "@utils/dates.js"
+
+interface Content {
+  title: string
+  subtitle: string
+  description: string
+  modified_date: string
+}
+
+interface Props {
+  content: Content
+}
+
+const { content } = Astro.props as Props
+const { title, subtitle, description, modified_date } = content
+
+const modifiedDate = shortDate(modified_date)
+---
+
+<Layout prose title={title} description={description}>
+  <section>
+    <h1>{title}</h1>
+    <em>{subtitle}</em>
+
+    <slot />
+
+    <small>Last updated: {modifiedDate}</small>
+  </section>
+</Layout>
+
+<style lang="scss">
+  section :global(p) {
+    line-height: 1.7;
+  }
+
+  h1 {
+    margin: var(--spacer-lg) 0 0;
+  }
+
+  em {
+    display: block;
+    margin-bottom: var(--spacer-lg);
+    font-size: var(--chisel-h4);
+    font-style: normal;
+    font-weight: 400;
+    color: var(--chisel-neutral-700);
+  }
+
+  small {
+    font-style: italic;
+    font-size: var(--chisel-p);
+  }
+</style>
