@@ -117,7 +117,8 @@ const date = datePublished!.toString()
 
 <style lang="scss">
   article {
-    max-width: calc(var(--width-prose) * 0.75);
+    max-width: 100%;
+    width: 50ch;
     border-radius: 0.5em;
     box-shadow: var(--drop-shadow);
     overflow: hidden;
@@ -168,6 +169,10 @@ const date = datePublished!.toString()
 
   main {
     padding-bottom: var(--spacer-sm);
+
+    & :global(p) {
+      margin: 0;
+    }
 
     & small {
       padding: var(--spacer-xs) var(--spacer-sm);
