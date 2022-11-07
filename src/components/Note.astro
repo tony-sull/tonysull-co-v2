@@ -27,9 +27,11 @@ const tags = keywords.toString().split(',').filter(Boolean)
 
 const slug = identifierToSlug(note.identifier!.toString())
 
+const url = new URL(Astro.url.pathname, Astro.site).toString()
+
 const allMentions = await getAllMentions()
 const webMentions = allMentions.children
-  .filter(isForUrl(new URL(Astro.url.pathname, Astro.site)))
+  .filter(isForUrl(url))
   .sort(sortMentions(true))
 
 const reposts = webMentions.filter(isMentionType(MENTION_TYPE.Share))
