@@ -6,7 +6,7 @@ blocks:
   - type: hero
     title: I make websites.
     content: |-
-      I'm a frontend developer and co-founder of [Navillus](https://navillus.dev), a software studio and think tank in The Hague. I also write about the web on my [blog](/blog) and on [Twitter](https://twitter.com/tony-sull).
+      I'm a frontend developer and co-founder of [Navillus](https://navillus.dev), a software studio and think tank. I also write about the web on my [blog](/blog) and on [Twitter](https://twitter.com/tony-sull).
     cta:
       title: Hello, my name is Tony
       url: /about/
