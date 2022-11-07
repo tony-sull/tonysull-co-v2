@@ -17,8 +17,8 @@ export const get: APIRoute = async () => {
     }</name></author><id>${site.url}${site.rss.articles}</id><updated>${isoDate(
       new Date()
     )}</updated>`,
-    items: allArticles.map((article) => {
-        const slug = identifierToSlug(article.identifier!.toString())
+    items: allArticles.map(article => {
+      const slug = identifierToSlug(article.identifier!.toString())
 
       return {
         title: article.name!.toString(),

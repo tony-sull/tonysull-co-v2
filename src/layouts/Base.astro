@@ -1,8 +1,8 @@
 ---
-import { Sprite } from "astro-icon"
-import Footer from "@components/Footer.astro"
-import Header from "@components/Header.astro"
-import MainHead from "@components/MainHead.astro"
+import { Sprite } from 'astro-icon'
+import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
+import MainHead from '@components/MainHead.astro'
 
 interface Props {
   title?: string
@@ -24,10 +24,15 @@ const {
 
 <html lang="en" data-chisel-theme="light">
   <head>
-    <MainHead title={title} description={description} image={image} canonicalURL={canonicalURL} />
+    <MainHead
+      title={title}
+      description={description}
+      image={image}
+      canonicalURL={canonicalURL}
+    />
 
     <script>
-      const THEME_KEY = "ts_theme"
+      const THEME_KEY = 'ts_theme'
 
       function initTheme() {
         let theme = localStorage.getItem(THEME_KEY)
@@ -35,12 +40,12 @@ const {
         if (!theme) {
           theme =
             window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light"
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
         }
 
-        document.documentElement.setAttribute("data-chisel-theme", theme)
+        document.documentElement.setAttribute('data-chisel-theme', theme)
       }
 
       initTheme()
@@ -55,7 +60,7 @@ const {
 
       <Header pathname={Astro.url.pathname} />
 
-      <main class={`container ${prose && "container--prose"}`} id="main">
+      <main class={`container ${prose && 'container--prose'}`} id="main">
         <slot />
       </main>
 
@@ -78,7 +83,7 @@ const {
     margin-bottom: var(--spacer-lg);
   }
 
-  a[href="#main"].sr-only.sr-only-focusable {
+  a[href='#main'].sr-only.sr-only-focusable {
     top: var(--spacer-xs);
     left: var(--spacer-xs);
     background: var(--chisel-neutral-50);

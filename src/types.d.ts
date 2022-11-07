@@ -1,6 +1,6 @@
 import type { MarkdownInstance } from 'astro'
 
-declare module CMS {
+declare namespace CMS {
   type Markdown = string
 
   interface Navigation {
@@ -63,20 +63,20 @@ declare module CMS {
     }
 
     interface HeroBlock {
-      type: "hero"
+      type: 'hero'
       title: string
       content: Markdown
       cta: CTA
     }
 
     interface ArticlesBlock {
-      type: "articles"
+      type: 'articles'
       title: string
       ids: ArticleSlug[] | undefined
     }
 
     interface NotesBlock {
-      type: "notes"
+      type: 'notes'
       title: string
       ids: NoteSlug[] | undefined
     }

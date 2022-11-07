@@ -1,5 +1,5 @@
 ---
-layout: "@layouts/Legal.astro"
+layout: '@layouts/Legal.astro'
 title: Privacy Policy
 subtitle: How I handle your data
 description: How I handle your data

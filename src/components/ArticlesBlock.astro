@@ -1,8 +1,8 @@
 ---
-import { Sprite } from "astro-icon"
-import ArticlePreview from "./ArticlePreview.astro"
-import Show from "./Show.astro"
-import { fetchArticles } from "@utils/api.js"
+import { Sprite } from 'astro-icon'
+import ArticlePreview from './ArticlePreview.astro'
+import Show from './Show.astro'
+import { fetchArticles } from '@utils/api.js'
 
 export interface Props {
   title: string
@@ -20,11 +20,13 @@ const articles = await fetchArticles('articles', ids)
   </Show>
 
   <ol>
-    {articles.map((article) => (
-      <li>
-        <ArticlePreview article={article} />
-      </li>
-    ))}
+    {
+      articles.map(article => (
+        <li>
+          <ArticlePreview article={article} />
+        </li>
+      ))
+    }
   </ol>
 
   <Show when={!!ids}>

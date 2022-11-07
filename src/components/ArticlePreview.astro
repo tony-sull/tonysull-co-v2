@@ -1,5 +1,5 @@
 ---
-import { isoDate, shortDate } from "@utils/dates.js"
+import { isoDate, shortDate } from '@utils/dates.js'
 import type { Article } from 'schema-dts'
 import { identifierToSlug } from '@utils/slugs.js'
 
@@ -25,7 +25,7 @@ const category = keywords?.toString() || 'code'
   </h3>
   <p class="meta">
     <time date-time={publishedDateISO}>{publishedDate}</time>
-    <span aria-hidden> ⋅ </span>
+    <span aria-hidden> ⋅</span>
     <span>{category.toUpperCase()}</span>
   </p>
   <p>{description}</p>

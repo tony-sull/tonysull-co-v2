@@ -1,9 +1,9 @@
 ---
-import Note from "@components/Note.astro"
-import site from "@data/site.json"
-import Layout from "@layouts/Base.astro"
-import { isoDate } from "@utils/dates.js"
-import { fetchArticles } from "@utils/api.js"
+import Note from '@components/Note.astro'
+import site from '@data/site.json'
+import Layout from '@layouts/Base.astro'
+import { isoDate } from '@utils/dates.js'
+import { fetchArticles } from '@utils/api.js'
 import { identifierToSlug } from '@utils/slugs.js'
 import type { Article } from 'schema-dts'
 
@@ -36,7 +36,7 @@ export async function getStaticPaths({ rss }) {
     dest: `/${site.rss.notes}`,
   })*/
 
-  return allNotes.map((note) => ({
+  return allNotes.map(note => ({
     params: {
       slug: identifierToSlug(note.identifier!.toString()),
     },
@@ -47,10 +47,7 @@ export async function getStaticPaths({ rss }) {
 const { note } = Astro.props as { note: Article }
 ---
 
-<Layout
-  title={note.name?.toString()}
-  pathname={Astro.url.pathname}
->
+<Layout title={note.name?.toString()} pathname={Astro.url.pathname}>
   <section>
     <Note note={note} />
   </section>

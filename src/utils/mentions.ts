@@ -1,10 +1,10 @@
-import fs from "fs"
-import unionBy from "lodash/unionBy.js"
-import site from "../data/site.json"
+import fs from 'fs'
+import unionBy from 'lodash/unionBy.js'
+import site from '../data/site.json'
 
 interface WebMention {
   published: string | Date
-  "wm-id": string
+  'wm-id': string
 }
 
 interface WebMentionResponse {
@@ -14,14 +14,14 @@ interface WebMentionResponse {
 const domain = new URL(site.url).hostname
 
 // Define cache location and API endpoint
-const CACHE_FILE_PATH = "_cache/webmentions.json"
-const API = "https://webmention.io/api"
+const CACHE_FILE_PATH = '_cache/webmentions.json'
+const API = 'https://webmention.io/api'
 const TOKEN = import.meta.env.WEBMENTION_IO_TOKEN
 
 async function fetchWebmentions(since, perPage = 1000) {
   // If we don't have a domain name or token, abort
   if (!domain || !TOKEN) {
-    console.warn(">>> unable to fetch webmentions: missing domain or token")
+    console.warn('>>> unable to fetch webmentions: missing domain or token')
     return false
   }
 
@@ -40,12 +40,12 @@ async function fetchWebmentions(since, perPage = 1000) {
 
 // Merge fresh webmentions with cached entires, unique per id
 function mergeWebmentions(a: WebMentionResponse, b: WebMentionResponse) {
-  return unionBy(a.children, b.children, "wm-id")
+  return unionBy(a.children, b.children, 'wm-id')
 }
 
 // save combined webmentions in cache file
 function writeToCache(data: any) {
-  const dir = "_cache"
+  const dir = '_cache'
   const fileContent = JSON.stringify(data, null, 2)
 
   // create cache folder if it doesn't exist already
@@ -54,7 +54,7 @@ function writeToCache(data: any) {
   }
 
   // write data to cache json file
-  fs.writeFile(CACHE_FILE_PATH, fileContent, (err) => {
+  fs.writeFile(CACHE_FILE_PATH, fileContent, err => {
     if (err) throw err
     console.log(`>>> webmentions cached to ${CACHE_FILE_PATH}`)
   })
@@ -63,7 +63,7 @@ function writeToCache(data: any) {
 // get cache contents from json file
 function readFromCache() {
   if (fs.existsSync(CACHE_FILE_PATH)) {
-    const cacheFile = fs.readFileSync(CACHE_FILE_PATH, "utf-8")
+    const cacheFile = fs.readFileSync(CACHE_FILE_PATH, 'utf-8')
     return JSON.parse(cacheFile)
   }
 
@@ -76,7 +76,7 @@ function readFromCache() {
 
 async function _getAllMentions() {
   const cache = readFromCache()
-  console.log(">>> Reading webmentions from cache ...")
+  console.log('>>> Reading webmentions from cache ...')
 
   if (cache.children.length) {
     console.log(`>>> ${cache.children.length} webmentions loaded from cache`)
@@ -84,7 +84,7 @@ async function _getAllMentions() {
 
   // Only fetch new mentions when TOKEN is set, usually disabled in dev
   if (TOKEN) {
-    console.log(">>> Checking for new webmentions ...")
+    console.log('>>> Checking for new webmentions ...')
     const feed = await fetchWebmentions(cache.lastFetched)
     if (feed) {
       const webmentions = {
@@ -110,12 +110,12 @@ export async function getAllMentions() {
 }
 
 function compareUrls(a, b) {
-  return a.replace(/(\/#|\/|#)$/, "") === b.replace(/(\/#|\/|#)$/, "")
+  return a.replace(/(\/#|\/|#)$/, '') === b.replace(/(\/#|\/|#)$/, '')
 }
 
 export function isForUrl(url) {
   return function (webmention) {
-    return compareUrls(webmention["wm-target"], url)
+    return compareUrls(webmention['wm-target'], url)
   }
 }
 
@@ -137,7 +137,7 @@ export function sortMentions(descending = false) {
 }
 
 export const MENTION_TYPE = {
-  Like: "like-of",
-  Reply: "in-reply-to",
-  Share: "repost-of",
+  Like: 'like-of',
+  Reply: 'in-reply-to',
+  Share: 'repost-of',
 }

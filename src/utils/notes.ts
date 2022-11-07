@@ -1,27 +1,25 @@
-import path from "path"
+import path from 'path'
 import type { MarkdownInstance } from 'astro'
 
 export type NoteSlug = string
 export interface Note {
-    slug: NoteSlug
-    title: string
-    date: Date | string
-    tags: string[]
-    link?: string
-    twitter_id?: string
-    Content: MarkdownInstance<Note>['Content']
-  }
+  slug: NoteSlug
+  title: string
+  date: Date | string
+  tags: string[]
+  link?: string
+  twitter_id?: string
+  Content: MarkdownInstance<Note>['Content']
+}
 
 function parseData(data: MarkdownInstance<Note>): { id: string; note: Note } {
   const { file, frontmatter: note, Content } = data
-  const id = path
-    .basename(file)
-    .replace(path.extname(file), "")
+  const id = path.basename(file).replace(path.extname(file), '')
   return {
     id,
     note: {
       ...note,
-      Content
+      Content,
     },
   }
 }
@@ -40,6 +38,6 @@ export function getNotes(allNotes: MarkdownInstance<Note>[], ids?: NoteSlug[]) {
   }, new Map<string, Note>())
 
   return !!ids
-    ? ids.map((id) => notesMap.get(id)).filter(Boolean) as Note[]
+    ? (ids.map(id => notesMap.get(id)).filter(Boolean) as Note[])
     : Array.from(notesMap.values()).filter(Boolean).sort(sortNotes)
 }

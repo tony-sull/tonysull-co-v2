@@ -1,20 +1,20 @@
 ---
 import { Markdown } from 'astro-remote'
-import site from "@data/site.json"
-import Show from "@components/Show.astro"
-import Layout from "@layouts/Base.astro"
+import site from '@data/site.json'
+import Show from '@components/Show.astro'
+import Layout from '@layouts/Base.astro'
 import { fetchArticles } from '@utils/api.js'
-import { isoDate, shortDate } from "@utils/dates.js"
-import { getDomain } from "@utils/links.js"
+import { isoDate, shortDate } from '@utils/dates.js'
+import { getDomain } from '@utils/links.js'
 import { identifierToSlug } from '@utils/slugs.js'
 import type { Article } from 'schema-dts'
 
 export async function getStaticPaths() {
   const allArticles = await fetchArticles('articles')
 
-  return allArticles.map((article) => ({
+  return allArticles.map(article => ({
     params: { slug: identifierToSlug(article.identifier!.toString()) },
-    props: { article }
+    props: { article },
   }))
 
   /*
@@ -89,7 +89,7 @@ const category = keywords?.toString() || 'code'
         >
         <Show when={!!sameAs}>
           <i>
-            • Originally published at{" "}
+            • Originally published at{' '}
             <a href={sameAs?.toString()}>{canonicalDomain}</a>
           </i>
         </Show>

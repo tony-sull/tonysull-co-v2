@@ -1,5 +1,5 @@
 ---
-layout: "@layouts/Page.astro"
+layout: '@layouts/Page.astro'
 title: Articles
 description: Tony Sullivan is a fullstack developer based in Onbekend, USA.
 blocks:

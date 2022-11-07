@@ -1,6 +1,6 @@
 ---
-import Note from "./Note.astro"
-import { fetchArticles } from "@utils/api.js"
+import Note from './Note.astro'
+import { fetchArticles } from '@utils/api.js'
 
 export interface Props {
   title: string
@@ -13,7 +13,7 @@ const notes = await fetchArticles('notes', ids)
 ---
 
 <section>
-  {notes.map((note) => <Note note={note} share />)}
+  {notes.map(note => <Note note={note} share />)}
 </section>
 
 <style lang="scss">

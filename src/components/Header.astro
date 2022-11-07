@@ -1,7 +1,7 @@
 ---
-import { Sprite } from "astro-icon"
-import navigation from "@data/navigation.json"
-import site from "@data/site.json"
+import { Sprite } from 'astro-icon'
+import navigation from '@data/navigation.json'
+import site from '@data/site.json'
 
 interface Props {
   pathname: string
@@ -11,7 +11,7 @@ const { pathname } = Astro.props as Props
 const { main } = navigation
 
 const isCurrentPage = (href: string) =>
-  href === "/" ? pathname === href : pathname.startsWith(href)
+  href === '/' ? pathname === href : pathname.startsWith(href)
 ---
 
 <header class="container" role="banner">
@@ -37,13 +37,18 @@ const isCurrentPage = (href: string) =>
 
     <nav>
       <ol>
-        {main.map(({ title, href }) => (
-          <li>
-            <a href={href} aria-current={isCurrentPage(href) ? "page" : false}>
-              {title}
-            </a>
-          </li>
-        ))}
+        {
+          main.map(({ title, href }) => (
+            <li>
+              <a
+                href={href}
+                aria-current={isCurrentPage(href) ? 'page' : false}
+              >
+                {title}
+              </a>
+            </li>
+          ))
+        }
       </ol>
     </nav>
 
@@ -65,38 +70,38 @@ const isCurrentPage = (href: string) =>
 </header>
 
 <script>
-  const themeToggle = document.getElementById("themebtn")
+  const themeToggle = document.getElementById('themebtn')
 
   if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
+    themeToggle.addEventListener('click', function () {
       const isDark =
-        document.documentElement.getAttribute("data-chisel-theme") === "dark"
-      const theme = isDark ? "light" : "dark"
-      document.documentElement.setAttribute("data-chisel-theme", theme)
+        document.documentElement.getAttribute('data-chisel-theme') === 'dark'
+      const theme = isDark ? 'light' : 'dark'
+      document.documentElement.setAttribute('data-chisel-theme', theme)
       localStorage.setItem(THEME_KEY, theme)
     })
-    themeToggle.style.display = "flex"
+    themeToggle.style.display = 'flex'
   }
 
   let lastScroll = 0
-  const header = document.querySelector("header[role=banner]")
+  const header = document.querySelector('header[role=banner]')
   function handleScroll() {
     window.pageYOffset > 50 && window.pageYOffset > lastScroll
-      ? header!.classList.add("hidden")
-      : header!.classList.remove("hidden")
+      ? header!.classList.add('hidden')
+      : header!.classList.remove('hidden')
     lastScroll = window.pageYOffset
   }
   if (header) {
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener('scroll', handleScroll)
   }
 </script>
 
 <style is:global lang="scss">
-  [data-chisel-theme="light"] svg[astro-icon="sun"] {
+  [data-chisel-theme='light'] svg[astro-icon='sun'] {
     display: none;
   }
 
-  [data-chisel-theme="dark"] svg[astro-icon="moon"] {
+  [data-chisel-theme='dark'] svg[astro-icon='moon'] {
     display: none;
   }
 </style><style lang="scss">
@@ -118,7 +123,7 @@ const isCurrentPage = (href: string) =>
   .header {
     display: grid;
     grid-template-columns: auto 1fr auto auto;
-    grid-template-areas: "brand . theme menu" "nav nav nav nav";
+    grid-template-areas: 'brand . theme menu' 'nav nav nav nav';
     column-gap: var(--spacer-sm);
     align-items: center;
   }
@@ -135,7 +140,7 @@ const isCurrentPage = (href: string) =>
     font-weight: 700;
   }
 
-  [rel="home"] svg {
+  [rel='home'] svg {
     height: 3rem;
     width: 3rem;
     margin-right: var(--spacer-xs);
@@ -152,7 +157,7 @@ const isCurrentPage = (href: string) =>
       counter-increment: menu;
 
       & a::before {
-        content: "0" counter(menu);
+        content: '0' counter(menu);
         font-weight: bold;
         margin-right: var(--spacer-tiny);
       }
@@ -169,7 +174,7 @@ const isCurrentPage = (href: string) =>
     position: relative;
 
     &::after {
-      content: "";
+      content: '';
       display: block;
       height: 3px;
       position: absolute;
@@ -181,12 +186,12 @@ const isCurrentPage = (href: string) =>
       transition: transform 0.3s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
-    &[aria-current="page"]::after {
+    &[aria-current='page']::after {
       transform: scale(1);
       background: var(--chisel-secondary);
     }
 
-    &:not([aria-current="page"]):hover::after {
+    &:not([aria-current='page']):hover::after {
       transform: scale(1);
       background: var(--chisel-neutral-300);
     }
@@ -196,7 +201,7 @@ const isCurrentPage = (href: string) =>
     grid-area: theme;
   }
 
-  label[for="menubtn"] {
+  label[for='menubtn'] {
     grid-area: menu;
     margin: 0;
 
@@ -230,11 +235,11 @@ const isCurrentPage = (href: string) =>
     }
   }
 
-  #menubtn:focus-visible ~ label[for="menubtn"] {
+  #menubtn:focus-visible ~ label[for='menubtn'] {
     outline: 3px solid var(--chisel-secondary);
   }
 
-  #menubtn:checked ~ label[for="menubtn"] {
+  #menubtn:checked ~ label[for='menubtn'] {
     & span:nth-of-type(1) {
       transform-origin: bottom;
       transform: rotatez(45deg) translate(4px, 1.5px);
@@ -272,7 +277,7 @@ const isCurrentPage = (href: string) =>
 
   @media screen and (min-width: 939px) {
     .header {
-      grid-template-areas: "brand . nav theme";
+      grid-template-areas: 'brand . nav theme';
     }
 
     nav {
@@ -291,7 +296,7 @@ const isCurrentPage = (href: string) =>
       margin-right: var(--spacer-sm);
     }
 
-    label[for="menubtn"],
+    label[for='menubtn'],
     #menubtn {
       display: none;
     }
