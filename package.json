@@ -46,6 +46,7 @@
     "eslint-plugin-astro": "^0.21.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "fecha": "^4.2.3",
+    "html-parser": "^0.11.0",
     "lodash": "^4.17.21",
     "nano-markdown": "^1.2.1",
     "node-fetch": "^3.2.10",

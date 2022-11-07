@@ -1,6 +1,6 @@
 ---
 import { Markdown } from 'astro-remote'
-import site from '@data/site.json'
+import { unescape } from 'html-escaper'
 import Show from '@components/Show.astro'
 import Layout from '@layouts/Base.astro'
 import { fetchArticles } from '@utils/api.js'
@@ -16,32 +16,6 @@ export async function getStaticPaths() {
     params: { slug: identifierToSlug(article.identifier!.toString()) },
     props: { article },
   }))
-
-  /*
-  rss({
-    title: `Articles • ${site.title}`,
-    description: site.description,
-    customData: `<language>en-us</language><author><name>${
-      site.title
-    }</name></author><id>${site.url}${site.rss.articles}</id><updated>${isoDate(
-      new Date()
-    )}</updated>`,
-    items: allArticles.map(({ props }) => {
-      const { article } = props
-
-      return {
-        title: article.title,
-        description: article.description,
-        link: `/articles/${article.slug}/`,
-        pubDate: isoDate(article.published_date),
-        customData: `<id>${article.slug}</id><updated>${isoDate(
-          article.modified_date || article.published_date
-        )}</updated>`,
-      }
-    }),
-    dest: `/${site.rss.articles}`,
-  })
-  */
 }
 
 interface Props {
@@ -113,7 +87,7 @@ const category = keywords?.toString() || 'code'
   </section>
 
   <article class="e-content markdown">
-    <Markdown content={article.articleBody?.toString() || ''} />
+    <Markdown content={unescape(article.articleBody?.toString() || '')} />
   </article>
 </Layout>
 

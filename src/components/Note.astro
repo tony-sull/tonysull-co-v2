@@ -1,6 +1,7 @@
 ---
 import { Sprite } from 'astro-icon'
 import { Markdown } from 'astro-remote'
+import { unescape } from 'html-escaper'
 import Avatar from '@assets/avatar-96x96.jpg'
 import Show from './Show.astro'
 import site from '@data/site.json'
@@ -64,7 +65,7 @@ const date = datePublished!.toString()
     </p>
   </header>
   <main class="e-content p-name markdown">
-    <Markdown content={note.articleBody?.toString()} />
+    <Markdown content={unescape(note.articleBody?.toString() || '')} />
 
     <Show when={tags.length > 0}>
       <div class="tags">
