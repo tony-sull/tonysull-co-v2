@@ -39,7 +39,6 @@ const publishedDate = datePublished && shortDate(datePublished.toString())
 const modifiedDateISO = dateModified && isoDate(dateModified.toString())
 const modifiedDate = dateModified && shortDate(dateModified.toString())
 const canonicalDomain = sameAs && getDomain(sameAs.toString())
-const canonicalURL = sameAs ? new URL(sameAs.toString()) : undefined
 
 const category = keywords?.toString() || 'code'
 ---
@@ -50,7 +49,6 @@ const category = keywords?.toString() || 'code'
   description={description?.toString()}
   image={image?.toString()}
   pathname={Astro.url.pathname}
-  canonicalURL={canonicalURL}
 >
   <section class="h-entry">
     <header>
