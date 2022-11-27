@@ -40,6 +40,7 @@
     "@typescript-eslint/parser": "^5.42.0",
     "astro-icon": "^0.8.0",
     "astro-remote": "^0.2.3",
+    "astro-webfinger": "^1.1.0",
     "chisel.css": "^0.8.1",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
