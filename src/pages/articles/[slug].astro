@@ -1,6 +1,7 @@
 ---
 import { Markdown } from 'astro-remote'
 import { unescape } from 'html-escaper'
+import CodeBlock from '@components/CodeBlock.astro'
 import Show from '@components/Show.astro'
 import Layout from '@layouts/Base.astro'
 import { fetchArticles } from '@utils/api.js'
@@ -94,7 +95,7 @@ const category = keywords?.toString() || 'code'
   </section>
 
   <article class="e-content markdown">
-    <Markdown content={unescape(article.articleBody?.toString() || '')} />
+    <Markdown content={unescape(article.articleBody?.toString() || '')} components={{ CodeBlock }} />
   </article>
 </Layout>
 

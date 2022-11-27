@@ -21,6 +21,7 @@ export default defineConfig({
   vite: {
     ssr: {
       external: ['svgo'],
-    },
+      noExternal: ['he']
+    }
   },
 })

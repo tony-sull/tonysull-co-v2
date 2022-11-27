@@ -1,0 +1,10 @@
+---
+import hljs from 'highlight.js'
+import 'highlight.js/styles/github-dark.css'
+
+const { lang, code, ...props } = Astro.props
+const language = hljs.getLanguage(lang) ? lang : lang === 'astro' ? 'html' : 'plaintext'
+const highlighted = hljs.highlight(code, { language }).value
+---
+
+<pre class={`language-${lang}`}><code set:html={highlighted} /></pre>
