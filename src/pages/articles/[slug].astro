@@ -7,7 +7,7 @@ import { fetchArticles } from '@utils/api.js'
 import { isoDate, shortDate } from '@utils/dates.js'
 import { getDomain } from '@utils/links.js'
 import { identifierToSlug } from '@utils/slugs.js'
-import type { Article } from 'schema-dts'
+import type { Article, Person } from 'schema-dts'
 
 export async function getStaticPaths() {
   const allArticles = await fetchArticles('articles')
@@ -33,6 +33,8 @@ const {
   datePublished,
   dateModified,
 } = article
+
+const author = article.author as Person | undefined
 
 const publishedDateISO = datePublished && isoDate(datePublished.toString())
 const publishedDate = datePublished && shortDate(datePublished.toString())
@@ -65,9 +67,16 @@ const category = keywords?.toString() || 'code'
             <a href={sameAs?.toString()}>{canonicalDomain}</a>
           </i>
         </Show>
-        <b class="h-card p-author">
-          <a class="u-url" href="/">{name}</a>
-        </b>
+        {author && (
+          <b class="h-card p-author">
+            {typeof author === 'string' ? (
+              <p class="u-name">{author}</p>
+            ) : (
+              <a class="u-url" href={author.url?.toString()}>{author.url}</a>
+              <p class="u-name">{author.name}</p>
+            )}
+          </b>
+        )}
       </small>
 
       <Show when={modifiedDate}>
