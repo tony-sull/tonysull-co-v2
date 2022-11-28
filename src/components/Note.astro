@@ -19,9 +19,10 @@ import type { Article } from 'schema-dts'
 interface Props {
   note: Article
   share?: boolean
+  syndicate?: boolean
 }
 
-const { note, share = false } = Astro.props as Props
+const { note, share = false, syndicate = false } = Astro.props as Props
 
 const { datePublished, keywords = '' } = note
 const tags = keywords.toString().split(',').filter(Boolean)
@@ -40,6 +41,10 @@ const likes = webMentions.filter(isMentionType(MENTION_TYPE.Like))
 const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
 
 const date = datePublished!.toString()
+
+const syndications = Array.from(note.isPartOf || [])
+const syndicateToTwitter = syndicate && syndications.includes(site.social.twitter_url)
+const syndicateToMastodon = syndicate && syndications.includes(site.social.mastodon_url)
 ---
 
 <article class="h-entry">
@@ -113,6 +118,13 @@ const date = datePublished!.toString()
         <span>{likes.length}</span>
       </label>
     </footer>
+  </Show>
+
+  <Show when={syndicateToTwitter}>
+    <a href="https://brid.gy/publish/twitter"></a>
+  </Show>
+  <Show when={syndicateToMastodon}>
+    <a href="https://brid.gy/publish/mastodon"></a>
   </Show>
 </article>
 

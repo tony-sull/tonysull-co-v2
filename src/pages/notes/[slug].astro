@@ -21,7 +21,7 @@ const { note } = Astro.props as { note: Article }
 
 <Layout title={note.name?.toString()} pathname={Astro.url.pathname}>
   <section>
-    <Note note={note} />
+    <Note note={note} syndicate />
   </section>
 </Layout>
 
