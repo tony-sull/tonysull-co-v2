@@ -12,10 +12,8 @@ export default defineConfig({
     }),
     sitemap(),
     webfinger({
-      mastodon: {
-        instance: 'indieweb.social',
-        username: 'tonysull'
-      }
+      instance: 'indieweb.social',
+      username: 'tonysull'
     })
   ],
   vite: {
