@@ -16,6 +16,8 @@ const { url, title, social } = site
 
     <p>
       <strong>Social</strong>
+      <a title="Mastodon" rel="me" href={social.mastodon_url}>Mastodon</a>
+      /
       <a title="Twitter" rel="me" href={social.twitter_url}>Twitter</a>
       /
       <a title="Github" rel="me" href={social.github_url}>Github</a>
@@ -32,6 +34,9 @@ const { url, title, social } = site
     </p>
 
     <p>
+      <a title="Mastodon" href={social.mastodon_url}>
+        <Sprite name="mastodon" size={24} />
+      </a>
       <a title="Twitter" href={social.twitter_url}>
         <Sprite name="twitter" size={24} />
       </a>

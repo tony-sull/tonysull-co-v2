@@ -9,7 +9,8 @@
     "twitter_handle": "@tonysull_co",
     "twitter_card": "summary_large_image",
     "twitter_url": "https://twitter.com/tonysull_co",
-    "github_url": "https://github.com/tony-sull"
+    "github_url": "https://github.com/tony-sull",
+    "mastodon_url": "https://indieweb.social/@tonysull"
   },
   "rss": {
     "articles": "/articles/feed.xml",
