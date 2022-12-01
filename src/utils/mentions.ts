@@ -141,3 +141,24 @@ export const MENTION_TYPE = {
   Reply: 'in-reply-to',
   Share: 'repost-of',
 }
+
+const BRIDGY_TWITTER_REGEX = /^https:\/\/brid.gy\/[a-zA-Z]+\/twitter\//
+const BRIDGY_MASTODON_REGEX = /^https:\/\/brid.gy\/[a-zA-Z]+\/mastodon\//
+
+export function isTwitterMention(mention: { ['wm-source']: string }) {
+  return BRIDGY_TWITTER_REGEX.test(mention['wm-source'])
+}
+
+export function isMastodonMention(mention: { ['wm-source']: string }) {
+  return BRIDGY_MASTODON_REGEX.test(mention['wm-source'])
+}
+
+export function parseTweetId(mention: { url: string }) {
+  const url = new URL(mention.url)
+
+  if (url.hostname !== 'twitter.com') {
+    return undefined
+  }
+
+  return url.pathname.split('/').pop()
+}

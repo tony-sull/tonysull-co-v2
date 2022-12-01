@@ -1,0 +1,165 @@
+---
+import { Icon } from 'astro-icon'
+import { isMentionType, MENTION_TYPE } from '@utils/mentions'
+import Avatar from './Avatar.astro'
+import Show from './Show.astro'
+import TwitterShare from './TwitterShare.astro'
+
+interface Author {
+  type: 'card'
+  name: string
+  photo: string
+  url: string
+}
+
+interface WebMention {
+  author: Author
+  url: string
+  'wm-received': string
+  'wm-id': number
+  'wm-source': string
+  'wm-target': string
+  'wm-private': boolean
+}
+
+export interface Props {
+  webMentions: WebMention[]
+  url: string
+}
+
+const { webMentions, url } = Astro.props
+
+const TWITTER_REGEX = /^https:\/\/brid.gy\/[a-zA-Z]+\/twitter\//
+const MASTODON_REGEX = /^https:\/\/brid.gy\/[a-zA-Z]+\/mastodon\//
+
+const twitterUrl = webMentions.find(mention =>
+  TWITTER_REGEX.test(mention['wm-source'])
+)
+const mastodonUrl = webMentions.find(mention =>
+  MASTODON_REGEX.test(mention['wm-source'])
+)
+
+const reposts = webMentions.filter(isMentionType(MENTION_TYPE.Share))
+const likes = webMentions.filter(isMentionType(MENTION_TYPE.Like))
+const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
+---
+
+<h3>Webmentions</h3>
+
+<slot />
+
+<Show when={likes.length}>
+  <div class="facepile">
+    <h3 class="h4">
+      {likes.length} Like{likes.length > 1 ? 's' : ''}
+    </h3>
+
+    {
+      likes.map(mention =>
+        mention.url ? (
+          <a
+            class="h-card u-url"
+            href={mention.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Avatar src={mention.author.photo} alt={mention.author.name} />
+          </a>
+        ) : (
+          <Avatar src={mention.author.photo} alt={mention.author.name} />
+        )
+      )
+    }
+  </div>
+</Show>
+
+<Show when={reposts.length}>
+  <div class="facepile">
+    <h3 class="h4">
+      {reposts.length} Repost{reposts.length > 1 ? 's' : ''}
+    </h3>
+
+    {
+      reposts.map(mention =>
+        mention.url ? (
+          <a
+            class="h-card u-url"
+            href={mention.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Avatar src={mention.author.photo} alt={mention.author.name} />
+          </a>
+        ) : (
+          <Avatar src={mention.author.photo} alt={mention.author.name} />
+        )
+      )
+    }
+  </div>
+</Show>
+
+<!-- Replies -->
+
+<div class="webmentions__form">
+  <p class="h5">
+    {webMentions.length > 0 ? 'These are ' : 'We support '}
+    <a href="https://indieweb.org/Webmention">webmentions</a> via the
+    <a href="https://indieweb.org/">IndieWeb</a>
+    and
+    <a href="https://webmention.io/">webmention.io</a>. Mention this post from
+    your site:
+  </p>
+  <form
+    action={`https://webmention.io/${domain}/webmention`}
+    method="post"
+    class="form-webmention"
+  >
+    <label for="form-webmention-source">URL</label>
+    <input
+      id="form-webmention-source"
+      type="url"
+      name="source"
+      placeholder="https://example.com"
+      required=""
+    />
+    <input type="hidden" name="target" value={url} />
+    <button type="submit">Send Webmention</button>
+  </form>
+</div>
+
+<style lang="scss">
+  h2 {
+    margin-bottom: var(--spacer-xs);
+  }
+
+  h3 {
+    width: 100%;
+    color: var(--chisel-secondary);
+    font-weight: 500;
+    margin: var(--spacer-md) 0 var(--spacer-xs);
+  }
+
+  .facepile {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacer-xs);
+    margin: 0;
+
+    & a {
+      text-decoration: none;
+
+      &:hover :global(img) {
+        filter: var(--shadow-secondary);
+      }
+    }
+  }
+
+  .webmentions__form {
+    margin-top: var(--spacer-lg);
+  }
+
+  button[type='submit'] {
+    margin-top: var(--spacer-sm);
+  }
+</style>

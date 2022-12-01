@@ -1,4 +1,5 @@
 ---
+import path from 'node:path'
 import { Sprite } from 'astro-icon'
 import { Markdown } from 'astro-remote'
 import { unescape } from 'html-escaper'
@@ -29,7 +30,7 @@ const tags = keywords.toString().split(',').filter(Boolean)
 
 const slug = identifierToSlug(note.identifier!.toString())
 
-const url = new URL(Astro.url.pathname, Astro.site).toString()
+const url = new URL(path.join(Astro.url.pathname, slug), Astro.site).toString()
 
 const allMentions = await getAllMentions()
 const webMentions = allMentions.children
