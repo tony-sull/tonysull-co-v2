@@ -7,8 +7,14 @@ import Layout from '@layouts/Base.astro'
 import { fetchArticles } from '@utils/api.js'
 import { isoDate, shortDate } from '@utils/dates.js'
 import { getDomain } from '@utils/links.js'
+import {
+  getAllMentions,
+  isForUrl,
+  sortMentions,
+} from '@utils/mentions.js'
 import { identifierToSlug } from '@utils/slugs.js'
 import type { Article, Person } from 'schema-dts'
+import WebMentions from '@components/WebMentions.astro'
 
 export async function getStaticPaths() {
   const allArticles = await fetchArticles('articles')
@@ -24,6 +30,13 @@ interface Props {
 }
 
 const { article } = Astro.props
+
+const url = new URL(Astro.url.pathname, Astro.site).toString()
+
+const allMentions = await getAllMentions()
+const webMentions = allMentions.children
+  .filter(isForUrl(url))
+  .sort(sortMentions(true))
 
 const {
   name,
@@ -97,6 +110,10 @@ const category = keywords?.toString() || 'code'
   <article class="e-content markdown">
     <Markdown content={unescape(article.articleBody?.toString() || '')} components={{ CodeBlock }} />
   </article>
+
+  <section>
+    <WebMentions webMentions={webMentions} url={url} />
+  </section>
 </Layout>
 
 <style lang="scss">

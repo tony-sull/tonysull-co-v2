@@ -29,6 +29,8 @@ export interface Props {
 
 const { webMentions, url } = Astro.props
 
+const domain = Astro.site?.hostname
+
 const TWITTER_REGEX = /^https:\/\/brid.gy\/[a-zA-Z]+\/twitter\//
 const MASTODON_REGEX = /^https:\/\/brid.gy\/[a-zA-Z]+\/mastodon\//
 
@@ -44,90 +46,97 @@ const likes = webMentions.filter(isMentionType(MENTION_TYPE.Like))
 const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
 ---
 
-<h3>Webmentions</h3>
+<section>
+  <h3>Webmentions</h3>
 
-<slot />
+  <slot />
 
-<Show when={likes.length}>
-  <div class="facepile">
-    <h3 class="h4">
-      {likes.length} Like{likes.length > 1 ? 's' : ''}
-    </h3>
+  <Show when={likes.length}>
+    <div class="facepile">
+      <h3 class="h4">
+        {likes.length} Like{likes.length > 1 ? 's' : ''}
+      </h3>
 
-    {
-      likes.map(mention =>
-        mention.url ? (
-          <a
-            class="h-card u-url"
-            href={mention.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      {
+        likes.map(mention =>
+          mention.url ? (
+            <a
+              class="h-card u-url"
+              href={mention.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Avatar src={mention.author.photo} alt={mention.author.name} />
+            </a>
+          ) : (
             <Avatar src={mention.author.photo} alt={mention.author.name} />
-          </a>
-        ) : (
-          <Avatar src={mention.author.photo} alt={mention.author.name} />
+          )
         )
-      )
-    }
-  </div>
-</Show>
+      }
+    </div>
+  </Show>
 
-<Show when={reposts.length}>
-  <div class="facepile">
-    <h3 class="h4">
-      {reposts.length} Repost{reposts.length > 1 ? 's' : ''}
-    </h3>
+  <Show when={reposts.length}>
+    <div class="facepile">
+      <h3 class="h4">
+        {reposts.length} Repost{reposts.length > 1 ? 's' : ''}
+      </h3>
 
-    {
-      reposts.map(mention =>
-        mention.url ? (
-          <a
-            class="h-card u-url"
-            href={mention.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      {
+        reposts.map(mention =>
+          mention.url ? (
+            <a
+              class="h-card u-url"
+              href={mention.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Avatar src={mention.author.photo} alt={mention.author.name} />
+            </a>
+          ) : (
             <Avatar src={mention.author.photo} alt={mention.author.name} />
-          </a>
-        ) : (
-          <Avatar src={mention.author.photo} alt={mention.author.name} />
+          )
         )
-      )
-    }
+      }
+    </div>
+  </Show>
+
+  <!-- Replies -->
+
+  <div class="webmentions__form">
+    <p class="h5">
+      {webMentions.length > 0 ? 'These are ' : 'We support '}
+      <a href="https://indieweb.org/Webmention">webmentions</a> via the
+      <a href="https://indieweb.org/">IndieWeb</a>
+      and
+      <a href="https://webmention.io/">webmention.io</a>. Mention this post from
+      your site:
+    </p>
+    <form
+      action={`https://webmention.io/${domain}/webmention`}
+      method="post"
+      class="form-webmention"
+    >
+      <label for="form-webmention-source">URL</label>
+      <input
+        id="form-webmention-source"
+        type="url"
+        name="source"
+        placeholder="https://example.com"
+        required=""
+      />
+      <input type="hidden" name="target" value={url} />
+      <button type="submit">Send Webmention</button>
+    </form>
   </div>
-</Show>
-
-<!-- Replies -->
-
-<div class="webmentions__form">
-  <p class="h5">
-    {webMentions.length > 0 ? 'These are ' : 'We support '}
-    <a href="https://indieweb.org/Webmention">webmentions</a> via the
-    <a href="https://indieweb.org/">IndieWeb</a>
-    and
-    <a href="https://webmention.io/">webmention.io</a>. Mention this post from
-    your site:
-  </p>
-  <form
-    action={`https://webmention.io/${domain}/webmention`}
-    method="post"
-    class="form-webmention"
-  >
-    <label for="form-webmention-source">URL</label>
-    <input
-      id="form-webmention-source"
-      type="url"
-      name="source"
-      placeholder="https://example.com"
-      required=""
-    />
-    <input type="hidden" name="target" value={url} />
-    <button type="submit">Send Webmention</button>
-  </form>
-</div>
+</section>
 
 <style lang="scss">
+  section {
+    max-width: 80ch;
+    margin: 0 auto;
+  }
+
   h2 {
     margin-bottom: var(--spacer-xs);
   }
@@ -144,19 +153,20 @@ const replies = webMentions.filter(isMentionType(MENTION_TYPE.Reply))
     flex-direction: row;
     flex-wrap: wrap;
     gap: var(--spacer-xs);
-    margin: 0;
+    margin: var(--spacer-md) 0 0;
 
     & a {
       text-decoration: none;
+      filter: drop-shadow(var(--drop-shadow));
 
       &:hover :global(img) {
-        filter: var(--shadow-secondary);
+        filter: drop-shadow(var(--shadow-secondary));
       }
     }
   }
 
   .webmentions__form {
-    margin-top: var(--spacer-lg);
+    margin-top: var(--spacer-md);
   }
 
   button[type='submit'] {

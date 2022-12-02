@@ -1,7 +1,13 @@
 ---
 import Note from '@components/Note.astro'
+import WebMentions from '@components/WebMentions.astro'
 import Layout from '@layouts/Base.astro'
 import { fetchArticles } from '@utils/api.js'
+import {
+  getAllMentions,
+  isForUrl,
+  sortMentions,
+} from '@utils/mentions.js'
 import { identifierToSlug } from '@utils/slugs.js'
 import type { Article } from 'schema-dts'
 
@@ -17,17 +23,25 @@ export async function getStaticPaths() {
 }
 
 const { note } = Astro.props as { note: Article }
+
+const url = new URL(Astro.url.pathname, Astro.site).toString()
+
+const allMentions = await getAllMentions()
+const webMentions = allMentions.children
+  .filter(isForUrl(url))
+  .sort(sortMentions(true))
 ---
 
 <Layout title={note.name?.toString()} pathname={Astro.url.pathname}>
   <section>
     <Note note={note} syndicate />
   </section>
+  <WebMentions webMentions={webMentions} url={url} />
 </Layout>
 
 <style lang="scss">
   section {
-    padding-top: var(--spacer-lg);
+    padding-block: var(--spacer-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
